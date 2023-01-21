@@ -4,38 +4,30 @@
 
 Exercism exercises in Rexx.
 
-## Testing
+## Overview
+The Rexx programming language dates back to 1979, making it one of the first scripting languages, pre-dating languages such as Perl and TCL. It was originally implemented on IBM mainframe platforms (where it is still used), but has since been ported to other platforms.
 
-To test the exercises, run `./bin/test`.
-This command will iterate over all exercises and check to see if their exemplar/example implementation passes all the tests.
+It is a procedural language with a sole data type, the character string, and a small set of instructions. Among its features are _arbitrary precision arithmetic_, and a built-in assocoative array-like facility called _compound variables_.
 
-### Track linting
+The chosen Rexx implementation is [Regina](https://regina-rexx.sourceforge.io/). It is actively developed, widely ported, ANSI-standard conforming, sports an extensive collection of built-in functionality, and is probably the most popular  (subject to verification) non-mainframe-based Rexx implementation.
 
-[`configlet`](https://exercism.org/docs/building/configlet) is an Exercism-wide tool for working with tracks. You can download it by running:
+## TODO
+- Initial documentation (language description etc)
+- Initial metadata (config.json)
+- Setup unit testing
+- Implement hello-world exercise
+- Implement 20+ additional practice exercises
+- Other tasks contributing to track _go live_
 
-```shell
-$ ./bin/fetch-configlet
-```
+## Comments
+A notable issue is the selection of unit testing framework. No _standard_ framework appears to exist (there is _no_ RexxUnit), at least not on non-mainframe platforms.
 
-Run its [`lint` command](https://exercism.org/docs/building/configlet/lint) to verify if all exercises have all the necessary files and if config files are correct:
+There is a rudimentary, Rexx-based framework called [t-rexx](https://github.com/oakmount66/t-rexx), which could be used, but it can only test against variable contents, not console output, so limiting testing flexibility. Therefore, the options appear to be:
+- Fork and suitably extend, _t-rexx_
+- Use a non Rexx-based unit testing framework
 
-```shell
-$ ./bin/configlet lint
+The use of a non Rexx-based unit testing framework, specifically, [bats-core](https://github.com/bats-core/bats-core), appears the more appropriate choice. This is because [Regina](https://regina-rexx.sourceforge.io/) executes like any other command-line utility or script in allowing its output to be redirected, making it a suitable target for [bats-core](https://github.com/bats-core/bats-core).
 
-The lint command is under development.
-Please re-run this command regularly to see if your track passes the latest linting rules.
+## Project Status
 
-Basic linting finished successfully:
-- config.json exists and is valid JSON
-- config.json has these valid fields:
-    language, slug, active, blurb, version, status, online_editor, key_features, tags
-- Every concept has the required .md files
-- Every concept has a valid links.json file
-- Every concept has a valid .meta/config.json file
-- Every concept exercise has the required .md files
-- Every concept exercise has a valid .meta/config.json file
-- Every practice exercise has the required .md files
-- Every practice exercise has a valid .meta/config.json file
-- Required track docs are present
-- Required shared exercise docs are present
-```
+ACTIVE

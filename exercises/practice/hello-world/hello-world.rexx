@@ -1,1 +1,2 @@
-SAY "Goodbye, Mars!"
+HelloWorld : procedure
+  return "Goodbye, Mars!"

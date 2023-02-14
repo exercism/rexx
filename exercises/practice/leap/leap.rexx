@@ -1,0 +1,3 @@
+IsLeapYear : procedure
+  nop
+return ''

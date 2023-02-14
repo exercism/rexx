@@ -2,7 +2,7 @@
   "authors": ["ajborla"],
   "files": {
     "solution": ["hello-world.rexx"],
-    "test": ["test-hello-world.bats"],
+    "test": ["test-hello-world"],
     "example": [".meta/example.rexx"]
   },
   "blurb": "The classical introductory exercise. Just say \"Hello, World!\".",

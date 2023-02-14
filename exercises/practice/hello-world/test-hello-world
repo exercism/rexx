@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+./runt --tap-output hello-world-check hello-world

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # -----------------------------------------------------------------------------
 # Script runner for t.rexx
@@ -30,6 +30,7 @@
 # 2023-02-10      0.3.0     Anthony J. Borla    Add TAP and KEEP options.
 # 2023-02-10      0.4.0     Anthony J. Borla    Activate KEEP functionality.
 # 2023-02-10      0.4.1     Anthony J. Borla    Revised commentary.
+# 2023-02-15      0.4.2     Anthony J. Borla    Altered shebang.
 # -----------------------------------------------------------------------------
 
 # ---- Constants

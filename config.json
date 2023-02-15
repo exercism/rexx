@@ -52,6 +52,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 2
+      },
+      {
+        "slug": "difference-of-squares",
+        "name": "Difference of Squares",
+        "uuid": "3a8e4b95-320e-46fe-bbc4-7fcfd0436735",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
       }
     ]
   },

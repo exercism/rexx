@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+./runt --tap-output difference-of-squares-check difference-of-squares

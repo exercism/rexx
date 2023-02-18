@@ -1,4 +1,3 @@
-
 ComputeSquare : procedure
   parse arg n
   if n == 1 then ; return 1
@@ -11,4 +10,3 @@ Square : procedure
 
 Total : procedure
 return Square(64) * 2 - 1
-

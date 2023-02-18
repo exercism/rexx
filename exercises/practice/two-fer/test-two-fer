@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+./runt --tap-output two-fer-check two-fer

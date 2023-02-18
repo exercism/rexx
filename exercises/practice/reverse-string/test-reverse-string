@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+./runt --tap-output reverse-string-check reverse-string

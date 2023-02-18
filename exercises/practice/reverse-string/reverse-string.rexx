@@ -1,0 +1,3 @@
+ReverseString : procedure
+  nop
+return ''

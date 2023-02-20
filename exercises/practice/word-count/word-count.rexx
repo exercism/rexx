@@ -1,0 +1,3 @@
+WordCount : procedure
+  nop
+return ''

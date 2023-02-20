@@ -100,6 +100,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 2
+      },
+      {
+        "slug": "word-count",
+        "name": "Word Count",
+        "uuid": "d63ca45f-8228-4f14-bdc1-da39af93f679",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
       }
     ]
   },

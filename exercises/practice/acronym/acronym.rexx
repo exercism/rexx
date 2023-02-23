@@ -1,0 +1,3 @@
+Abbreviate: procedure
+  nop
+return ''

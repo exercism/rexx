@@ -1,0 +1,10 @@
+{
+  "authors": ["ajborla"],
+  "files": {
+    "solution": ["protein-translation.rexx"],
+    "test": ["test-protein-translation"],
+    "example": [".meta/example.rexx"]
+  },
+  "blurb": "Translate RNA sequences into proteins.",
+  "source": "Tyler Long"
+}

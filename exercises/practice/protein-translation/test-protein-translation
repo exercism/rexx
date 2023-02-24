@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+./runt --tap-output protein-translation-check protein-translation

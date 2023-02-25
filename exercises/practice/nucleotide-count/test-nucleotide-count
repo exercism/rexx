@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+./runt --tap-output nucleotide-count-check nucleotide-count

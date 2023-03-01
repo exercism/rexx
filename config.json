@@ -252,6 +252,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 2
+      },
+      {
+        "slug": "error-handling",
+        "name": "Error Handling",
+        "uuid": "377c9994-a2a6-491a-8436-013fb9b99135",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
       }
     ]
   },

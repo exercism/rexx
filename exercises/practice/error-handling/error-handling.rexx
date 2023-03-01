@@ -1,0 +1,3 @@
+HandleErrorUsingReturnCode : procedure
+  nop
+return ''

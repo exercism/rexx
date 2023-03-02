@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+./runt --tap-output resistor-color-duo-check resistor-color-duo

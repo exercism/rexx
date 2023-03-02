@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+./runt --tap-output prime-factors-check prime-factors

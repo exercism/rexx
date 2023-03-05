@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+./runt --tap-output perfect-numbers-check perfect-numbers

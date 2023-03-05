@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+./runt --tap-output nth-prime-check nth-prime

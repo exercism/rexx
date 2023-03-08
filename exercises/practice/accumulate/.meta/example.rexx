@@ -5,7 +5,6 @@ Accumulate : procedure
     cmd = 'retval =' function || '(' || ''''token'''' || ')' ; interpret cmd
     output ||= retval ''
   end
-  say output
 return STRIP(output, 'T')
 
 /* Need to implement test helpers here, not in test runner file */

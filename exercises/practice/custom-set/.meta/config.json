@@ -1,0 +1,9 @@
+{
+  "authors": ["ajborla"],
+  "files": {
+    "solution": ["custom-set.rexx"],
+    "test": ["test-custom-set"],
+    "example": [".meta/example.rexx"]
+  },
+  "blurb": "Create a custom set type."
+}

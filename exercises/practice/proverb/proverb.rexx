@@ -1,0 +1,3 @@
+Proverb : procedure
+  nop
+return ''

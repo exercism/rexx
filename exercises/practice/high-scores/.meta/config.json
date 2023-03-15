@@ -1,0 +1,10 @@
+{
+  "authors": ["ajborla"],
+  "files": {
+    "solution": ["high-scores.rexx"],
+    "test": ["test-high-scores"],
+    "example": [".meta/example.rexx"]
+  },
+  "blurb": "Manage a player's High Score list.",
+  "source": "Tribute to the eighties' arcade game Frogger"
+}

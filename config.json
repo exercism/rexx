@@ -452,6 +452,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 3
+      },
+      {
+        "slug": "transpose",
+        "name": "Transpose",
+        "uuid": "e3914ac8-9b7a-410c-8e67-8532ac769eb0",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
       }
     ]
   },

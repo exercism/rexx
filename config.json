@@ -444,6 +444,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 2
+      },
+      {
+        "slug": "matrix",
+        "name": "Matrix",
+        "uuid": "03a45b1c-c9d0-40a3-8b0f-19e954c5e4f6",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
       }
     ]
   },

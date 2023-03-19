@@ -1,0 +1,11 @@
+{
+  "authors": ["ajborla"],
+  "files": {
+    "solution": ["saddle-points.rexx"],
+    "test": ["test-saddle-points"],
+    "example": [".meta/example.rexx"]
+  },
+  "blurb": "Detect saddle points in a matrix.",
+  "source": "J Dalbey's Programming Practice problems",
+  "source_url": "https://users.csc.calpoly.edu/~jdalbey/103/Projects/ProgrammingPractice.html"
+}

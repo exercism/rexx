@@ -484,6 +484,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 3
+      },
+      {
+        "slug": "simple-cipher",
+        "name": "Simple Cipher",
+        "uuid": "cd35fb2c-144b-4c38-98b2-26f4b4984b49",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
       }
     ]
   },

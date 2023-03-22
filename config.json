@@ -508,6 +508,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 4
+      },
+      {
+        "slug": "phone-number",
+        "name": "Phone Number",
+        "uuid": "66317e84-b493-450a-b8a2-be0d5fe96e26",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
       }
     ]
   },

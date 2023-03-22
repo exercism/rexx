@@ -1,0 +1,10 @@
+{
+  "authors": ["ajborla"],
+  "files": {
+    "solution": ["matching-brackets.rexx"],
+    "test": ["test-matching-brackets"],
+    "example": [".meta/example.rexx"]
+  },
+  "blurb": "Make sure the brackets and braces all match.",
+  "source": "Ginna Baker"
+}

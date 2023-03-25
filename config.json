@@ -524,6 +524,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 4
+      },
+      {
+        "slug": "luhn",
+        "name": "Luhn Credit Card Number Checker",
+        "uuid": "6b972241-40d7-46aa-88a2-495b9714a49d",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
       }
     ]
   },

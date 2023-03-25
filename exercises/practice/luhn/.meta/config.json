@@ -1,0 +1,11 @@
+{
+  "authors": ["ajborla"],
+  "files": {
+    "solution": ["luhn.rexx"],
+    "test": ["test-luhn"],
+    "example": [".meta/example.rexx"]
+  },
+  "blurb": "Given a number determine whether or not it is valid per the Luhn formula.",
+  "source": "The Luhn Algorithm on Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Luhn_algorithm"
+}

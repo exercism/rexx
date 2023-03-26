@@ -532,6 +532,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 4
+      },
+      {
+        "slug": "ocr-numbers",
+        "name": "OCR Number Verifier",
+        "uuid": "f3a598f0-3764-42ff-a742-756169d05c82",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
       }
     ]
   },

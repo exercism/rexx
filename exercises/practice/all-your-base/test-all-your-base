@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+./runt --tap-output all-your-base-check all-your-base

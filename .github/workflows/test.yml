@@ -13,7 +13,7 @@
 # Requires scripts:
 # - bin/test
 
-name: <track> / Test
+name: rexx / Test
 
 on:
   push:
@@ -23,17 +23,14 @@ on:
 
 jobs:
   ci:
-    runs-on: <image-name>
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Use <setup tooling>
-        uses: <action to setup tooling>
-
-      - name: Install project dependencies
-        run: <install dependencies>
+      - name: Install Regina Rexx
+        run: sudo apt update && sudo apt -y install regina-rexx
 
       - name: Verify all exercises
-        run: bin/verify-exercises
+        run: bash bin/verify-exercises

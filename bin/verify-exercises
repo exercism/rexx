@@ -2,8 +2,8 @@
 
 # Synopsis:
 # Test the track's exercises.
-# 
-# At a minimum, this file must check if the example/exemplar solution of each 
+#
+# At a minimum, this file must check if the example/exemplar solution of each
 # Practice/Concept Exercise passes the exercise's tests.
 #
 # To check this, you usually have to (temporarily) replace the exercise's solution files
@@ -18,18 +18,42 @@
 # Example:
 # ./bin/test
 
+verify_concept_exercise() {
+    return 0
+}
+
+verify_practice_exercise() {
+    local srcdir="${1}"
+    local exercise="$(basename ${srcdir})"
+    local testdir="$(mktemp -d)"
+    # Copy exercise directory contents to temporary directory
+    cp "${srcdir}"/* "${testdir}"/
+    cp "${srcdir}"/.meta/example.rexx "${testdir}"/
+    # Prepare and perform exercise tests
+    echo "Testing ${exercise} ..."
+    pushd "${testdir}"/ 2>&1 >/dev/null
+        # Create implementation file from example
+        rm -f "${exercise}".rexx && mv example.rexx "${exercise}".rexx
+        # Run tests, and collect result code
+        ./test-"${exercise}"
+        local result=$?
+    popd 2>&1 >/dev/null
+    # Cleanup and return result code
+    rm -rf "${testdir}"
+    return ${result}
+}
+
 # Verify the Concept Exercises
 for concept_exercise_dir in ./exercises/concept/*/; do
     if [ -d $concept_exercise_dir ]; then
-        echo "Checking $(basename "${concept_exercise_dir}") exercise..."
-        # TODO: run command to verify that the exemplar solution passes the tests
+        verify_concept_exercise "${practice_exercise_dir}" || exit 1
     fi
 done
 
 # Verify the Practice Exercises
 for practice_exercise_dir in ./exercises/practice/*/; do
     if [ -d $practice_exercise_dir ]; then
-        echo "Checking $(basename "${practice_exercise_dir}") exercise..."
-        # TODO: run command to verify that the example solution passes the tests
+        verify_practice_exercise "${practice_exercise_dir}" || exit 1
     fi
 done
+

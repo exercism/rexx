@@ -561,6 +561,36 @@
   },
   "concepts": [],
   "key_features": [
+    {
+      "title": "General Purpose",
+      "content": "Rexx is used for both front and back-end tasks, particularly excelling as a macro language.",
+      "icon": "general-purpose"
+    },
+    {
+      "title": "Easy to Learn",
+      "content": "Small set of intuitive, English language instructions, making it easy to understand and use.",
+      "icon": "easy"
+    },
+    {
+      "title": "Cross-platform",
+      "content": "Originally a mainframe language, Rexx has been ported to desktop and embedded platforms.",
+      "icon": "cross-platform"
+    },
+    {
+      "title": "Dynamic Language",
+      "content": "Rexx is a high-level language well suited for rapid development, and prototyping.",
+      "icon": "dynamically-typed"
+    },
+    {
+      "title": "Precise Calculations",
+      "content": "Rexx's arbitrary precision arithmetic allows for precise calculations without rounding errors.",
+      "icon": "scientific"
+    },
+    {
+      "title": "Mature but Evolving",
+      "content": "First conceived in 1979, Rexx continues to be in active development.",
+      "icon": "evolving"
+    }
   ],
   "tags": [
     "paradigm/imperative",

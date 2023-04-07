@@ -1,1 +1,6 @@
-TODO: add snippet
+say Greet("World")
+exit 0
+
+Greet : procedure
+  parse arg name
+return "Hello," name || "!"

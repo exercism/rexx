@@ -74,6 +74,23 @@ return hello
 
 ### Variables
 
+Variable names should start with a **_lower case_** letter, so single-word variables would be lower case.
+
+Multi-word variables may be expressed in either **_camel case_** or **_snake case_**.
+
+The convention adopted for the track is to utilise _camel case for most variables_, and reserve snake case for test variables. Variables intended as constants may, optionally, also be in upper case.
+
+```rexx
+input = 'ABCDE'
+i = 0
+
+personName = 'Alice'
+test_person_description = 'Brown hair, blue eyes'
+
+TRUE = 1
+PI_CONSTANT = 3.14159
+```
+
 ## Literals
 
 ### Hexadecimal and Binary Strings

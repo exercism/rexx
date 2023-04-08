@@ -1,13 +1,12 @@
 # Resources
 
-<!-- TODO: write document
+## Preamble
 
-  This document should link to useful resources.
+## Links
 
-  Feel free to link to any good resources you know, whether they
-  be websites, videos, mailing lists, etc.
+### Rexx Language
 
-  The contents of this document are displayed on the track's documentation
-  page at `https://exercism.org/docs/tracks/<track>/resources`.
+### Regina
 
-  See https://exercism.org/docs/building/tracks/docs for more information. -->
+### Other
+

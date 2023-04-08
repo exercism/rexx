@@ -49,6 +49,29 @@ END
 
 ### Built-in Functions (BIFs)
 
+BIFs should be rendered in **_upper case_**, as illustrated here:
+
+```rexx
+input = 'ABCDE'
+say 'Length of input is' LENGTH(input)
+say 'First letter of input is' SUBSTR(input, 1, 1)
+```
+
+### Labels (User-defined functions)
+
+Label names should be in **_Pascal case_**, as shown here:
+
+```rexx
+greeting = MyFuncSayHello()
+say greeting
+
+exit 0
+
+MyFuncSayHello : procedure
+  hello = 'Hello there!'
+return hello
+```
+
 ### Variables
 
 ## Literals

@@ -160,3 +160,8 @@ The Boolean values of **`false`**, and **`true`**, are represented by **`0`**, a
 
 Error states are indicated using return values, with either the empty string, **`''`**, or **`-1`**, indicating error states, context dependant.
 
+## Canonical Code Style Example
+```rexx
+TO DO EXAMPLE
+```
+

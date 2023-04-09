@@ -148,3 +148,15 @@ say 'I have' || "0A"X || 'three embedded' || "0A"X || 'newlines.' || "0A"X
 
 Exercises in this track will only translate **_`\n`_** to **_`"0A"X`_** when required in a string intended for terminal display. Otherwise, the **_`\n`_** string will simply be interpreted as a logical newline.
 
+## Other Stylistic Recommendations
+
+Indentation may be either two, three, or four, SPACE characters, although _two character_ indentation, and consistency in indentation, is preferred.
+
+The final **_return_** instruction in a function should align with the label name, thus clearly marking the end of that function, and should _always_ return a value.
+
+The Boolean NOT operator is representable by several different symbols. The preferred symbol in this track is **`\`**, and, to maintain consistency with this usage, the relational 'not equals' operator, should be **`\=`**.
+
+The Boolean values of **`false`**, and **`true`**, are represented by **`0`**, and **`1`**, respectively. No pre-defined literals for these values exist.
+
+Error states are indicated using return values, with either the empty string, **`''`**, or **`-1`**, indicating error states, context dependant.
+

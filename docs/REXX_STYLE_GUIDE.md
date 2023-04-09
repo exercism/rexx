@@ -93,6 +93,24 @@ PI_CONSTANT = 3.14159
 
 ## Literals
 
+Strings may be denoted using either single or double quotes, **`'`**, and **`"`**, respectively. The following are equaivalent:
+
+```rexx
+say "Hello, world!"
+
+say 'Hello, world!'
+```
+
+Each are embeddable within the other without needing an escape character:
+
+```rexx
+say "Please don't do that as it's wrong."
+
+say 'He said, "Please sir, may I have more?".'
+```
+
+Unless strings contain embedded quotes, so requiring the intermixing of quotes, it is preferred strings be denoted using **_single quotes_**.
+
 ### Hexadecimal and Binary Strings
 
 ### Newline Terminator

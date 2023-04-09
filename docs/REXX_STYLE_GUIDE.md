@@ -113,5 +113,38 @@ Unless strings contain embedded quotes, so requiring the intermixing of quotes, 
 
 ### Hexadecimal and Binary Strings
 
+Binary, and hexadecimal values, are representable by appending a **`B`**, or an **`X`**, respectively, to a string. Examples:
+
+```rexx
+hexvalue = "0A"X
+
+binvalue = "00001010"B
+```
+
+It is recommended such values be delimited by **_double quotes_**.
+
+Together with the previous recommendation to use single quotes to represent plain strings, this convention should facilitate the identification of binary and hexadecimal strings in a code base.
+
 ### Newline Terminator
+In many UNIX or C-influenced languages, the literal, **_`\n`_**, is used as the **_newline_** terminator. Such usage is widespread, and several exercises in this track involve use, and manipulation of, strings with this terminator.
+
+Rexx does not support this terminator, nor does it support, **_`\`_** (or any other character), as an  escape character.
+
+The Rexx equivalent of the newline character is a (platform-dependant) hexadecimal value; on UNIX-derived platforms it is:
+
+**_`"0A"X`_**
+
+The Rexx-equivalent of following, newline-embedded string (using bash shell):
+
+```bash
+printf "I have\nthree embedded\nnewlines.\n"
+```
+
+is:
+
+```rexx
+say 'I have' || "0A"X || 'three embedded' || "0A"X || 'newlines.' || "0A"X
+```
+
+Exercises in this track will only translate **_`\n`_** to **_`"0A"X`_** when required in a string intended for terminal display. Otherwise, the **_`\n`_** string will simply be interpreted as a logical newline.
 

@@ -1,13 +1,17 @@
 # Resources
 
-<!-- TODO: write document
+## Preamble
 
-  This document should link to useful resources.
+## Links
 
-  Feel free to link to any good resources you know, whether they
-  be websites, videos, mailing lists, etc.
+### Rexx Language
 
-  The contents of this document are displayed on the track's documentation
-  page at `https://exercism.org/docs/tracks/<track>/resources`.
+- [Wikipedia - Rexx](https://en.wikipedia.org/wiki/Rexx)
+- [Simplified Language Syntax Guide](https://en.wikibooks.org/wiki/Rexx_Programming/Introduction/syntax)
+- [IBM z/OS Rexx Programming Language](https://www.ibm.com/docs/en/zos/2.5.0?topic=programming-rexx-language)
+- [Rexx Style Guide](http://erroneousbee.github.io/Computers/RexxStyleGuide.html)
 
-  See https://exercism.org/docs/building/tracks/docs for more information. -->
+### Regina
+
+### Other
+

@@ -165,3 +165,64 @@ Error states are indicated using return values, with either the empty string, **
 TO DO EXAMPLE
 ```
 
+## Test File Layout
+
+An exercise will have a single test file, resident in the top-level exercise directory, named: `<exercise>-check.rexx`
+
+Following this convention will see the test file for exercise, `acronym`, named: `acronym-check.rexx`
+
+Each exercise' test file is laid out in a loose, but specific, manner to both assist learners understand exercise requirements, and facilitate the contributor's task of implementing, or extending, tests.
+
+The following is a subset of the test file for the `acronym` exercise:
+
+```rexx
+/* Unit Test Runner: t-rexx */
+function = 'Abbreviate'
+context('Checking the' function 'function')
+
+/* Unit tests */
+check('basic' function||'("Portable Network Graphics")',,
+      function||'("Portable Network Graphics")',, 'to be', 'PNG')
+
+check('lowercase words' function||'("Ruby on Rails")',,
+      function||'("Ruby on Rails")',, 'to be', 'ROR')
+```
+
+The file is divided into two, logical sections, each identified with a comment line.
+
+The first section assigns the name of the **_function-under-test_** (here the `Abbreviate` function) to the `function` variable. This variable name is descriptive, but arbitrary, and is referenced in the rest of the file wherever the function-under-test' name is required.
+
+In this section, too, is a call to the `context` function, its purpose self-evident.
+
+The next section contains the unit tests. Each invocation of the `check` function is a single, unit test. Expected parameters:
+
+```rexx
+check(<test description>,
+      <function invocation>,
+      [<actual result variable>],
+      <test comparator>,
+      <expected result>)
+```
+
+**\<test description>** is the string emitted when the test is executed. To make it as descriptive as possible, it is recommended a string comprising the function-under-test' name, and the arguments passed to it, be used, as per the example.
+
+**\<function invocation>** is the actual function invocation or call, so passing its return value to `check` for test comparison.
+
+**\<actual result variable>** is an optional parameter, and if used, is the name of a variable containing the value to be used for test comparison.
+
+The reason for using it is to allow checking for results _derived from_ the function-under-test' return value rather than the return value. An obvious example is where the return value is a multi-kB string, as shown:
+
+```rexx
+expected_length = LENGTH(FUT(...))
+
+check('...', FUT(...), expected_length, 'to be', 50)
+```
+
+Please note the \<function invocation> argument still has to be passed.
+
+**\<test comparator>** is a string desribing the type of comparison to perform. In most instances this will be the string, 'to be', which requests a comparison for equality. Refer to the unit test framework documentation for other comparison options.
+
+**\<expected result>** is, self-evidently, the value against which the actual result is compared.
+
+Variables may be freely declared within the test file (prior to use, of course), and used in place of literals, as arguments to `check`.
+

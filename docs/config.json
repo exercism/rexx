@@ -1,6 +1,13 @@
 {
   "docs": [
     {
+      "uuid": "b28ee8dd-9052-41f6-b229-08ed0b011d37",
+      "slug": "about",
+      "path": "docs/ABOUT.md",
+      "title": "About Rexx",
+      "blurb": "Learn about what makes Rexx unique"
+    },
+    {
       "uuid": "ef996b6a-4221-4d8b-9c38-c3af9540d017",
       "slug": "installation",
       "path": "docs/INSTALLATION.md",
@@ -15,18 +22,25 @@
       "blurb": "An overview of how to get started from scratch with Rexx"
     },
     {
-      "uuid": "5a1594e2-05b5-4409-9899-4d43e3d1d7cf",
-      "slug": "tests",
-      "path": "docs/TESTS.md",
-      "title": "Testing on the Rexx track",
-      "blurb": "Learn how to test your Rexx exercises on Exercism"
-    },
-    {
       "uuid": "8799ea96-cbe4-4505-8cb0-8992c026ab06",
       "slug": "resources",
       "path": "docs/RESOURCES.md",
       "title": "Useful Rexx resources",
       "blurb": "A collection of useful resources to help you master Rexx"
+    },
+    {
+      "uuid": "48b9b7f9-7a1d-41e6-8685-b30144cb43e6",
+      "slug": "styleguide",
+      "path": "docs/REXX_STYLE_GUIDE.md",
+      "title": "Recommended Rexx Code Style",
+      "blurb": "Recommendations for how to style Rexx code"
+    },
+    {
+      "uuid": "5a1594e2-05b5-4409-9899-4d43e3d1d7cf",
+      "slug": "tests",
+      "path": "docs/TESTS.md",
+      "title": "Testing on the Rexx track",
+      "blurb": "Learn how to test your Rexx exercises on Exercism"
     }
   ]
 }

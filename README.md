@@ -12,21 +12,17 @@ It is a procedural language with a sole data type, the character string, and a s
 The chosen Rexx implementation is [Regina](https://regina-rexx.sourceforge.io/). It is actively developed, widely ported, ANSI-standard conforming, sports an extensive collection of built-in functionality, and is probably the most popular  (subject to verification) non-mainframe-based Rexx implementation.
 
 ## TODO
-- Initial documentation (language description etc)
-- Initial metadata (config.json)
-- Setup unit testing
-- Implement hello-world exercise
-- Implement 20+ additional practice exercises
-- Other tasks contributing to track _go live_
+- Refine documentation
+- Complete contributor documentation and tooling (contributions welcome after these are complete, and the site is active)
+- Refine unit testing
+- Other tasks contributing to track _go live_ such as CI and test runner
 
 ## Comments
-A notable issue is the selection of unit testing framework. No _standard_ framework appears to exist (there is _no_ RexxUnit), at least not on non-mainframe platforms.
+A notable issue has been the selection of unit testing framework. No _standard_ framework appears to exist (there is _no_ RexxUnit), at least not on non-mainframe platforms.
 
-There is a rudimentary, Rexx-based framework called [t-rexx](https://github.com/oakmount66/t-rexx), which could be used, but it can only test against variable contents, not console output, so limiting testing flexibility. Therefore, the options appear to be:
-- Fork and suitably extend, _t-rexx_
-- Use a non Rexx-based unit testing framework
+Decision was made to use a Rexx-based framework [t-rexx](https://github.com/ajborla/t-rexx).
 
-The use of a non Rexx-based unit testing framework, specifically, [bats-core](https://github.com/bats-core/bats-core), appears the more appropriate choice. This is because [Regina](https://regina-rexx.sourceforge.io/) executes like any other command-line utility or script in allowing its output to be redirected, making it a suitable target for [bats-core](https://github.com/bats-core/bats-core).
+Substantial work has been done (and is actively progessing) to suitably customize this framework.
 
 ## Project Status
 

@@ -15,6 +15,14 @@ configure_exercise() {
 # Uppercase `mode` for easier comparison
 mode="${1^^}" ; exercise="${2}"
 
+# Ascertain script location is `bin`
+[ "$(basename $(dirname ${0}))" == "bin" ] \
+    || { echo "ERROR: Current script must reside in bin directory" ; exit 1 ; }
+
+# Ascertain current directory is top-level by checking for directories
+[ -d "./bin" -a -d "./exercises/practice" ] \
+    || { echo "ERROR: Current directory is not top-level directory" ; exit 1 ; }
+
 # Check `mode` validity
 case "${mode}" in
     CREATE)    create_exercise "${exercise}" ;;
@@ -22,4 +30,4 @@ case "${mode}" in
     *) echo "Usage: ${0} create|configure exercise" ; exit 1 ;;
 esac
 
-echo "${mode} - ${exercise}"
+echo "${mode} - ${exercise} - $(pwd)"

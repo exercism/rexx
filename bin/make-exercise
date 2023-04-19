@@ -1,7 +1,18 @@
 #!/usr/bin/env bash
 
 create_exercise() {
-    :
+    # Ensure configlet utility exists
+    which configlet >/dev/null \
+        || { echo "ERROR: configlet utility not in PATH" ; exit 1 ; }
+
+    # Create practice exercise skeleton
+    configlet -v d sync --exercise ${exercise} --docs --update --yes --offline
+    configlet -v d sync --exercise ${exercise} --metadata --update --yes --offline
+    configlet -v d sync --exercise ${exercise} --tests include --update --offline
+
+    # Ensure exercise directories created
+    [ -d exercises/practice/$exercise ] \
+        || { echo "ERROR: Error creating exercise directory" ; exit 1 ; }
 }
 
 configure_exercise() {

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+create_exercise() {
+    :
+}
+
+configure_exercise() {
+    :
+}
+
+# Two arguments expected
+[ $# -ne 2 -o -z "${1}" -o -z "${2}" ] \
+    && { echo "Usage: ${0} create|configure exercise" ; exit 1 ; }
+
+# Uppercase `mode` for easier comparison
+mode="${1^^}" ; exercise="${2}"
+
+# Check `mode` validity
+case "${mode}" in
+    CREATE)    create_exercise "${exercise}" ;;
+    CONFIGURE) configure_exercise "${exercise}" ;;
+    *) echo "Usage: ${0} create|configure exercise" ; exit 1 ;;
+esac
+
+echo "${mode} - ${exercise}"

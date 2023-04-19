@@ -23,6 +23,14 @@ mode="${1^^}" ; exercise="${2}"
 [ -d "./bin" -a -d "./exercises/practice" ] \
     || { echo "ERROR: Current directory is not top-level directory" ; exit 1 ; }
 
+# Ensure exercise source file exists
+[ -f "${exercise}.rexx" ] \
+    || { echo "ERROR: Ensure source file resides in current directory" ; exit 1 ; }
+
+# Ensure top-level `config.json` contains a valid exercise entry
+grep -q '"slug": "'${exercise}'",$' config.json \
+    || { echo "ERROR: Include entry for ${exercise} in top-level config.json file." ; exit 1 ; }
+
 # Check `mode` validity
 case "${mode}" in
     CREATE)    create_exercise "${exercise}" ;;

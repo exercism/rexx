@@ -16,7 +16,18 @@ create_exercise() {
 }
 
 configure_exercise() {
-    :
+    # Ensure exercise directories exist
+    [ -d exercises/practice/$exercise ] \
+        || { echo "ERROR: Exercise directory does not exist" ; exit 1 ; }
+
+    # Relocate into practice exercise directory
+    cd exercises/practice/${exercise}
+
+    ### configuration tasks performed here
+    echo "Now in $(pwd) practice directory"
+
+    # Return to top-level
+    cd - 2>&1 >/dev/null
 }
 
 # Two arguments expected

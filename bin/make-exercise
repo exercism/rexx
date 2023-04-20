@@ -26,6 +26,12 @@ configure_exercise() {
     ### configuration tasks performed here
     echo "Now in $(pwd) practice directory"
 
+    # Copy source file here from top-level
+    cp -p ../../../"${exercise}.rexx" .
+
+    # Copy unit test framework files (reside in top-level `bin` directory)
+    cp -p ../../../bin/t?.rexx ../../../bin/run* ./
+
     # Return to top-level
     cd - 2>&1 >/dev/null
 }

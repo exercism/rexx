@@ -62,6 +62,24 @@ SED_SCRIPT
         && { rm -f config.json ; mv config.json.NEW config.json ; } \
         || { rm -f config.json.NEW ; }
 
+    # Create unit text checker script
+    ## Generate file header
+    cat <<- REXX_SCRIPT > ${exercise}-check.rexx
+/* Unit Test Runner: t-rexx */
+context('Checking the FUNCNAME function')
+
+/* Unit tests */
+REXX_SCRIPT
+
+    ## Generate check case stubs
+    grep '^description' tests.toml | sed 's/description = /check(/' >> ${exercise}-check.rexx
+
+    ## Move generated file to parent exercise directory
+    mv ${exercise}-check.rexx ../
+
+    ## Copy source file here as the example file
+    cp -p ../${exercise}.rexx example.rexx
+
     # Return to parent
     popd 2>&1 >/dev/null
 

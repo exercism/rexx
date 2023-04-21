@@ -16,12 +16,15 @@ create_exercise() {
 }
 
 configure_exercise() {
+    # Set the author name
+    local author=ajborla
+
     # Ensure exercise directories exist
     [ -d exercises/practice/$exercise ] \
         || { echo "ERROR: Exercise directory does not exist" ; exit 1 ; }
 
     # Relocate into practice exercise directory
-    cd exercises/practice/${exercise}
+    pushd exercises/practice/${exercise} 2>&1 >/dev/null
 
     ### configuration tasks performed here
     echo "Now in $(pwd) practice directory"
@@ -45,8 +48,25 @@ configure_exercise() {
     echo $'@if "%1"=="" @set options=--regina' >> test-${exercise}.bat
     echo $'@runt.bat %options%' "${exercise}-check ${exercise}" >> test-${exercise}.bat
 
+    # Transform exercise metafiles
+    pushd .meta 2>&1 >/dev/null
+
+    ## Transform local config.json
+    sed -r -f - config.json > config.json.NEW <<-SED_SCRIPT
+        s/("authors": )(\[)(\]),/\1\2"${author}"\3,/
+        s/("solution": )(\[)(\]),/\1\2"${exercise}.rexx"\3,/
+        s/("test": )(\[)(\]),/\1\2"test-${exercise}"\3,/
+        s/("example": )(\[)(\])/\1\2"\.meta\/example\.rexx"\3/
+SED_SCRIPT
+    [ $? -eq 0 ] \
+        && { rm -f config.json ; mv config.json.NEW config.json ; } \
+        || { rm -f config.json.NEW ; }
+
+    # Return to parent
+    popd 2>&1 >/dev/null
+
     # Return to top-level
-    cd - 2>&1 >/dev/null
+    popd 2>&1 >/dev/null
 }
 
 # Two arguments expected

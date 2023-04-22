@@ -17,7 +17,7 @@ create_exercise() {
 
 configure_exercise() {
     # Set the author name
-    local author=ajborla
+    local author=AUTHOR_NAME_HERE
 
     # Ensure exercise directories exist
     [ -d exercises/practice/$exercise ] \
@@ -83,8 +83,8 @@ REXX_SCRIPT
 
     # Emit CONFIGURATION TODO instructions
     echo 'To complete configuration:'
-    echo '1. Edit '../${exercise}-check.rexx' correcting test assertions.'
-    echo '2. Edit '../${exercise}.rexx' converting it to an exercise stub file.'
+    echo '1. Edit' ${exercise}-check.rexx 'correcting test assertions.'
+    echo '2. Edit' ${exercise}.rexx 'converting it to an exercise stub file.'
 
     # Return to parent
     popd 2>&1 >/dev/null

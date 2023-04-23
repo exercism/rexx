@@ -1,5 +1,5 @@
 /* Unit Test Runner: t-rexx */
-context('Checking the Beer Song functions')
+context('Checking the Verse and Sing functions')
 
 /* Test Variables */
 verse_0 = ,
@@ -42,30 +42,28 @@ verse_99_to_97 = ,
 verse_99_to_0_length = 11885
 
 /* Unit tests */
-function = 'Verse'
-check('verse -> single verse -> first generic verse' function||'(3)',,
-      function||'(3)',, 'to be', verse_3)
+check('verse -> single verse -> first generic verse' 'Verse(3)',,
+      'Verse(3)',, 'to be', verse_3)
 
-check('verse -> single verse -> last generic verse' function||'(99)',,
-      function||'(99)',, 'to be', verse_99)
+check('verse -> single verse -> last generic verse' 'Verse(99)',,
+      'Verse(99)',, 'to be', verse_99)
 
-check('verse -> single verse -> verse with 2 bottles' function||'(2)',,
-      function||'(2)',, 'to be', verse_2)
+check('verse -> single verse -> verse with 2 bottles' 'Verse(2)',,
+      'Verse(2)',, 'to be', verse_2)
 
-check('verse -> single verse -> verse with 1 bottle' function||'(1)',,
-      function||'(1)',, 'to be', verse_1)
+check('verse -> single verse -> verse with 1 bottle' 'Verse(1)',,
+      'Verse(1)',, 'to be', verse_1)
 
-check('verse -> single verse -> verse with 0 bottles' function||'(0)',,
-      function||'(0)',, 'to be', verse_0)
+check('verse -> single verse -> verse with 0 bottles' 'Verse(0)',,
+      'Verse(0)',, 'to be', verse_0)
 
-function = 'Sing'
-check('lyrics -> multiple verses -> first two verses' function||'(1, 0)',,
-      function||'(1, 0)',, 'to be', verse_1_to_0)
+check('lyrics -> multiple verses -> first two verses' 'Sing(1, 0)',,
+      'Sing(1, 0)',, 'to be', verse_1_to_0)
 
-check('lyrics -> multiple verses -> last three verses' function||'(99, 97)',,
-      function||'(99, 97)',, 'to be', verse_99_to_97)
+check('lyrics -> multiple verses -> last three verses' 'Sing(99, 97)',,
+      'Sing(99, 97)',, 'to be', verse_99_to_97)
 
-cmd = 'actual = ' function||'(99, 0)' ; interpret cmd
-check('lyrics -> multiple verses -> all verses' function||'(99, 0)',,
-      function||'(99, 0)', LENGTH(actual), 'to be', verse_99_to_0_length)
+cmd = 'actual = Sing(99, 0)' ; interpret cmd
+check('lyrics -> multiple verses -> all verses' 'Sing(99, 0)',,
+      'Sing(99, 0)', LENGTH(actual), 'to be', verse_99_to_0_length)
 

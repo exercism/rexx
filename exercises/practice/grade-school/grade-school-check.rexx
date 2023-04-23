@@ -13,65 +13,68 @@ output_sorted_grades = '3 Harry' || "0A"X || '3 Jill' || "0A"X || '5 Anne' || "0
 output_sorted_names = 'Anne 5' || "0A"X || 'Bill 7' || "0A"X || 'Harry 3' || "0A"X || 'Jill 3' || "0A"X || 'John 9' || "0A"X || 'Mark 5' || "0A"X || 'Sam 5' || "0A"X
 output_selected_grade = 'Harry 3' || "0A"X || 'Jill 3' || "0A"X
 
+roster_2 = GradeSchoolCreate()
+roster_3 = GradeSchoolCreate()
+roster_3 = GradeSchoolAdd(roster_3, "Bill", 2)
+roster_3 = GradeSchoolAdd(roster_3, "John", 2)
+roster_3 = GradeSchoolAdd(roster_3, "Mark", 2)
+roster_3 = GradeSchoolAdd(roster_3, "Harry", 2)
+
+roster_4 = GradeSchoolCreate()
+roster_4 = GradeSchoolAdd(roster_4, "Bill", 7)
+roster_4 = GradeSchoolAdd(roster_4, "John", 9)
+roster_4 = GradeSchoolAdd(roster_4, "Mark", 5)
+roster_4 = GradeSchoolAdd(roster_4, "Harry", 3)
+
+roster_5 = GradeSchoolCreate()
+roster_5 = GradeSchoolAdd(roster_5, "Harry", 2)
+
+roster_6 = GradeSchoolCreate()
+roster_6 = GradeSchoolAdd(roster_6, "Harry", 2)
+roster_6 = GradeSchoolAdd(roster_6, "Harry", 3)
+
+roster_7 = GradeSchoolCreate()
+
+roster_8 = GradeSchoolCreate()
+roster_8 = GradeSchoolAdd(roster_8, "Harry", 2)
+roster_8 = GradeSchoolAdd(roster_8, "Bob", 3)
+
+roster_9 = roster_multiple_grades
+
 /* Unit tests */
-function = 'GradeSchoolCreate'
-check('Roster is empty when no student is added' function||'()',,
-      function||'()',, 'to be', roster_empty)
+check('Roster is empty when no student is added' 'GradeSchoolCreate()',,
+      'GradeSchoolCreate()',, 'to be', roster_empty)
 
-function = 'GradeSchoolAdd'
-roster = GradeSchoolCreate()
-check('Student is added to the roster' function||'(roster, "Aimee", 2)',,
-      function||'(roster, "Aimee", 2)',, 'to be', roster_aimee_only)
+check('Student is added to the roster' 'GradeSchoolAdd(roster_2, "Aimee", 2)',,
+      'GradeSchoolAdd(roster_2, "Aimee", 2)',, 'to be', roster_aimee_only)
 
-roster = GradeSchoolCreate()
-roster = GradeSchoolAdd(roster, "Bill", 2)
-roster = GradeSchoolAdd(roster, "John", 2)
-roster = GradeSchoolAdd(roster, "Mark", 2)
-roster = GradeSchoolAdd(roster, "Harry", 2)
-check('Multiple students in the same grade are added to the roster' function||'(roster, ...)',,
-      function||'(roster)', 'roster', 'to be', roster_multiple_students_same_grade)
+check('Multiple students in the same grade are added to the roster' 'GradeSchoolAdd(roster_3)',,
+      'GradeSchoolAdd(roster_3)',, 'to be', roster_multiple_students_same_grade)
 
-roster = GradeSchoolCreate()
-roster = GradeSchoolAdd(roster, "Bill", 7)
-roster = GradeSchoolAdd(roster, "John", 9)
-roster = GradeSchoolAdd(roster, "Mark", 5)
-roster = GradeSchoolAdd(roster, "Harry", 3)
-check('Students in multiple grades are added to the roster' function||'(roster, ...)',,
-      function||'(roster)', 'roster', 'to be', roster_multiple_students_different_grades)
+check('Students in multiple grades are added to the roster' 'GradeSchoolAdd(roster_4)',,
+      'GradeSchoolAdd(roster_4)',, 'to be', roster_multiple_students_different_grades)
 
-roster = GradeSchoolCreate()
-roster = GradeSchoolAdd(roster, "Harry", 2)
-check('Cannot add student to same grade in the roster more than once' function||'(roster, "Harry", 2)',,
-      function||'(roster, "Harry", 2)',, 'to be', roster_harry_only)
+check('Cannot add student to same grade in the roster more than once' 'GradeSchoolAdd(roster_5, "Harry", 2)',,
+      'GradeSchoolAdd(roster_5, "Harry", 2)',, 'to be', roster_harry_only)
 
-roster = GradeSchoolCreate()
-roster = GradeSchoolAdd(roster, "Harry", 2)
-roster = GradeSchoolAdd(roster, "Harry", 3)
-check('A student cannot be in two different grades' function||'(roster, "Harry", 3)',,
-      function||'(roster, "Harry", 3)',, 'to be', roster_harry_only)
+check('A student cannot be in two different grades' 'GradeSchoolAdd(roster_6, "Harry", 3)',,
+      'GradeSchoolAdd(roster_6, "Harry", 3)',, 'to be', roster_harry_only)
 
-function = 'GradeSchoolIsEmpty'
-roster = GradeSchoolCreate()
-check('Grade is empty if no students in the roster' function||'(roster)',,
-      function||'(roster)',, 'to be', 1)
+check('Grade is empty if no students in the roster' 'GradeSchoolIsEmpty(roster_7)',,
+      'GradeSchoolIsEmpty(roster_7)',, 'to be', 1)
 
-roster = GradeSchoolCreate()
-roster = GradeSchoolAdd(roster, "Harry", 2)
-roster = GradeSchoolAdd(roster, "Bob", 3)
-check('Grade is empty if no students in that grade' function||'(roster, 5)',,
-      function||'(roster, 5)',, 'to be', 1)
+check('Grade is empty if no students in that grade' 'GradeSchoolIsEmpty(roster_8, 5)',,
+      'GradeSchoolIsEmpty(roster_8, 5)',, 'to be', 1)
 
-check('Grade is not empty if students in that grade' function||'(roster, 2)',,
-      function||'(roster, 2)',, 'to be', 0)
+check('Grade is not empty if students in that grade' 'GradeSchoolIsEmpty(roster_8, 2)',,
+      'GradeSchoolIsEmpty(roster_8, 2)',, 'to be', 0)
 
-function = 'GradeSchoolList'
-roster = roster_multiple_grades
-check('Students are sorted by grades in the roster' function||'(roster, "G")',,
-      function||'(roster, "G")',, 'to be', output_sorted_grades)
+check('Students are sorted by grades in the roster' 'GradeSchoolList(roster_9, "G")',,
+      'GradeSchoolList(roster_9, "G")',, 'to be', output_sorted_grades)
 
-check('Students are sorted by name in the roster' function||'(roster, "N")',,
-      function||'(roster, "N")',, 'to be', output_sorted_names)
+check('Students are sorted by name in the roster' 'GradeSchoolList(roster_9, "N")',,
+      'GradeSchoolList(roster_9, "N")',, 'to be', output_sorted_names)
 
-check('Students are sorted by name in a grade' function||'(roster, "N", 3)',,
-      function||'(roster, "N", 3)',, 'to be', output_selected_grade)
+check('Students are sorted by name in a grade' 'GradeSchoolList(roster_9, "N", 3)',,
+      'GradeSchoolList(roster_9, "N", 3)',, 'to be', output_selected_grade)
 

@@ -1,23 +1,22 @@
 /* Unit Test Runner: t-rexx */
-function = 'ReverseString'
-context('Checking the' function 'function')
+context('Checking the ReverseString function')
 
 /* Unit tests */
-check('an empty string' function||'("")',,
-      function||'("")',, 'to be', "")
+check('an empty string' 'ReverseString("")',,
+      'ReverseString("")',, 'to be', "")
 
-check('an word' function||'("robot")',,
-      function||'("robot")',, 'to be', "tobor")
+check('an word' 'ReverseString("robot")',,
+      'ReverseString("robot")',, 'to be', "tobor")
 
-check('an capitalized word' function||'("Ramen")',,
-      function||'("Ramen")',, 'to be', "nemaR")
+check('an capitalized word' 'ReverseString("Ramen")',,
+      'ReverseString("Ramen")',, 'to be', "nemaR")
 
-check('a sentence with punctuation' function||'("I''m Hungry")',,
-      function||'("I''m Hungry!")',, 'to be', "!yrgnuH m'I")
+check('a sentence with punctuation' 'ReverseString("I''m Hungry")',,
+      'ReverseString("I''m Hungry!")',, 'to be', "!yrgnuH m'I")
 
-check('a palindrome' function||'("racecar")',,
-      function||'("racecar")',, 'to be', "racecar")
+check('a palindrome' 'ReverseString("racecar")',,
+      'ReverseString("racecar")',, 'to be', "racecar")
 
-check('an even-sized word' function||'("drawer")',,
-      function||'("drawer")',, 'to be', "reward")
+check('an even-sized word' 'ReverseString("drawer")',,
+      'ReverseString("drawer")',, 'to be', "reward")
 

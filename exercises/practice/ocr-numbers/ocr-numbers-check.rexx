@@ -1,139 +1,103 @@
 /* Unit Test Runner: t-rexx */
-function = 'Convert'
-context('Checking the' function 'function')
+context('Checking the Convert function')
 
-/* Unit tests */
-check('No input' function||'("")',,
-     function||'("")',, 'to be', '')
-
-input = ,
+/* Test Variables */
+input_0 = ,
 ' _ ' || ,
 '| |' || ,
 '|_|' || ,
 '   '
-check('Recognizes 0' function||'(input)',,
-     function||'(input)',, 'to be', 0)
 
-input = ,
+input_1 = ,
 '   ' || ,
 '  |' || ,
 '  |' || ,
 '   '
-check('Recognizes 1' function||'(input)',,
-     function||'(input)',, 'to be', 1)
 
-input = ,
+input_bad1 = ,
 '   ' || ,
 ' _ ' || ,
 ' | ' || ,
 '   '
-check('Unreadable but correctly sized inputs return ?' function||'(input)',,
-     function||'(input)',, 'to be', '?')
 
-input = ,
+input_bad2 = ,
 ' _ ' || ,
 '| |' || ,
 '   '
-check('Input with a number of lines that is not a multiple of four raises an error' function||'(input)',,
-     function||'(input)',, 'to be', '')
 
-input = ,
+input_bad3 = ,
 '  ' || ,
 ' |' || ,
 ' |' || ,
 '  '
-check('Input with a number of columns that is not a multiple of three raises an error' function||'(input)',,
-     function||'(input)',, 'to be', '')
 
-input = ,
+input_binary = ,
 '       _     _        _  _ ' || ,
 '  |  || |  || |  |  || || |' || ,
 '  |  ||_|  ||_|  |  ||_||_|' || ,
 '                           '
-check('Recognizes 110101100' function||'(input)',,
-     function||'(input)',, 'to be', '110101100')
 
-input = ,
+input_binary_garbled = ,
 '       _     _           _ ' || ,
 '  |  || |  || |     || || |' || ,
 '  |  | _|  ||_|  |  ||_||_|' || ,
 '                           '
-check('Garbled numbers in a string are replaced with ?' function||'(input)',,
-     function||'(input)',, 'to be', '11?10?1?0')
 
-input = ,
+input_2 = ,
 ' _ ' || ,
 ' _|' || ,
 '|_ ' || ,
 '   '
-check('Recognizes 2' function||'(input)',,
-     function||'(input)',, 'to be', 2)
 
-input = ,
+input_3 = ,
 ' _ ' || ,
 ' _|' || ,
 ' _|' || ,
 '   '
-check('Recognizes 3' function||'(input)',,
-     function||'(input)',, 'to be', 3)
 
-input = ,
+input_4 = ,
 '   ' || ,
 '|_|' || ,
 '  |' || ,
 '   '
-check('Recognizes 4' function||'(input)',,
-     function||'(input)',, 'to be', 4)
 
-input = ,
+input_5 = ,
 ' _ ' || ,
 '|_ ' || ,
 ' _|' || ,
 '   '
-check('Recognizes 5' function||'(input)',,
-     function||'(input)',, 'to be', 5)
 
-input = ,
+input_6 = ,
 ' _ ' || ,
 '|_ ' || ,
 '|_|' || ,
 '   '
-check('Recognizes 6' function||'(input)',,
-     function||'(input)',, 'to be', 6)
 
-input = ,
+input_7 = ,
 ' _ ' || ,
 '  |' || ,
 '  |' || ,
 '   '
-check('Recognizes 7' function||'(input)',,
-     function||'(input)',, 'to be', 7)
 
-input = ,
+input_8 = ,
 ' _ ' || ,
 '|_|' || ,
 '|_|' || ,
 '   '
-check('Recognizes 8' function||'(input)',,
-     function||'(input)',, 'to be', 8)
 
-input = ,
+input_9 = ,
 ' _ ' || ,
 '|_|' || ,
 ' _|' || ,
 '   '
-check('Recognizes 9' function||'(input)',,
-     function||'(input)',, 'to be', 9)
 
-input = ,
+input_series_decimal = ,
 '    _  _     _  _  _  _  _  _ ' || ,
 '  | _| _||_||_ |_   ||_||_|| |' || ,
 '  ||_  _|  | _||_|  ||_| _||_|' || ,
 '                              '
-check('Recognizes string of decimal numbers' function||'(input)',,
-     function||'(input)',, 'to be', '1234567890')
 
-input = ,
+input_series_fixed = ,
 '    _  _ ' || ,
 '  | _| _|' || ,
 '  ||_  _|' || ,
@@ -149,10 +113,8 @@ input = ,
 '  ||_| _|' || ,
 '         ' || ,
 "0A"X
-check('Numbers (fixed) separated by empty lines are recognized. Lines are joined by commas.' function||'(input)',,
-     function||'(input)',, 'to be', '123,456,789')
 
-input = ,
+input_series_varying = ,
 '    _  _    ' || ,
 '  | _| _||_|' || ,
 '  ||_  _|  |' || ,
@@ -168,6 +130,62 @@ input = ,
 '  |' || ,
 '   ' || ,
 "0A"X
-check('Numbers (varying) separated by empty lines are recognized. Lines are joined by commas.' function||'(input)',,
-     function||'(input)',, 'to be', '1234,56,7')
+
+/* Unit tests */
+check('No input' 'Convert("")',,
+      'Convert("")',, 'to be', '')
+
+check('Recognizes 0' 'Convert('input_0')',,
+      'Convert(input_0)',, 'to be', 0)
+
+check('Recognizes 1' 'Convert('input_1')',,
+      'Convert(input_1)',, 'to be', 1)
+
+check('Unreadable but correctly sized inputs return ?' 'Convert('input_bad1')',,
+      'Convert(input_bad1)',, 'to be', '?')
+
+check('Input with a number of lines that is not a multiple of four raises an error' 'Convert('input_bad2')',,
+      'Convert(input_bad2)',, 'to be', '')
+
+check('Input with a number of columns that is not a multiple of three raises an error' 'Convert('input_bad3')',,
+      'Convert(input_bad3)',, 'to be', '')
+
+check('Recognizes 110101100' 'Convert('input_binary')',,
+      'Convert(input_binary)',, 'to be', '110101100')
+
+check('Garbled numbers in a string are replaced with ?' 'Convert('input_binary_garbled')',,
+      'Convert(input_binary_garbled)',, 'to be', '11?10?1?0')
+
+check('Recognizes 2' 'Convert('input_2')',,
+      'Convert(input_2)',, 'to be', 2)
+
+check('Recognizes 3' 'Convert('input_3')',,
+      'Convert(input_3)',, 'to be', 3)
+
+check('Recognizes 4' 'Convert('input_4')',,
+      'Convert(input_4)',, 'to be', 4)
+
+check('Recognizes 5' 'Convert('input_5')',,
+      'Convert(input_5)',, 'to be', 5)
+
+check('Recognizes 6' 'Convert('input_6')',,
+      'Convert(input_6)',, 'to be', 6)
+
+check('Recognizes 7' 'Convert('input_7')',,
+      'Convert(input_7)',, 'to be', 7)
+
+check('Recognizes 8' 'Convert('input_8')',,
+      'Convert(input_8)',, 'to be', 8)
+
+check('Recognizes 9' 'Convert('input_9')',,
+      'Convert(input_9)',, 'to be', 9)
+
+check('Recognizes string of decimal numbers' 'Convert('input_series_decimal')',,
+      'Convert(input_series_decimal)',, 'to be', '1234567890')
+
+check('Numbers (fixed) separated by empty lines are recognized. Lines are joined by commas.' 'Convert('input_series_fixed')',,
+      'Convert(input_series_fixed)',, 'to be', '123,456,789')
+
+check('Numbers (varying) separated by empty lines are recognized. Lines are joined by commas.' 'Convert('input_series_varying')',,
+     'Convert(input_series_varying)',, 'to be', '1234,56,7')
 

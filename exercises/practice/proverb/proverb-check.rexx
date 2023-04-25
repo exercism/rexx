@@ -1,8 +1,7 @@
 /* Unit Test Runner: t-rexx */
-function = 'Proverb'
-context('Checking the' function 'function')
+context('Checking the Proverb function')
 
-/* Test variables */
+/* Test Variables */
 proverb_1 = 'And all for the want of a nail.' || "0A"X
 
 proverb_2 = 'For want of a nail the shoe was lost.' || "0A"X || ,
@@ -26,21 +25,21 @@ proverb_modern = 'For want of a pin the gun was lost.' || "0A"X || ,
                  'And all for the want of a pin.' || "0A"X
 
 /* Unit tests */
-check('zero pieces' function||'()',,
-      function||'()',, 'to be', '')
+check('zero pieces' 'Proverb()',,
+      'Proverb()',, 'to be', '')
 
-check('one piece' function||'("nail")',,
-      function||'("nail")',, 'to be', proverb_1)
+check('one piece' 'Proverb("nail")',,
+      'Proverb("nail")',, 'to be', proverb_1)
 
-check('two pieces' function||'("nail", "shoe")',,
-      function||'("nail", "shoe")',, 'to be', proverb_2)
+check('two pieces' 'Proverb("nail", "shoe")',,
+      'Proverb("nail", "shoe")',, 'to be', proverb_2)
 
-check('three pieces' function||'("nail", "shoe", "horse")',,
-      function||'("nail", "shoe", "horse")',, 'to be', proverb_3)
+check('three pieces' 'Proverb("nail", "shoe", "horse")',,
+      'Proverb("nail", "shoe", "horse")',, 'to be', proverb_3)
 
-check('full proverb' function||'("nail", "shoe", "horse", "rider", "message", "battle", "kingdom")',,
-      function||'("nail", "shoe", "horse", "rider", "message", "battle", "kingdom")',, 'to be', proverb_full)
+check('full proverb' 'Proverb("nail", "shoe", "horse", "rider", "message", "battle", "kingdom")',,
+      'Proverb("nail", "shoe", "horse", "rider", "message", "battle", "kingdom")',, 'to be', proverb_full)
 
-check('four pieces modernized' function||'("pin", "gun", "soldier", "battle")',,
-      function||'("pin", "gun", "soldier", "battle")',, 'to be', proverb_modern)
+check('four pieces modernized' 'Proverb("pin", "gun", "soldier", "battle")',,
+      'Proverb("pin", "gun", "soldier", "battle")',, 'to be', proverb_modern)
 

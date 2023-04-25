@@ -1,23 +1,22 @@
 /* Unit Test Runner: t-rexx */
-function = 'DNA2RNA'
-context('Checking the' function 'function')
+context('Checking the DNA2RNA function')
 
 /* Unit tests */
-check('Empty RNA sequence' function||'("")',,
-      function||'("")',, 'to be', "")
+check('Empty RNA sequence' 'DNA2RNA("")',,
+      'DNA2RNA("")',, 'to be', "")
 
-check('RNA complement of cytosine is guanine' function||'("C")',,
-      function||'("C")',, 'to be', "G")
+check('RNA complement of cytosine is guanine' 'DNA2RNA("C")',,
+      'DNA2RNA("C")',, 'to be', "G")
 
-check('RNA complement of guanine is cytosine' function||'("G")',,
-      function||'("G")',, 'to be', "C")
+check('RNA complement of guanine is cytosine' 'DNA2RNA("G")',,
+      'DNA2RNA("G")',, 'to be', "C")
 
-check('RNA complement of thymine is adenine' function||'("T")',,
-      function||'("T")',, 'to be', "A")
+check('RNA complement of thymine is adenine' 'DNA2RNA("T")',,
+      'DNA2RNA("T")',, 'to be', "A")
 
-check('RNA complement of adenine is uracil' function||'("A")',,
-      function||'("A")',, 'to be', "U")
+check('RNA complement of adenine is uracil' 'DNA2RNA("A")',,
+      'DNA2RNA("A")',, 'to be', "U")
 
-check('RNA complement' function||'("ACGTGGTCTTAA")',,
-      function||'("ACGTGGTCTTAA")',, 'to be', "UGCACCAGAAUU")
+check('RNA complement' 'DNA2RNA("ACGTGGTCTTAA")',,
+      'DNA2RNA("ACGTGGTCTTAA")',, 'to be', "UGCACCAGAAUU")
 

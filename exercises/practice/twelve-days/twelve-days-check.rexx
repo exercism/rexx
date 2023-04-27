@@ -1,5 +1,5 @@
 /* Unit Test Runner: t-rexx */
-context('Checking the Twelve Days exercise functions')
+context('Checking the Verses and Sing functions')
 
 /* Test Variables */
 verse_1 = ,
@@ -51,51 +51,49 @@ verse_4_to_6 = ,
 verse_1_to_12_length = 2370
 
 /* Unit tests */
-function = 'Verses'
-check('verse -> first day a partridge in a pear tree' function||'(1)',,
-      function||'(1)',, 'to be', verse_1)
+check('verse -> first day a partridge in a pear tree' 'Verses(1)',,
+      'Verses(1)',, 'to be', verse_1)
 
-check('verse -> second day two turtle doves' function||'(2)',,
-      function||'(2)',, 'to be', verse_2)
+check('verse -> second day two turtle doves' 'Verses(2)',,
+      'Verses(2)',, 'to be', verse_2)
 
-check('verse -> third day three french hens' function||'(3)',,
-      function||'(3)',, 'to be', verse_3)
+check('verse -> third day three french hens' 'Verses(3)',,
+      'Verses(3)',, 'to be', verse_3)
 
-check('verse -> fourth day four calling birds' function||'(4)',,
-      function||'(4)',, 'to be', verse_4)
+check('verse -> fourth day four calling birds' 'Verses(4)',,
+      'Verses(4)',, 'to be', verse_4)
 
-check('verse -> fifth day five gold rings' function||'(5)',,
-      function||'(5)',, 'to be', verse_5)
+check('verse -> fifth day five gold rings' 'Verses(5)',,
+      'Verses(5)',, 'to be', verse_5)
 
-check('verse -> sixth day six geese-a-laying' function||'(6)',,
-      function||'(6)',, 'to be', verse_6)
+check('verse -> sixth day six geese-a-laying' 'Verses(6)',,
+      'Verses(6)',, 'to be', verse_6)
 
-check('verse -> seventh day seven swans-a-swimming' function||'(7)',,
-      function||'(7)',, 'to be', verse_7)
+check('verse -> seventh day seven swans-a-swimming' 'Verses(7)',,
+      'Verses(7)',, 'to be', verse_7)
 
-check('verse -> eighth day eight maids-a-milking' function||'(8)',,
-      function||'(8)',, 'to be', verse_8)
+check('verse -> eighth day eight maids-a-milking' 'Verses(8)',,
+      'Verses(8)',, 'to be', verse_8)
 
-check('verse -> ninth day nine ladies dancing' function||'(9)',,
-      function||'(9)',, 'to be', verse_9)
+check('verse -> ninth day nine ladies dancing' 'Verses(9)',,
+      'Verses(9)',, 'to be', verse_9)
 
-check('verse -> tenth day ten lords-a-leaping' function||'(10)',,
-      function||'(10)',, 'to be', verse_10)
+check('verse -> tenth day ten lords-a-leaping' 'Verses(10)',,
+      'Verses(10)',, 'to be', verse_10)
 
-check('verse -> eleventh day eleven pipers piping' function||'(11)',,
-      function||'(11)',, 'to be', verse_11)
+check('verse -> eleventh day eleven pipers piping' 'Verses(11)',,
+      'Verses(11)',, 'to be', verse_11)
 
-check('verse -> twelfth day twelve drummers drumming' function||'(12)',,
-      function||'(12)',, 'to be', verse_12)
+check('verse -> twelfth day twelve drummers drumming' 'Verses(12)',,
+      'Verses(12)',, 'to be', verse_12)
 
-function = 'Sing'
-check('lyrics -> recites first three verses of the song' function||'(1, 3)',,
-      function||'(1, 3)',, 'to be', verse_1_to_3)
+check('lyrics -> recites first three verses of the song' 'Sing(1, 3)',,
+      'Sing(1, 3)',, 'to be', verse_1_to_3)
 
-check('lyrics -> recites three verses from the middle of the song' function||'(4, 6)',,
-      function||'(4, 6)',, 'to be', verse_4_to_6)
+check('lyrics -> recites three verses from the middle of the song' 'Sing(4, 6)',,
+      'Sing(4, 6)',, 'to be', verse_4_to_6)
 
-cmd = 'actual = ' function||'(1, 12)' ; interpret cmd
-check('lyrics -> recites the whole song' function||'(1, 12)',,
-      function||'(1, 12)', LENGTH(actual), 'to be', verse_1_to_12_length)
+cmd = 'actual = ' 'Sing(1, 12)' ; interpret cmd
+check('lyrics -> recites the whole song' 'Sing(1, 12)',,
+      'Sing(1, 12)', LENGTH(actual), 'to be', verse_1_to_12_length)
 

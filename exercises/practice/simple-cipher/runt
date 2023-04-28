@@ -5,10 +5,15 @@
 #
 # $1 -> the test script (rexx)
 # $2 -> the application to test (rexx)
+# %3 -> optional shared variable definitions file (rexx)
 #
 # This script concatenates the files:
 #
 #   t1.rexx + ${1}.rexx + t2.rexx + ${2}.rexx + t3.rexx
+#
+# or, if optional file specified:
+#
+#   ${3}.rexx + t1.rexx + ${1}.rexx + t2.rexx + ${2}.rexx + t3.rexx
 #
 # and executes the resulting test runner file. The return code from the
 # test runner is passed back to the command-line. Valid return code values:
@@ -31,23 +36,31 @@
 # 2023-02-10      0.4.0     Anthony J. Borla    Activate KEEP functionality.
 # 2023-02-10      0.4.1     Anthony J. Borla    Revised commentary.
 # 2023-02-15      0.4.2     Anthony J. Borla    Altered shebang.
+# 2023-04-13      0.5.0     Anthony J. Borla    Added regina support.
+# 2023-04-14      0.6.0     Anthony J. Borla    Added JSON option.
+# 2023-04-15      0.7.0     Anthony J. Borla    Added toplevel support.
+# 2023-04-15      0.7.1     Anthony J. Borla    Revise header commentary.
 # -----------------------------------------------------------------------------
 
 # ---- Constants
 
 RUNNER="t.rexx"
+INTERPRETER="rexx"
 
 # ---- Functions
 
 usage() {
-    echo "Usage: ${0} [-h | --help] | [--keep] [--tap-output] test source"
+    echo "Usage: ${0} [-h | --help] | [--keep] [--tap|--json] [--regina] test source [toplevel]"
 }
 
 help() {
     echo 'Executes t-rexx unit test runner using supplied Rexx test script on specified Rexx source file.'
     echo ' * ${1} is the test script name, ${2} is the source file (code under test), both sans .rexx extension'
-    echo ' * --tap-output option generates TAP-compliant output; default is verbose report style'
+    echo ' * ${3} is an optional Rexx file containing variables shared by the code under test (sans .rexx extension)'
+    echo ' * --tap option generates TAP-compliant output; default is verbose report style'
+    echo ' * --json option packages report style output as a JSON array (incompatible with --tap option)'
     echo ' * --keep option ensures the generated test runner is not deleted'
+    echo ' * --regina option activates the regina interpreter (for shared library support)'
     echo ' * Return code zero on test run success; positive-valued return code equals number of failed tests'
     echo ' * Expects "rexx" interpreter to be available'
     echo ' * Expects t-rexx component files, t1.rexx, t2.rexx, and t3.rexx, co-resident with test and source'
@@ -69,25 +82,38 @@ error() {
 while (( "$#" )) ; do
     case "${1}" in
         --keep)       KEEP=KEEP ; shift ;;
-        --tap-output) TAP=TAP ; shift ;;
+        --tap)        TAP=TAP ; shift ;;
+        --json)       JSON=JSON ; shift ;;
+        --regina)     INTERPRETER="regina" ; shift ;;
         *) break ;;
     esac
 done
 
-# Expecting two positional parameters; bail if not supplied
-[ "$#" -ne "2" ] && error 'Incorrect arguments'
+# Report options error if both --tap and --json options requested
+[ -n "${TAP}" -a -n "${JSON}" ] && error 'Incorrect option combination: either --tap or --json, not both'
+
+# Expecting two, or three, positional parameters; bail if not supplied
+[ "$#" -ne "2" -a "$#" -ne "3" ] && error 'Incorrect arguments'
 
 # Expecting each positional parameter to be a Rexx filename
 [ -f "${1}.rexx" ] || error "Missing test script - ${1}.rexx"
 [ -f "${2}.rexx" ] || error "Missing source file - ${2}.rexx"
+[ "$#" -eq "3" ] && { [ -f "${3}.rexx" ] || error "Missing toplevel file - ${3}.rexx" ; }
 
 # Assemble test runner from components and supplied files
-cat t1.rexx "${1}.rexx" t2.rexx "${2}.rexx" t3.rexx > "${RUNNER}" 2>/dev/null
+[ "$#" -eq "3" ] \
+    && cat "${3}.rexx" t1.rexx "${1}.rexx" t2.rexx "${2}.rexx" t3.rexx > "${RUNNER}" 2>/dev/null \
+    || cat t1.rexx "${1}.rexx" t2.rexx "${2}.rexx" t3.rexx > "${RUNNER}" 2>/dev/null
+
+# Set output option
+[ -n "${TAP}" ] && OUT="${TAP}"
+[ -n "${JSON}" ] && OUT="${JSON}"
 
 # Execute test runner with output option
-# - "${TAP}"=="TAP" -> TAP output
-# - "${TAP}"==""    -> REPORT output
-rexx "${RUNNER}" "${TAP}"
+# - "${OUT}"=="JSON" -> JSON output
+# - "${OUT}"=="TAP"  -> TAP output
+# - "${OUT}"==""     -> REPORT output
+"${INTERPRETER}" "${RUNNER}" "${OUT}"
 
 # Ensure test runner return code passed back to command-line
 RC="$?"

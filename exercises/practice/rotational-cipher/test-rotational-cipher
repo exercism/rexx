@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output rotational-cipher-check rotational-cipher
+if [ $# -eq 0 ] ; then ./runt --regina rotational-cipher-check rotational-cipher rotational-cipher-toplevel ; else ./runt "$@" rotational-cipher-check rotational-cipher rotational-cipher-toplevel ; fi

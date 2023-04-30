@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output gigasecond-check gigasecond
+if [ $# -eq 0 ] ; then ./runt --regina gigasecond-check gigasecond gigasecond-toplevel ; else ./runt "$@" gigasecond-check gigasecond gigasecond-toplevel ; fi

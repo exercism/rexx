@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output armstrong-numbers-check armstrong-numbers
+if [ $# -eq 0 ] ; then ./runt --regina armstrong-numbers-check armstrong-numbers armstrong-numbers-toplevel ; else ./runt "$@" armstrong-numbers-check armstrong-numbers armstrong-numbers-toplevel ; fi

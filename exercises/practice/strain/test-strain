@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output strain-check strain
+if [ $# -eq 0 ] ; then ./runt --regina strain-check strain strain-toplevel ; else ./runt "$@" strain-check strain strain-toplevel ; fi

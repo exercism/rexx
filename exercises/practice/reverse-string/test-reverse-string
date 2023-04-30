@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output reverse-string-check reverse-string
+if [ $# -eq 0 ] ; then ./runt --regina reverse-string-check reverse-string reverse-string-toplevel ; else ./runt "$@" reverse-string-check reverse-string reverse-string-toplevel ; fi

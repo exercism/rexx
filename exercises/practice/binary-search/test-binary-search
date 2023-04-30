@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output binary-search-check binary-search
+if [ $# -eq 0 ] ; then ./runt --regina binary-search-check binary-search binary-search-toplevel ; else ./runt "$@" binary-search-check binary-search binary-search-toplevel ; fi

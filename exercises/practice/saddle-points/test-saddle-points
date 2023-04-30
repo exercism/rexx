@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output saddle-points-check saddle-points
+if [ $# -eq 0 ] ; then ./runt --regina saddle-points-check saddle-points saddle-points-toplevel ; else ./runt "$@" saddle-points-check saddle-points saddle-points-toplevel ; fi

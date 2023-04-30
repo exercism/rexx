@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output etl-check etl
+if [ $# -eq 0 ] ; then ./runt --regina etl-check etl etl-toplevel ; else ./runt "$@" etl-check etl etl-toplevel ; fi

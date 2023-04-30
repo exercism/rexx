@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output anagram-check anagram
+if [ $# -eq 0 ] ; then ./runt --regina anagram-check anagram anagram-toplevel ; else ./runt "$@" anagram-check anagram anagram-toplevel ; fi

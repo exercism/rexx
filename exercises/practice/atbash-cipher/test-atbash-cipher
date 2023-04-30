@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output atbash-cipher-check atbash-cipher
+if [ $# -eq 0 ] ; then ./runt --regina atbash-cipher-check atbash-cipher atbash-cipher-toplevel ; else ./runt "$@" atbash-cipher-check atbash-cipher atbash-cipher-toplevel ; fi

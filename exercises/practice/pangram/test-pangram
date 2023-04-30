@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output pangram-check pangram
+if [ $# -eq 0 ] ; then ./runt --regina pangram-check pangram pangram-toplevel ; else ./runt "$@" pangram-check pangram pangram-toplevel ; fi

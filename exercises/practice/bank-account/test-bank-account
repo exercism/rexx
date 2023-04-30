@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output bank-account-check bank-account
+if [ $# -eq 0 ] ; then ./runt --regina bank-account-check bank-account bank-account-toplevel ; else ./runt "$@" bank-account-check bank-account bank-account-toplevel ; fi

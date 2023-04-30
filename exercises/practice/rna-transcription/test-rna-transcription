@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output rna-transcription-check rna-transcription
+if [ $# -eq 0 ] ; then ./runt --regina rna-transcription-check rna-transcription rna-transcription-toplevel ; else ./runt "$@" rna-transcription-check rna-transcription rna-transcription-toplevel ; fi

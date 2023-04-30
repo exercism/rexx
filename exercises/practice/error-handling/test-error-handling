@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output error-handling-check error-handling
+if [ $# -eq 0 ] ; then ./runt --regina error-handling-check error-handling error-handling-toplevel ; else ./runt "$@" error-handling-check error-handling error-handling-toplevel ; fi

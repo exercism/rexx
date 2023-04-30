@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output queen-attack-check queen-attack
+if [ $# -eq 0 ] ; then ./runt --regina queen-attack-check queen-attack queen-attack-toplevel ; else ./runt "$@" queen-attack-check queen-attack queen-attack-toplevel ; fi

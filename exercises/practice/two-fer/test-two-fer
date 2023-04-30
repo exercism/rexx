@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output two-fer-check two-fer
+if [ $# -eq 0 ] ; then ./runt --regina two-fer-check two-fer two-fer-toplevel ; else ./runt "$@" two-fer-check two-fer two-fer-toplevel ; fi

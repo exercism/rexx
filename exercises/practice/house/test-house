@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output house-check house
+if [ $# -eq 0 ] ; then ./runt --regina house-check house house-toplevel ; else ./runt "$@" house-check house house-toplevel ; fi

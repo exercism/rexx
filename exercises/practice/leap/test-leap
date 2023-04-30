@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output leap-check leap
+if [ $# -eq 0 ] ; then ./runt --regina leap-check leap leap-toplevel ; else ./runt "$@" leap-check leap leap-toplevel ; fi

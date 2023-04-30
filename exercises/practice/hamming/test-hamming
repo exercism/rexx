@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output hamming-check hamming
+if [ $# -eq 0 ] ; then ./runt --regina hamming-check hamming hamming-toplevel ; else ./runt "$@" hamming-check hamming hamming-toplevel ; fi

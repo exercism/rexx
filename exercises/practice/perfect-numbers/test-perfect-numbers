@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output perfect-numbers-check perfect-numbers
+if [ $# -eq 0 ] ; then ./runt --regina perfect-numbers-check perfect-numbers perfect-numbers-toplevel ; else ./runt "$@" perfect-numbers-check perfect-numbers perfect-numbers-toplevel ; fi

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output sublist-check sublist
+if [ $# -eq 0 ] ; then ./runt --regina sublist-check sublist sublist-toplevel ; else ./runt "$@" sublist-check sublist sublist-toplevel ; fi

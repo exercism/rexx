@@ -1,1 +1,3 @@
-@runt.bat --tap-output beer-song-check beer-song
+@set options=%*
+@if "%1"=="" @set options=--regina
+@runt.bat %options% beer-song-check beer-song beer-song-toplevel

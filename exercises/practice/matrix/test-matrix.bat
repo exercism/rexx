@@ -1,1 +1,3 @@
-@runt.bat --tap-output matrix-check matrix
+@set options=%*
+@if "%1"=="" @set options=--regina
+@runt.bat %options% matrix-check matrix matrix-toplevel

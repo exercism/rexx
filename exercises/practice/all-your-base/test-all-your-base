@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output all-your-base-check all-your-base
+if [ $# -eq 0 ] ; then ./runt --regina all-your-base-check all-your-base all-your-base-toplevel ; else ./runt "$@" all-your-base-check all-your-base all-your-base-toplevel ; fi

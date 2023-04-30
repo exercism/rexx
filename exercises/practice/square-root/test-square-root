@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output square-root-check square-root
+if [ $# -eq 0 ] ; then ./runt --regina square-root-check square-root square-root-toplevel ; else ./runt "$@" square-root-check square-root square-root-toplevel ; fi

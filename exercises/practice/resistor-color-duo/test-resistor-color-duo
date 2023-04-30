@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output resistor-color-duo-check resistor-color-duo
+if [ $# -eq 0 ] ; then ./runt --regina resistor-color-duo-check resistor-color-duo resistor-color-duo-toplevel ; else ./runt "$@" resistor-color-duo-check resistor-color-duo resistor-color-duo-toplevel ; fi

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output clock-check clock
+if [ $# -eq 0 ] ; then ./runt --regina clock-check clock clock-toplevel ; else ./runt "$@" clock-check clock clock-toplevel ; fi

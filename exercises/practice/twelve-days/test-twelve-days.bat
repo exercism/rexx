@@ -1,1 +1,3 @@
-@runt.bat --tap-output twelve-days-check twelve-days
+@set options=%*
+@if "%1"=="" @set options=--regina
+@runt.bat %options% twelve-days-check twelve-days twelve-days-toplevel

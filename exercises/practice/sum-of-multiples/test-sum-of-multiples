@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output sum-of-multiples-check sum-of-multiples
+if [ $# -eq 0 ] ; then ./runt --regina sum-of-multiples-check sum-of-multiples sum-of-multiples-toplevel ; else ./runt "$@" sum-of-multiples-check sum-of-multiples sum-of-multiples-toplevel ; fi

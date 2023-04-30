@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output isogram-check isogram
+if [ $# -eq 0 ] ; then ./runt --regina isogram-check isogram isogram-toplevel ; else ./runt "$@" isogram-check isogram isogram-toplevel ; fi

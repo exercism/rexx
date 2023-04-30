@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output transpose-check transpose
+if [ $# -eq 0 ] ; then ./runt --regina transpose-check transpose transpose-toplevel ; else ./runt "$@" transpose-check transpose transpose-toplevel ; fi

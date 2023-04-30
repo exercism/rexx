@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output twelve-days-check twelve-days
+if [ $# -eq 0 ] ; then ./runt --regina twelve-days-check twelve-days twelve-days-toplevel ; else ./runt "$@" twelve-days-check twelve-days twelve-days-toplevel ; fi

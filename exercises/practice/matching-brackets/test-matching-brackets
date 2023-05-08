@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output matching-brackets-check matching-brackets
+if [ $# -eq 0 ] ; then ./runt --regina matching-brackets-check matching-brackets matching-brackets-toplevel ; else ./runt "$@" matching-brackets-check matching-brackets matching-brackets-toplevel ; fi

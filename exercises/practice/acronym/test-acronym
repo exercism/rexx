@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output acronym-check acronym
+if [ $# -eq 0 ] ; then ./runt --regina acronym-check acronym acronym-toplevel ; else ./runt "$@" acronym-check acronym acronym-toplevel ; fi

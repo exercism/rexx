@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output triangle-check triangle
+if [ $# -eq 0 ] ; then ./runt --regina triangle-check triangle triangle-toplevel ; else ./runt "$@" triangle-check triangle triangle-toplevel ; fi

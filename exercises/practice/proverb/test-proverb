@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output proverb-check proverb
+if [ $# -eq 0 ] ; then ./runt --regina proverb-check proverb proverb-toplevel ; else ./runt "$@" proverb-check proverb proverb-toplevel ; fi

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output space-age-check space-age
+if [ $# -eq 0 ] ; then ./runt --regina space-age-check space-age space-age-toplevel ; else ./runt "$@" space-age-check space-age space-age-toplevel ; fi

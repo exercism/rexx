@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output phone-number-check phone-number
+if [ $# -eq 0 ] ; then ./runt --regina phone-number-check phone-number phone-number-toplevel ; else ./runt "$@" phone-number-check phone-number phone-number-toplevel ; fi

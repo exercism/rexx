@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output scrabble-score-check scrabble-score
+if [ $# -eq 0 ] ; then ./runt --regina scrabble-score-check scrabble-score scrabble-score-toplevel ; else ./runt "$@" scrabble-score-check scrabble-score scrabble-score-toplevel ; fi

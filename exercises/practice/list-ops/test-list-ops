@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output list-ops-check list-ops
+if [ $# -eq 0 ] ; then ./runt --regina list-ops-check list-ops list-ops-toplevel ; else ./runt "$@" list-ops-check list-ops list-ops-toplevel ; fi

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output resistor-color-check resistor-color
+if [ $# -eq 0 ] ; then ./runt --regina resistor-color-check resistor-color resistor-color-toplevel ; else ./runt "$@" resistor-color-check resistor-color resistor-color-toplevel ; fi

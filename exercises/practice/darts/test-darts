@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output darts-check darts
+if [ $# -eq 0 ] ; then ./runt --regina darts-check darts darts-toplevel ; else ./runt "$@" darts-check darts darts-toplevel ; fi

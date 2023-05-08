@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output grains-check grains
+if [ $# -eq 0 ] ; then ./runt --regina grains-check grains grains-toplevel ; else ./runt "$@" grains-check grains grains-toplevel ; fi

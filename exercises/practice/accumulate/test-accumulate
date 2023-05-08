@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output accumulate-check accumulate
+if [ $# -eq 0 ] ; then ./runt --regina accumulate-check accumulate accumulate-toplevel ; else ./runt "$@" accumulate-check accumulate accumulate-toplevel ; fi

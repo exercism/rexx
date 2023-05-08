@@ -1,11 +1,23 @@
-/* rexx unit test framework
-   concatenate these files:
-   t1.rexx test-script t2.rexx rexx-file-to-test t3.rexx > t.rexx
-   then execute t.rexx
-   this file is t1.rexx
+/* Rexx unit test framework
+   1. Concatenate these files:
+
+         toplevel (Optional Rexx file containing shared variables)
+         t1.rexx
+         test-script
+         t2.rexx
+         rexx-file-to-test
+         t3.rexx
+
+      to create file:
+
+         t.rexx
+
+   2. Execute t.rexx
+
+   This file is t1.rexx
 */
 
-call init(ARG(1))
+call init ARG(1)
 
-/* Test script below *********************************************************/
+/* Test script below ******************************************************* */
 

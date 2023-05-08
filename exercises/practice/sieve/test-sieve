@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output sieve-check sieve
+if [ $# -eq 0 ] ; then ./runt --regina sieve-check sieve sieve-toplevel ; else ./runt "$@" sieve-check sieve sieve-toplevel ; fi

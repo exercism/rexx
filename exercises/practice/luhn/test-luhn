@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output luhn-check luhn
+if [ $# -eq 0 ] ; then ./runt --regina luhn-check luhn luhn-toplevel ; else ./runt "$@" luhn-check luhn luhn-toplevel ; fi

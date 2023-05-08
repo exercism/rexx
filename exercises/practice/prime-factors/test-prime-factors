@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output prime-factors-check prime-factors
+if [ $# -eq 0 ] ; then ./runt --regina prime-factors-check prime-factors prime-factors-toplevel ; else ./runt "$@" prime-factors-check prime-factors prime-factors-toplevel ; fi

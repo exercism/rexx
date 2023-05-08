@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output nth-prime-check nth-prime
+if [ $# -eq 0 ] ; then ./runt --regina nth-prime-check nth-prime nth-prime-toplevel ; else ./runt "$@" nth-prime-check nth-prime nth-prime-toplevel ; fi

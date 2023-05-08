@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output collatz-conjecture-check collatz-conjecture
+if [ $# -eq 0 ] ; then ./runt --regina collatz-conjecture-check collatz-conjecture collatz-conjecture-toplevel ; else ./runt "$@" collatz-conjecture-check collatz-conjecture collatz-conjecture-toplevel ; fi

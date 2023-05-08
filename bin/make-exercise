@@ -1,0 +1,125 @@
+#!/usr/bin/env bash
+
+create_exercise() {
+    # Ensure configlet utility exists
+    which configlet >/dev/null \
+        || { echo "ERROR: configlet utility not in PATH" ; exit 1 ; }
+
+    # Create practice exercise skeleton
+    configlet -v d sync --exercise ${exercise} --docs --update --yes --offline
+    configlet -v d sync --exercise ${exercise} --metadata --update --yes --offline
+    configlet -v d sync --exercise ${exercise} --tests include --update --offline
+
+    # Ensure exercise directories created
+    [ -d exercises/practice/$exercise ] \
+        || { echo "ERROR: Error creating exercise directory" ; exit 1 ; }
+}
+
+configure_exercise() {
+    # Set the author name
+    local author=AUTHOR_NAME_HERE
+
+    # Ensure exercise directories exist
+    [ -d exercises/practice/$exercise ] \
+        || { echo "ERROR: Exercise directory does not exist" ; exit 1 ; }
+
+    # Relocate into practice exercise directory
+    pushd exercises/practice/${exercise} 2>&1 >/dev/null
+
+    # Copy source file here from top-level
+    cp -p ../../../"${exercise}.rexx" .
+
+    # Copy unit test framework files (reside in top-level `bin` directory)
+    cp -p ../../../bin/t?.rexx ../../../bin/run* ./
+
+    # Create empty `toplevel` file (user defines any shared variables here)
+    echo $'/*' ${exercise} '- Top Level Definitions */\n' > ${exercise}-toplevel.rexx
+    echo $'/*\n\n  Include any shared variable definitions in this file.\n\n*/\n' >> ${exercise}-toplevel.rexx
+
+    # Create test launcher scripts
+    ## Bash launcher
+    echo $'#!/usr/bin/env bash' > test-${exercise}
+    echo $'if [ $# -eq 0 ] ; then ./runt --regina' "${exercise}-check ${exercise} ${exercise}-toplevel" $'; else ./runt "$@"' "${exercise}-check ${exercise} ${exercise}-toplevel" $'; fi' >> test-${exercise}
+    #### NOTE: If files reside on a non-EXT4 filesystem (e.g. NTFS) then the git index needs updating.
+    #### =>    git update-index --chmod=+x test-${exercise}
+    #### =>    git commit -m "fix(test-${exercise}): update file permissions"
+    chmod +x test-${exercise}
+    ## Windows batch launcher
+    echo $'@set options=%*' > test-${exercise}.bat
+    echo $'@if "%1"=="" @set options=--regina' >> test-${exercise}.bat
+    echo $'@runt.bat %options%' "${exercise}-check ${exercise} ${exercise}-toplevel" >> test-${exercise}.bat
+
+    # Transform exercise metafiles
+    pushd .meta 2>&1 >/dev/null
+
+    ## Transform local config.json
+    sed -r -f - config.json > config.json.NEW <<-SED_SCRIPT
+        s/("authors": )(\[)(\]),/\1\2"${author}"\3,/
+        s/("solution": )(\[)(\]),/\1\2"${exercise}.rexx"\3,/
+        s/("test": )(\[)(\]),/\1\2"test-${exercise}"\3,/
+        s/("example": )(\[)(\])/\1\2"\.meta\/example\.rexx"\3/
+SED_SCRIPT
+    [ $? -eq 0 ] \
+        && { rm -f config.json ; mv config.json.NEW config.json ; } \
+        || { rm -f config.json.NEW ; }
+
+    # Create unit text checker script
+    ## Generate file header
+    cat <<- REXX_SCRIPT > ${exercise}-check.rexx
+/* Unit Test Runner: t-rexx */
+context('Checking the FUNCNAME function')
+
+/* Unit tests */
+REXX_SCRIPT
+
+    ## Generate check case stubs
+    grep '^description' tests.toml | sed 's/description = /check(/' >> ${exercise}-check.rexx
+
+    ## Move generated file to parent exercise directory
+    mv ${exercise}-check.rexx ../
+
+    ## Copy source file here as the example file
+    cp -p ../${exercise}.rexx example.rexx
+
+    # Emit CONFIGURATION TODO instructions
+    echo 'To complete configuration:'
+    echo '1. Edit' ${exercise}-check.rexx 'correcting test assertions.'
+    echo '2. Edit' ${exercise}.rexx 'converting it to an exercise stub file.'
+
+    # Return to parent
+    popd 2>&1 >/dev/null
+
+    # Return to top-level
+    popd 2>&1 >/dev/null
+}
+
+# Two arguments expected
+[ $# -ne 2 -o -z "${1}" -o -z "${2}" ] \
+    && { echo "Usage: ${0} create|configure exercise" ; exit 1 ; }
+
+# Uppercase `mode` for easier comparison
+mode="${1^^}" ; exercise="${2}"
+
+# Ascertain script location is `bin`
+[ "$(basename $(dirname ${0}))" == "bin" ] \
+    || { echo "ERROR: Current script must reside in bin directory" ; exit 1 ; }
+
+# Ascertain current directory is top-level by checking for directories
+[ -d "./bin" -a -d "./exercises/practice" ] \
+    || { echo "ERROR: Current directory is not top-level directory" ; exit 1 ; }
+
+# Ensure exercise source file exists
+[ -f "${exercise}.rexx" ] \
+    || { echo "ERROR: Ensure source file resides in current directory" ; exit 1 ; }
+
+# Ensure top-level `config.json` contains a valid exercise entry
+grep -q '"slug": "'${exercise}'",$' config.json \
+    || { echo "ERROR: Include entry for ${exercise} in top-level config.json file." ; exit 1 ; }
+
+# Check `mode` validity
+case "${mode}" in
+    CREATE)    create_exercise "${exercise}" ;;
+    CONFIGURE) configure_exercise "${exercise}" ;;
+    *) echo "Usage: ${0} create|configure exercise" ; exit 1 ;;
+esac
+

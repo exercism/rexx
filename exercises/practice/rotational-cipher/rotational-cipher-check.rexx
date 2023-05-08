@@ -1,55 +1,34 @@
 /* Unit Test Runner: t-rexx */
-function = 'Convert'
-context('Checking the' function 'function')
+context('Checking the Convert function')
 
 /* Unit tests */
-plaintext = 'a'
-ciphertext = 'a'
-check('rotate a by 0, same output as input' function||'('||'plaintext'||', 0)',,
-      function||'('||'plaintext'||', 0)',, 'to be', ciphertext)
+check('rotate a by 0, same output as input' 'Convert("a", 0)',,
+      'Convert("a", 0)',, 'to be', 'a')
 
-plaintext = 'a'
-ciphertext = 'b'
-check('rotate a by 1' function||'('||'plaintext'||', 1)',,
-      function||'('||'plaintext'||', 1)',, 'to be', ciphertext)
+check('rotate a by 1' 'Convert("a", 1)',,
+      'Convert("a", 1)',, 'to be', 'b')
 
-plaintext = 'a'
-ciphertext = 'a'
-check('rotate a by 26, same output as input' function||'('||'plaintext'||', 26)',,
-      function||'('||'plaintext'||', 26)',, 'to be', ciphertext)
+check('rotate a by 26, same output as input' 'Convert("a", 26)',,
+      'Convert("a", 26)',, 'to be', 'a')
 
-plaintext = 'm'
-ciphertext = 'z'
-check('rotate m by 13' function||'('||'plaintext'||', 13)',,
-      function||'('||'plaintext'||', 13)',, 'to be', ciphertext)
+check('rotate m by 13' 'Convert("m", 13)',,
+      'Convert("m", 13)',, 'to be', 'z')
 
-plaintext = 'n'
-ciphertext = 'a'
-check('rotate n by 13 with wrap around alphabet' function||'('||'plaintext'||', 13)',,
-      function||'('||'plaintext'||', 13)',, 'to be', ciphertext)
+check('rotate n by 13 with wrap around alphabet' 'Convert("n", 13)',,
+      'Convert("n", 13)',, 'to be', 'a')
 
-plaintext = 'OMG'
-ciphertext = 'TRL'
-check('rotate capital letters' function||'('||'plaintext'||', 5)',,
-      function||'('||'plaintext'||', 5)',, 'to be', ciphertext)
+check('rotate capital letters' 'Convert("OMG", 5)',,
+      'Convert("OMG", 5)',, 'to be', 'TRL')
 
-plaintext = 'O M G'
-ciphertext = 'T R L'
-check('rotate spaces' function||'('||'plaintext'||', 5)',,
-      function||'('||'plaintext'||', 5)',, 'to be', ciphertext)
+check('rotate spaces' 'Convert("O M G", 5)',,
+      'Convert("O M G", 5)',, 'to be', 'T R L')
 
-plaintext = 'Testing 1 2 3 testing'
-ciphertext = 'Xiwxmrk 1 2 3 xiwxmrk'
-check('rotate numbers' function||'('||'plaintext'||', 4)',,
-      function||'('||'plaintext'||', 4)',, 'to be', ciphertext)
+check('rotate numbers' 'Convert("Testing 1 2 3 testing", 4)',,
+      'Convert("Testing 1 2 3 testing", 4)',, 'to be', 'Xiwxmrk 1 2 3 xiwxmrk')
 
-plaintext =  "Let''''s eat',' Grandma!"
-ciphertext = "Gzo''''n zvo',' Bmviyhv!"
-check('rotate punctuation' function||'('||'plaintext'||', 21)',,
-      function||'('||'plaintext'||', 21)',, 'to be', ciphertext)
+check('rotate punctuation' 'Convert("Let''s eat, Grandma!", 21)',,
+      'Convert("Let''s eat, Grandma!", 21)',, 'to be', "Gzo'n zvo, Bmviyhv!")
 
-plaintext = 'The quick brown fox jumps over the lazy dog.'
-ciphertext = 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt.'
-check('rotate all letters' function||'('||'plaintext'||', 13)',,
-      function||'('||'plaintext'||', 13)',, 'to be', ciphertext)
+check('rotate all letters' 'Convert("The quick brown fox jumps over the lazy dog.", 13)',,
+      'Convert("The quick brown fox jumps over the lazy dog.", 13)',, 'to be', 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt.')
 

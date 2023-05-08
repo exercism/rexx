@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output matrix-check matrix
+if [ $# -eq 0 ] ; then ./runt --regina matrix-check matrix matrix-toplevel ; else ./runt "$@" matrix-check matrix matrix-toplevel ; fi

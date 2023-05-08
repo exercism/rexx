@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output nucleotide-count-check nucleotide-count
+if [ $# -eq 0 ] ; then ./runt --regina nucleotide-count-check nucleotide-count nucleotide-count-toplevel ; else ./runt "$@" nucleotide-count-check nucleotide-count nucleotide-count-toplevel ; fi

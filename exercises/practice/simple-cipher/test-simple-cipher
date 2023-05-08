@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output simple-cipher-check simple-cipher
+if [ $# -eq 0 ] ; then ./runt --regina simple-cipher-check simple-cipher simple-cipher-toplevel ; else ./runt "$@" simple-cipher-check simple-cipher simple-cipher-toplevel ; fi

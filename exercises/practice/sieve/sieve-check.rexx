@@ -1,23 +1,10 @@
 /* Unit Test Runner: t-rexx */
-function = 'Sieve'
-context('Checking the' function 'function')
+context('Checking the Sieve function')
 
-/* Test options */
+/* Test Options */
 numeric digits 6
 
-/* Unit tests */
-check('no primes under two' function||'(1)',,
-      function||'(1)',, 'to be', '')
-
-check('find first prime'function||'(2)',,
-      function||'(2)',, 'to be', '2')
-
-check('find primes up to 10' function||'(10)',,
-      function||'(10)',, 'to be', '2 3 5 7')
-
-check('limit is prime' function||'(13)',,
-      function||'(13)',, 'to be', '2 3 5 7 11 13')
-
+/* Test Variables */
 primes = '2 3 5 7 11 13 17 19 23 29 31 37 41 43' ,
          '47 53 59 61 67 71 73 79 83 89 97 101 103 107' ,
          '109 113 127 131 137 139 149 151 157 163 167 173 179 181' ,
@@ -31,6 +18,19 @@ primes = '2 3 5 7 11 13 17 19 23 29 31 37 41 43' ,
          '811 821 823 827 829 839 853 857 859 863 877 881 883 887' ,
          '907 911 919 929 937 941 947 953 967 971 977 983 991 997'
 
-check('find primes up to 1000' function||'(1000)',,
-      function||'(1000)',, 'to be', primes)
+/* Unit tests */
+check('no primes under two' 'Sieve(1)',,
+      'Sieve(1)',, 'to be', '')
+
+check('find first prime' 'Sieve(2)',,
+      'Sieve(2)',, 'to be', '2')
+
+check('find primes up to 10' 'Sieve(10)',,
+      'Sieve(10)',, 'to be', '2 3 5 7')
+
+check('limit is prime' 'Sieve(13)',,
+      'Sieve(13)',, 'to be', '2 3 5 7 11 13')
+
+check('find primes up to 1000' 'Sieve(1000)',,
+      'Sieve(1000)',, 'to be', primes)
 

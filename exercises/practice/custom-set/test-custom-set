@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output custom-set-check custom-set
+if [ $# -eq 0 ] ; then ./runt --regina custom-set-check custom-set custom-set-toplevel ; else ./runt "$@" custom-set-check custom-set custom-set-toplevel ; fi

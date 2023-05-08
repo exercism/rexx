@@ -1,6 +1,7 @@
 /* Unit Test Runner: t-rexx */
-function = 'HelloWorld'
-context('Checking the' function 'function')
+context('Checking the HelloWorld function')
 
 /* Unit tests */
-check('Say Hi!', function||'()',, 'to be', "Hello, World!")
+check('Say Hi!' 'HelloWorld()',,
+      'HelloWorld()',, 'to be', "Hello, World!")
+

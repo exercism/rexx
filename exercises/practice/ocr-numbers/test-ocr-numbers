@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output ocr-numbers-check ocr-numbers
+if [ $# -eq 0 ] ; then ./runt --regina ocr-numbers-check ocr-numbers ocr-numbers-toplevel ; else ./runt "$@" ocr-numbers-check ocr-numbers ocr-numbers-toplevel ; fi

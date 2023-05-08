@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output bob-check bob
+if [ $# -eq 0 ] ; then ./runt --regina bob-check bob bob-toplevel ; else ./runt "$@" bob-check bob bob-toplevel ; fi

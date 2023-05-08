@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./runt --tap-output beer-song-check beer-song
+if [ $# -eq 0 ] ; then ./runt --regina beer-song-check beer-song beer-song-toplevel ; else ./runt "$@" beer-song-check beer-song beer-song-toplevel ; fi

@@ -1,1 +1,3 @@
-@runt.bat --tap-output accumulate-check accumulate
+@set options=%*
+@if "%1"=="" @set options=--regina
+@runt.bat %options% accumulate-check accumulate accumulate-toplevel

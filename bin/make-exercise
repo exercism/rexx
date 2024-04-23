@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
+remove_exercise() {
+    # Override any previous setting with function argument
+    local exercise=${1}
+
+    # Ensure exercise directories removed
+    rm -fr exercises/practice/$exercise
+
+    # Ensure exercise directories removed
+    [ -d exercises/practice/$exercise ] \
+        && { echo "ERROR: Error removing exercise directory" ; exit 1 ; }
+}
+
 create_exercise() {
     # Override any previous setting with function argument
     local exercise=${1}
@@ -101,7 +113,7 @@ REXX_SCRIPT
 
 # Two arguments expected
 [ $# -ne 2 -o -z "${1}" -o -z "${2}" ] \
-    && { echo "Usage: ${0} create|configure exercise" ; exit 1 ; }
+    && { echo "Usage: ${0} remove|create|configure exercise" ; exit 1 ; }
 
 # Uppercase `mode` for easier comparison
 mode="${1^^}" ; exercise="${2}"
@@ -124,8 +136,9 @@ grep -q '"slug": "'${exercise}'",$' config.json \
 
 # Check `mode` validity
 case "${mode}" in
+    REMOVE)    remove_exercise "${exercise}" ;;
     CREATE)    create_exercise "${exercise}" ;;
     CONFIGURE) configure_exercise "${exercise}" ;;
-    *) echo "Usage: ${0} create|configure exercise" ; exit 1 ;;
+    *) echo "Usage: ${0} remove|create|configure exercise" ; exit 1 ;;
 esac
 

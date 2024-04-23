@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 create_exercise() {
+    # Override any previous setting with function argument
+    local exercise=${1}
+
     # Ensure configlet utility exists
     which configlet >/dev/null \
         || { echo "ERROR: configlet utility not in PATH" ; exit 1 ; }
@@ -16,6 +19,9 @@ create_exercise() {
 }
 
 configure_exercise() {
+    # Override any previous setting with function argument
+    local exercise=${1}
+
     # Set the author name
     local author=AUTHOR_NAME_HERE
 

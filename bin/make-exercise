@@ -1,5 +1,45 @@
 #!/usr/bin/env bash
 
+# -----------------------------------------------------------------------------
+# Exercism practice exercise generator for the Rexx language track.
+#
+# $1 -> action to perform (remove, create, or configure exercise)
+# $2 -> name of the exercise subdirectory
+#
+# The script creates, removes, and configures a subdirectory, corresponding
+#  to the nominated exercises, in the following directory:
+#
+#     TRACKNAME/exercises/practice/
+#
+# Exercise creation sees a skeleton subdirectory entry made, while removal
+#  completely removes the subdirectory (and any contents therein). Exercise
+#  configuration sees the generation of several custom files, as well as the
+#  copying of several standard files.
+#
+# Exercise subdirectory structure and contents:
+#
+#     <exercise>/
+#        |   <exercise>-check.rexx             Test Harness (tests reside here)
+#        |   <exercise>-toplevel.rexx          Global Values (optional)
+#        |   <exercise>.rexx                   Exercise Stub
+#        |   runt                              Test Runner (bash)
+#        |   runt.bat                          Test Runner (CMD)
+#        |   t1.rexx                           Test Runner
+#        |   t2.rexx                             Support
+#        |   t3.rexx                               Files
+#        |   test-<exercise>                   Test Launcher (bash)
+#        |   test-<exercise>.bat               Test Launcher (CMD)
+#        |
+#        +---.docs
+#        |       instructions.md
+#        |
+#        +---.meta
+#                config.json
+#                example.rexx                  Example Solution
+#                tests.toml
+#
+# -----------------------------------------------------------------------------
+
 remove_exercise() {
     # Override any previous setting with function argument
     local exercise=${1}

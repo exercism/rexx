@@ -71,7 +71,8 @@
 #
 #     bin/make-exercise create hello-world
 #
-# Silence implies success, otherwise an informative message will be printed.
+# Output will be quite busy, and includes `configlet` output, as well as
+#  several instructions.
 #
 # At any time the exercise may be removed:
 #
@@ -82,8 +83,8 @@
 #
 #     bin/make-exercise configure hello-world
 #
-# Output will be quite busy, and includes `configlet` output, as well as
-#  several instructions. The test harness:
+# Silence implies success, otherwise an informative message will be
+#  printed. The test harness:
 #
 #     hello-world-check.rexx
 #

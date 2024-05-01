@@ -1,6 +1,116 @@
 #!/usr/bin/env bash
 
+# -----------------------------------------------------------------------------
+# Exercism practice exercise generator for the Rexx language track.
+#
+# $1 -> action to perform (remove, create, or configure exercise)
+# $2 -> name of the exercise subdirectory
+#
+# The script creates, removes, and configures a subdirectory, corresponding
+#  to the nominated exercises, in the following directory:
+#
+#     TRACKNAME/exercises/practice/
+#
+# Exercise creation sees a skeleton subdirectory entry made, while removal
+#  completely removes the subdirectory (and any contents therein). Exercise
+#  configuration sees the generation of several custom files, as well as the
+#  copying of several standard files.
+#
+# Exercise subdirectory structure and contents:
+#
+#     <exercise>/
+#        |   <exercise>-check.rexx             Test Harness (tests reside here)
+#        |   <exercise>-toplevel.rexx          Global Values (optional)
+#        |   <exercise>.rexx                   Exercise Stub
+#        |   runt                              Test Runner (bash)
+#        |   runt.bat                          Test Runner (CMD)
+#        |   t1.rexx                           Test Runner
+#        |   t2.rexx                             Support
+#        |   t3.rexx                               Files
+#        |   test-<exercise>                   Test Launcher (bash)
+#        |   test-<exercise>.bat               Test Launcher (CMD)
+#        |
+#        +---.docs
+#        |       instructions.md
+#        |
+#        +---.meta
+#                config.json
+#                example.rexx                  Example Solution
+#                tests.toml
+#
+# Several prerequisites must be satisfied to effectively use this script:
+#
+# 0. A valid exercise entry must reside in TRACKNAME/config.json. For the
+#     hello-world exercise, this may look like:
+#
+#     "practice": [
+#       {
+#         "slug": "hello-world",
+#         "name": "Hello World",
+#         "uuid": "5d47e248-c75b-4e4d-2786-862428dda79d",
+#         "practices": [],
+#         "prerequisites": [],
+#         "difficulty": 1
+#       },
+#       ...
+#     ]
+#
+#    Note that `configlet uuid` would have been previously executed to create
+#     the UUID value.
+#
+# 1. The literal within the script, AUTHOR_NAME_HERE, should be replaced with
+#     your Github user name, a once-only task.
+#
+# 2. Script must reside in TRACKNAME/bin/ (and have execute permissions)
+#
+# 3. A complete <exercise>.rexx must reside in TRACKNAME/
+#
+# 4. TRACKNAME/ is the current directory
+#
+# The creation of a new exercise (hello-world), is effected:
+#
+#     bin/make-exercise create hello-world
+#
+# Output will be quite busy, and includes `configlet` output, as well as
+#  several instructions.
+#
+# At any time the exercise may be removed:
+#
+#     bin/make-exercise remove hello-world
+#
+# Once created, an exercise may be configured, meaning that all necessary
+#  files are generated and copied:
+#
+#     bin/make-exercise configure hello-world
+#
+# Silence implies success, otherwise an informative message will be
+#  printed. The test harness:
+#
+#     hello-world-check.rexx
+#
+# contains the tests in raw form, but they must be massaged so as to execute
+#  correctly.
+#
+# -----------------------------------------------------------------------------
+
+# ---- FUNCTIONS
+
+remove_exercise() {
+    # Override any previous setting with function argument
+    local exercise=${1}
+
+    # Ensure exercise directories removed
+    rm -fr exercises/practice/$exercise
+
+    # Ensure exercise directories removed
+    [ -d exercises/practice/$exercise ] \
+        && { echo "ERROR: Error removing exercise directory" ; exit 1 ; }
+}
+
 create_exercise() {
+    # Override any previous setting with function argument
+    local exercise=${1}
+
     # Ensure configlet utility exists
     which configlet >/dev/null \
         || { echo "ERROR: configlet utility not in PATH" ; exit 1 ; }
@@ -16,6 +126,9 @@ create_exercise() {
 }
 
 configure_exercise() {
+    # Override any previous setting with function argument
+    local exercise=${1}
+
     # Set the author name
     local author=AUTHOR_NAME_HERE
 
@@ -93,9 +206,11 @@ REXX_SCRIPT
     popd 2>&1 >/dev/null
 }
 
+# ---- ENTRY POINT
+
 # Two arguments expected
 [ $# -ne 2 -o -z "${1}" -o -z "${2}" ] \
-    && { echo "Usage: ${0} create|configure exercise" ; exit 1 ; }
+    && { echo "Usage: ${0} remove|create|configure exercise" ; exit 1 ; }
 
 # Uppercase `mode` for easier comparison
 mode="${1^^}" ; exercise="${2}"
@@ -118,8 +233,9 @@ grep -q '"slug": "'${exercise}'",$' config.json \
 
 # Check `mode` validity
 case "${mode}" in
+    REMOVE)    remove_exercise "${exercise}" ;;
     CREATE)    create_exercise "${exercise}" ;;
     CONFIGURE) configure_exercise "${exercise}" ;;
-    *) echo "Usage: ${0} create|configure exercise" ; exit 1 ;;
+    *) echo "Usage: ${0} remove|create|configure exercise" ; exit 1 ;;
 esac
 

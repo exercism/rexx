@@ -28,7 +28,7 @@ verify_practice_exercise() {
     local testdir="$(mktemp -d)"
     # Copy exercise directory contents to temporary directory
     cp "${srcdir}"/* "${testdir}"/
-    cp "${srcdir}"/.meta/example.rexx "${testdir}"/
+    cp "${srcdir}"/.meta/example*.rexx "${testdir}"/
     # Prepare and perform exercise tests
     echo "Testing ${exercise} ..."
     pushd "${testdir}"/ 2>&1 >/dev/null

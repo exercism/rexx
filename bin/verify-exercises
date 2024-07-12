@@ -25,8 +25,11 @@ verify_concept_exercise() {
 verify_practice_exercise() {
     local srcdir="${1}"
     local exercise="$(basename ${srcdir})"
-    local testdir="$(mktemp -d)"
+    # Check whether exercise is a work-in-progress; if so, skip test, return success
+    local is_wip=$(jq '.exercises.practice[] | select(.slug=="'${exercise}'") | select(.status=="wip")' config.json)
+    [ -n "${is_wip}" ] && return 0
     # Copy exercise directory contents to temporary directory
+    local testdir="$(mktemp -d)"
     cp "${srcdir}"/* "${testdir}"/
     cp "${srcdir}"/.meta/example*.rexx "${testdir}"/
     # Prepare and perform exercise tests

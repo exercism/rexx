@@ -34,6 +34,12 @@ verify_practice_exercise() {
     pushd "${testdir}"/ 2>&1 >/dev/null
         # Create implementation file from example
         rm -f "${exercise}".rexx && mv example.rexx "${exercise}".rexx
+        # Conditionally use example toplevel file
+        [ -f example-toplevel.rexx ] \
+          && { \
+               rm -f "${exercise}"-toplevel.rexx \
+                  && mv example-toplevel.rexx "${exercise}"-toplevel.rexx ; \
+             }
         # Run tests, and collect result code
         ./test-"${exercise}"
         local result=$?

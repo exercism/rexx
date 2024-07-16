@@ -106,7 +106,7 @@ expect:
   select
     when op == 'to be' | op == '=' then
       return report(actualValue, op, expected, actualValue == expected)
-    when op == 'not to be' | op == '^=' | op == '<>' then
+    when op == 'not to be' | op == '\=' | op == '^=' | op == '<>' then
       return report(actualValue, op, expected, actualValue \== expected)
     when op == 'larger than' | op == '>' then
       return report(actualValue, op, expected, actualValue > expected)
@@ -119,7 +119,7 @@ expect:
     otherwise do
       say 'operand 'op' unknown. Known operands are:'
       say '  to be (=), '
-      say '  not to be (^= or <>), '
+      say '  not to be (\= or ^= or <>), '
       say '  larger than (>),'
       say '  larger than or equal to (>=), '
       say '  less than (<) and'

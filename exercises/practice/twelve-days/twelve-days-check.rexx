@@ -52,48 +52,48 @@ verse_1_to_12_length = 2370
 
 /* Unit tests */
 check('verse -> first day a partridge in a pear tree' 'Verses(1)',,
-      'Verses(1)',, 'to be', verse_1)
+      'Verses(1)',, '=', verse_1)
 
 check('verse -> second day two turtle doves' 'Verses(2)',,
-      'Verses(2)',, 'to be', verse_2)
+      'Verses(2)',, '=', verse_2)
 
 check('verse -> third day three french hens' 'Verses(3)',,
-      'Verses(3)',, 'to be', verse_3)
+      'Verses(3)',, '=', verse_3)
 
 check('verse -> fourth day four calling birds' 'Verses(4)',,
-      'Verses(4)',, 'to be', verse_4)
+      'Verses(4)',, '=', verse_4)
 
 check('verse -> fifth day five gold rings' 'Verses(5)',,
-      'Verses(5)',, 'to be', verse_5)
+      'Verses(5)',, '=', verse_5)
 
 check('verse -> sixth day six geese-a-laying' 'Verses(6)',,
-      'Verses(6)',, 'to be', verse_6)
+      'Verses(6)',, '=', verse_6)
 
 check('verse -> seventh day seven swans-a-swimming' 'Verses(7)',,
-      'Verses(7)',, 'to be', verse_7)
+      'Verses(7)',, '=', verse_7)
 
 check('verse -> eighth day eight maids-a-milking' 'Verses(8)',,
-      'Verses(8)',, 'to be', verse_8)
+      'Verses(8)',, '=', verse_8)
 
 check('verse -> ninth day nine ladies dancing' 'Verses(9)',,
-      'Verses(9)',, 'to be', verse_9)
+      'Verses(9)',, '=', verse_9)
 
 check('verse -> tenth day ten lords-a-leaping' 'Verses(10)',,
-      'Verses(10)',, 'to be', verse_10)
+      'Verses(10)',, '=', verse_10)
 
 check('verse -> eleventh day eleven pipers piping' 'Verses(11)',,
-      'Verses(11)',, 'to be', verse_11)
+      'Verses(11)',, '=', verse_11)
 
 check('verse -> twelfth day twelve drummers drumming' 'Verses(12)',,
-      'Verses(12)',, 'to be', verse_12)
+      'Verses(12)',, '=', verse_12)
 
 check('lyrics -> recites first three verses of the song' 'Sing(1, 3)',,
-      'Sing(1, 3)',, 'to be', verse_1_to_3)
+      'Sing(1, 3)',, '=', verse_1_to_3)
 
 check('lyrics -> recites three verses from the middle of the song' 'Sing(4, 6)',,
-      'Sing(4, 6)',, 'to be', verse_4_to_6)
+      'Sing(4, 6)',, '=', verse_4_to_6)
 
 cmd = 'actual = ' 'Sing(1, 12)' ; interpret cmd
 check('lyrics -> recites the whole song' 'Sing(1, 12)',,
-      'Sing(1, 12)', LENGTH(actual), 'to be', verse_1_to_12_length)
+      'Sing(1, 12)', LENGTH(actual), '=', verse_1_to_12_length)
 

@@ -20,17 +20,17 @@ primes = '2 3 5 7 11 13 17 19 23 29 31 37 41 43' ,
 
 /* Unit tests */
 check('no primes under two' 'Sieve(1)',,
-      'Sieve(1)',, 'to be', '')
+      'Sieve(1)',, '=', '')
 
 check('find first prime' 'Sieve(2)',,
-      'Sieve(2)',, 'to be', '2')
+      'Sieve(2)',, '=', '2')
 
 check('find primes up to 10' 'Sieve(10)',,
-      'Sieve(10)',, 'to be', '2 3 5 7')
+      'Sieve(10)',, '=', '2 3 5 7')
 
 check('limit is prime' 'Sieve(13)',,
-      'Sieve(13)',, 'to be', '2 3 5 7 11 13')
+      'Sieve(13)',, '=', '2 3 5 7 11 13')
 
 check('find primes up to 1000' 'Sieve(1000)',,
-      'Sieve(1000)',, 'to be', primes)
+      'Sieve(1000)',, '=', primes)
 

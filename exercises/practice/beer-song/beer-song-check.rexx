@@ -43,27 +43,27 @@ verse_99_to_0_length = 11885
 
 /* Unit tests */
 check('verse -> single verse -> first generic verse' 'Verse(3)',,
-      'Verse(3)',, 'to be', verse_3)
+      'Verse(3)',, '=', verse_3)
 
 check('verse -> single verse -> last generic verse' 'Verse(99)',,
-      'Verse(99)',, 'to be', verse_99)
+      'Verse(99)',, '=', verse_99)
 
 check('verse -> single verse -> verse with 2 bottles' 'Verse(2)',,
-      'Verse(2)',, 'to be', verse_2)
+      'Verse(2)',, '=', verse_2)
 
 check('verse -> single verse -> verse with 1 bottle' 'Verse(1)',,
-      'Verse(1)',, 'to be', verse_1)
+      'Verse(1)',, '=', verse_1)
 
 check('verse -> single verse -> verse with 0 bottles' 'Verse(0)',,
-      'Verse(0)',, 'to be', verse_0)
+      'Verse(0)',, '=', verse_0)
 
 check('lyrics -> multiple verses -> first two verses' 'Sing(1, 0)',,
-      'Sing(1, 0)',, 'to be', verse_1_to_0)
+      'Sing(1, 0)',, '=', verse_1_to_0)
 
 check('lyrics -> multiple verses -> last three verses' 'Sing(99, 97)',,
-      'Sing(99, 97)',, 'to be', verse_99_to_97)
+      'Sing(99, 97)',, '=', verse_99_to_97)
 
 cmd = 'actual = Sing(99, 0)' ; interpret cmd
 check('lyrics -> multiple verses -> all verses' 'Sing(99, 0)',,
-      'Sing(99, 0)', LENGTH(actual), 'to be', verse_99_to_0_length)
+      'Sing(99, 0)', LENGTH(actual), '=', verse_99_to_0_length)
 

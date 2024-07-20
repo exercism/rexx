@@ -3,5 +3,5 @@ context('Checking the HelloWorld function')
 
 /* Unit tests */
 check('Say Hi!' 'HelloWorld()',,
-      'HelloWorld()',, 'to be', "Hello, World!")
+      'HelloWorld()',, '=', "Hello, World!")
 

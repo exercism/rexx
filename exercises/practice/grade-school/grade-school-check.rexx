@@ -43,38 +43,38 @@ roster_9 = roster_multiple_grades
 
 /* Unit tests */
 check('Roster is empty when no student is added' 'GradeSchoolCreate()',,
-      'GradeSchoolCreate()',, 'to be', roster_empty)
+      'GradeSchoolCreate()',, '=', roster_empty)
 
 check('Student is added to the roster' 'GradeSchoolAdd(roster_2, "Aimee", 2)',,
-      'GradeSchoolAdd(roster_2, "Aimee", 2)',, 'to be', roster_aimee_only)
+      'GradeSchoolAdd(roster_2, "Aimee", 2)',, '=', roster_aimee_only)
 
 check('Multiple students in the same grade are added to the roster' 'GradeSchoolAdd(roster_3)',,
-      'GradeSchoolAdd(roster_3)',, 'to be', roster_multiple_students_same_grade)
+      'GradeSchoolAdd(roster_3)',, '=', roster_multiple_students_same_grade)
 
 check('Students in multiple grades are added to the roster' 'GradeSchoolAdd(roster_4)',,
-      'GradeSchoolAdd(roster_4)',, 'to be', roster_multiple_students_different_grades)
+      'GradeSchoolAdd(roster_4)',, '=', roster_multiple_students_different_grades)
 
 check('Cannot add student to same grade in the roster more than once' 'GradeSchoolAdd(roster_5, "Harry", 2)',,
-      'GradeSchoolAdd(roster_5, "Harry", 2)',, 'to be', roster_harry_only)
+      'GradeSchoolAdd(roster_5, "Harry", 2)',, '=', roster_harry_only)
 
 check('A student cannot be in two different grades' 'GradeSchoolAdd(roster_6, "Harry", 3)',,
-      'GradeSchoolAdd(roster_6, "Harry", 3)',, 'to be', roster_harry_only)
+      'GradeSchoolAdd(roster_6, "Harry", 3)',, '=', roster_harry_only)
 
 check('Grade is empty if no students in the roster' 'GradeSchoolIsEmpty(roster_7)',,
-      'GradeSchoolIsEmpty(roster_7)',, 'to be', 1)
+      'GradeSchoolIsEmpty(roster_7)',, '=', 1)
 
 check('Grade is empty if no students in that grade' 'GradeSchoolIsEmpty(roster_8, 5)',,
-      'GradeSchoolIsEmpty(roster_8, 5)',, 'to be', 1)
+      'GradeSchoolIsEmpty(roster_8, 5)',, '=', 1)
 
 check('Grade is not empty if students in that grade' 'GradeSchoolIsEmpty(roster_8, 2)',,
-      'GradeSchoolIsEmpty(roster_8, 2)',, 'to be', 0)
+      'GradeSchoolIsEmpty(roster_8, 2)',, '=', 0)
 
 check('Students are sorted by grades in the roster' 'GradeSchoolList(roster_9, "G")',,
-      'GradeSchoolList(roster_9, "G")',, 'to be', output_sorted_grades)
+      'GradeSchoolList(roster_9, "G")',, '=', output_sorted_grades)
 
 check('Students are sorted by name in the roster' 'GradeSchoolList(roster_9, "N")',,
-      'GradeSchoolList(roster_9, "N")',, 'to be', output_sorted_names)
+      'GradeSchoolList(roster_9, "N")',, '=', output_sorted_names)
 
 check('Students are sorted by name in a grade' 'GradeSchoolList(roster_9, "N", 3)',,
-      'GradeSchoolList(roster_9, "N", 3)',, 'to be', output_selected_grade)
+      'GradeSchoolList(roster_9, "N", 3)',, '=', output_selected_grade)
 

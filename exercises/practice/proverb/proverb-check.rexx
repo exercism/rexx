@@ -26,20 +26,20 @@ proverb_modern = 'For want of a pin the gun was lost.' || "0A"X || ,
 
 /* Unit tests */
 check('zero pieces' 'Proverb()',,
-      'Proverb()',, 'to be', '')
+      'Proverb()',, '=', '')
 
 check('one piece' 'Proverb("nail")',,
-      'Proverb("nail")',, 'to be', proverb_1)
+      'Proverb("nail")',, '=', proverb_1)
 
 check('two pieces' 'Proverb("nail", "shoe")',,
-      'Proverb("nail", "shoe")',, 'to be', proverb_2)
+      'Proverb("nail", "shoe")',, '=', proverb_2)
 
 check('three pieces' 'Proverb("nail", "shoe", "horse")',,
-      'Proverb("nail", "shoe", "horse")',, 'to be', proverb_3)
+      'Proverb("nail", "shoe", "horse")',, '=', proverb_3)
 
 check('full proverb' 'Proverb("nail", "shoe", "horse", "rider", "message", "battle", "kingdom")',,
-      'Proverb("nail", "shoe", "horse", "rider", "message", "battle", "kingdom")',, 'to be', proverb_full)
+      'Proverb("nail", "shoe", "horse", "rider", "message", "battle", "kingdom")',, '=', proverb_full)
 
 check('four pieces modernized' 'Proverb("pin", "gun", "soldier", "battle")',,
-      'Proverb("pin", "gun", "soldier", "battle")',, 'to be', proverb_modern)
+      'Proverb("pin", "gun", "soldier", "battle")',, '=', proverb_modern)
 

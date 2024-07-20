@@ -50,8 +50,8 @@ check('statement containing question mark' 'Hey("Ending with ? means a question.
 check('non-letters with question' 'Hey(":) ?")',,
       'Hey(":) ?")',, '=', 'Sure.')
 
-check('prattling on' 'Hey("Wait! Hang on. Are you going = OK?")',,
-      'Hey("Wait! Hang on. Are you going = OK?")',, '=', 'Sure.')
+check('prattling on' 'Hey("Wait! Hang on. Are you going to be OK?")',,
+      'Hey("Wait! Hang on. Are you going to be OK?")',, '=', 'Sure.')
 
 check('silence' 'Hey("")',,
       'Hey("")',, '=', 'Fine. Be that way!')

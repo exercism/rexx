@@ -49,41 +49,41 @@ expected_13 = 'iamapandabear'
 
 /* Unit tests */
 check('Can generate a random key' 'GenerateKey()',,
-      'GenerateKey()', key_1_length, 'to be', 100)
+      'GenerateKey()', key_1_length, '=', 100)
 
 check('Random key cipher -> Key is made only of lowercase letters' 'GenerateKey()',,
-      'GenerateKey()', key_2_islowercase, 'to be', 0)
+      'GenerateKey()', key_2_islowercase, '=', 0)
 
 check('Random key cipher -> Can encode' 'Encode(key_3_4, plaintext_3_4)',,
-      'Encode(key_3_4, plaintext_3_4)',, 'to be', encoded_3_4)
+      'Encode(key_3_4, plaintext_3_4)',, '=', encoded_3_4)
 
 check('Random key cipher -> Can decode' 'Decode(key_3_4, encoded_3_4)',,
-      'Decode(key_3_4, encoded_3_4)',, 'to be', plaintext_3_4)
+      'Decode(key_3_4, encoded_3_4)',, '=', plaintext_3_4)
 
 check('Random key cipher -> Is reversible. i.e.,  decoding an encoded result yields original plaintext' 'Decode(key_5, Encode(key_5, plaintext_5))',,
-      'Decode(key_5, Encode(key_5, plaintext_5))',, 'to be', plaintext_5)
+      'Decode(key_5, Encode(key_5, plaintext_5))',, '=', plaintext_5)
 
 check('Substitution cipher -> Can encode' 'Encode(key_6, plaintext_6)',,
-      'Encode(key_6, plaintext_6)',, 'to be', expected_6)
+      'Encode(key_6, plaintext_6)',, '=', expected_6)
 
 check('Substitution cipher -> Can decode' 'Decode(key_7, plaintext_7)',,
-      'Decode(key_7, plaintext_7)',, 'to be', expected_7)
+      'Decode(key_7, plaintext_7)',, '=', expected_7)
 
 check('Substitution cipher -> Is reversible. i.e.,  decoding an encoded result yields original plaintext' 'Decode(key_8, Encode(key_8, plaintext_8))',,
-      'Decode(key_8, Encode(key_8, plaintext_8))',, 'to be', expected_8)
+      'Decode(key_8, Encode(key_8, plaintext_8))',, '=', expected_8)
 
 check('Substitution cipher -> Can double shift encode' 'Encode(key_9, plaintext_9)',,
-      'Encode(key_9, plaintext_9)',, 'to be', expected_9)
+      'Encode(key_9, plaintext_9)',, '=', expected_9)
 
 check('Substitution cipher -> Can wrap on encode' 'Encode(key_10, plaintext_10)',,
-      'Encode(key_10, plaintext_10)',, 'to be', expected_10)
+      'Encode(key_10, plaintext_10)',, '=', expected_10)
 
 check('Substitution cipher -> Can wrap on decode' 'Decode(key_11, plaintext_11)',,
-      'Decode(key_11, plaintext_11)',, 'to be', expected_11)
+      'Decode(key_11, plaintext_11)',, '=', expected_11)
 
 check('Substitution cipher -> Can encode messages longer than the key' 'Encode(key_12, plaintext_12)',,
-      'Encode(key_12, plaintext_12)',, 'to be', expected_12)
+      'Encode(key_12, plaintext_12)',, '=', expected_12)
 
 check('Substitution cipher -> Can decode messages longer than the key' 'Decode(key_13, plaintext_13)',,
-      'Decode(key_13, plaintext_13)',, 'to be', expected_13)
+      'Decode(key_13, plaintext_13)',, '=', expected_13)
 

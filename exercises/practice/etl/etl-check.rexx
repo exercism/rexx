@@ -25,17 +25,17 @@ orderB = XRANGE('a', 'z')
 
 /* Unit tests */
 check('single letter' 'Transform("1:A")',,
-      'Transform("1:A")',, 'to be', "a:1")
+      'Transform("1:A")',, '=', "a:1")
 
 check('single score with multiple letters' 'Transform("1:A E I O U;")',,
-      'Transform("1:A E I O U;")',, 'to be', "a:1 e:1 i:1 o:1 u:1")
+      'Transform("1:A E I O U;")',, '=', "a:1 e:1 i:1 o:1 u:1")
 
 check('multiple scores with multiple letters' 'Transform("1:A E;2:D G;")',,
-      'Transform("1:A E;2:D G;")',, 'to be', "a:1 e:1 d:2 g:2")
+      'Transform("1:A E;2:D G;")',, '=', "a:1 e:1 d:2 g:2")
 
 check('multiple scores with differing numbers of letters' 'Transform(inputA)',,
-      'Transform(inputA)',, 'to be', outputA)
+      'Transform(inputA)',, '=', outputA)
 
 check('multiple scores with differing numbers of letters (output ordered)' 'Transform(inputB, orderB)',,
-      'Transform(inputB, orderB)',, 'to be', outputB)
+      'Transform(inputB, orderB)',, '=', outputB)
 

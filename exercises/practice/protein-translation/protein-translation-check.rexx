@@ -3,74 +3,74 @@ context('Checking the Translate function')
 
 /* Unit tests */
 check('Empty RNA sequence results in no proteins' 'Translate("")',,
-      'Translate("")',, 'to be', '')
+      'Translate("")',, '=', '')
 
 check('Methionine RNA sequence' 'Translate("AUG")',,
-      'Translate("AUG")',, 'to be', 'methionine')
+      'Translate("AUG")',, '=', 'methionine')
 
 check('Phenylalanine RNA sequence 1' 'Translate("UUU")',,
-      'Translate("UUU")',, 'to be', 'phenylalanine')
+      'Translate("UUU")',, '=', 'phenylalanine')
 
 check('Phenylalanine RNA sequence 2' 'Translate("UUC")',,
-      'Translate("UUC")',, 'to be', 'phenylalanine')
+      'Translate("UUC")',, '=', 'phenylalanine')
 
 check('Leucine RNA sequence 1' 'Translate("UUA")',,
-      'Translate("UUA")',, 'to be', 'leucine')
+      'Translate("UUA")',, '=', 'leucine')
 
 check('Leucine RNA sequence 2' 'Translate("UUG")',,
-      'Translate("UUG")',, 'to be', 'leucine')
+      'Translate("UUG")',, '=', 'leucine')
 
 check('Serine RNA sequence 1' 'Translate("UCU")',,
-      'Translate("UCU")',, 'to be', 'serine')
+      'Translate("UCU")',, '=', 'serine')
 
 check('Serine RNA sequence 2' 'Translate("UCC")',,
-      'Translate("UCC")',, 'to be', 'serine')
+      'Translate("UCC")',, '=', 'serine')
 
 check('Serine RNA sequence 3' 'Translate("UCA")',,
-      'Translate("UCA")',, 'to be', 'serine')
+      'Translate("UCA")',, '=', 'serine')
 
 check('Serine RNA sequence 4' 'Translate("UCG")',,
-      'Translate("UCG")',, 'to be', 'serine')
+      'Translate("UCG")',, '=', 'serine')
 
 check('Tyrosine RNA sequence 1' 'Translate("UAU")',,
-      'Translate("UAU")',, 'to be', 'tyrosine')
+      'Translate("UAU")',, '=', 'tyrosine')
 
 check('Tyrosine RNA sequence 2' 'Translate("UAC")',,
-      'Translate("UAC")',, 'to be', 'tyrosine')
+      'Translate("UAC")',, '=', 'tyrosine')
 
 check('Cysteine RNA sequence 1' 'Translate("UGU")',,
-      'Translate("UGU")',, 'to be', 'cysteine')
+      'Translate("UGU")',, '=', 'cysteine')
 
 check('Cysteine RNA sequence 2' 'Translate("UGC")',,
-      'Translate("UGC")',, 'to be', 'cysteine')
+      'Translate("UGC")',, '=', 'cysteine')
 
 check('Tryptophan RNA sequence' 'Translate("UGG")',,
-      'Translate("UGG")',, 'to be', 'tryptophan')
+      'Translate("UGG")',, '=', 'tryptophan')
 
 check('STOP codon RNA sequence 1' 'Translate("UAA")',,
-      'Translate("UAA")',, 'to be', '')
+      'Translate("UAA")',, '=', '')
 
 check('STOP codon RNA sequence 2' 'Translate("UAG")',,
-      'Translate("UAG")',, 'to be', '')
+      'Translate("UAG")',, '=', '')
 
 check('STOP codon RNA sequence 3' 'Translate("UGA")',,
-      'Translate("UGA")',, 'to be', '')
+      'Translate("UGA")',, '=', '')
 
 check('Translate RNA strand into correct protein list' 'Translate("AUGUUUUGG")',,
-      'Translate("AUGUUUUGG")',, 'to be', 'methionine phenylalanine tryptophan')
+      'Translate("AUGUUUUGG")',, '=', 'methionine phenylalanine tryptophan')
 
 check('Translation stops if STOP codon at beginning of sequence' 'Translate("UAGUGG")',,
-      'Translate("UAGUGG")',, 'to be', '')
+      'Translate("UAGUGG")',, '=', '')
 
 check('Translation stops if STOP codon at end of two-codon sequence' 'Translate("UGGUAG")',,
-      'Translate("UGGUAG")',, 'to be', 'tryptophan')
+      'Translate("UGGUAG")',, '=', 'tryptophan')
 
 check('Translation stops if STOP codon at end of three-codon sequence' 'Translate("AUGUUUUAA")',,
-      'Translate("AUGUUUUAA")',, 'to be', 'methionine phenylalanine')
+      'Translate("AUGUUUUAA")',, '=', 'methionine phenylalanine')
 
 check('Translation stops if STOP codon in middle of three-codon sequence' 'Translate("UGGUAGUGG")',,
-      'Translate("UGGUAGUGG")',, 'to be', 'tryptophan')
+      'Translate("UGGUAGUGG")',, '=', 'tryptophan')
 
 check('Translation stops if STOP codon in middle of six-codon sequence' 'Translate("UGGUGUUAUUAAUGGUUU")',,
-      'Translate("UGGUGUUAUUAAUGGUUU")',, 'to be', 'tryptophan cysteine tyrosine')
+      'Translate("UGGUGUUAUUAAUGGUUU")',, '=', 'tryptophan cysteine tyrosine')
 

@@ -14,29 +14,29 @@ matrix_sp_single_row = MatrixCreate("2 5 3 5")
 
 /* Unit tests */
 check('Can identify single saddle point' 'SaddlePoints(matrix_sp_one)',,
-      'SaddlePoints(matrix_sp_one)',, 'to be', '2 1')
+      'SaddlePoints(matrix_sp_one)',, '=', '2 1')
 
 check('Can identify that empty matrix has no saddle points' 'SaddlePoints(matrix_empty)',,
-      'SaddlePoints(matrix_empty)',, 'to be', '')
+      'SaddlePoints(matrix_empty)',, '=', '')
 
 check('Can identify lack of saddle points when there are none' 'SaddlePoints(matrix_sp_zero)',,
-      'SaddlePoints(matrix_sp_zero)',, 'to be', '')
+      'SaddlePoints(matrix_sp_zero)',, '=', '')
 
 check('Can identify multiple saddle points in a column' 'SaddlePoints(matrix_sp_multiple_col)',,
-      'SaddlePoints(matrix_sp_multiple_col)',, 'to be', '1 2 2 2 3 2')
+      'SaddlePoints(matrix_sp_multiple_col)',, '=', '1 2 2 2 3 2')
 
 check('Can identify multiple saddle points in a row' 'SaddlePoints(matrix_sp_multiple_row)',,
-      'SaddlePoints(matrix_sp_multiple_row)',, 'to be', '2 1 2 2 2 3')
+      'SaddlePoints(matrix_sp_multiple_row)',, '=', '2 1 2 2 2 3')
 
 check('Can identify saddle point in bottom right corner' 'SaddlePoints(matrix_sp_bottom_right)',,
-      'SaddlePoints(matrix_sp_bottom_right)',, 'to be', '3 3')
+      'SaddlePoints(matrix_sp_bottom_right)',, '=', '3 3')
 
 check('Can identify saddle points in a non square matrix' 'SaddlePoints(matrix_sp_non_square)',,
-      'SaddlePoints(matrix_sp_non_square)',, 'to be', '1 1 1 3')
+      'SaddlePoints(matrix_sp_non_square)',, '=', '1 1 1 3')
 
 check('Can identify that saddle points in a single column matrix are those with the minimum value' 'SaddlePoints(matrix_sp_single_col)',,
-      'SaddlePoints(matrix_sp_single_col)',, 'to be', '2 1 4 1')
+      'SaddlePoints(matrix_sp_single_col)',, '=', '2 1 4 1')
 
 check('Can identify that saddle points in a single row matrix are those with the maximum value' 'SaddlePoints(matrix_sp_single_row)',,
-      'SaddlePoints(matrix_sp_single_row)',, 'to be', '1 2 1 4')
+      'SaddlePoints(matrix_sp_single_row)',, '=', '1 2 1 4')
 

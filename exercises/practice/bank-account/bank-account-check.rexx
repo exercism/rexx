@@ -22,53 +22,53 @@ account_16 = Deposit(-50, account_15)
 
 /* Unit tests */
 check('Create a (dormant) new bank account' 'Balance(account_0)',,
-      'Balance(account_0)',, 'to be', -1)
+      'Balance(account_0)',, '=', -1)
 
 check('Close a dormant bank account - no account status change' 'Balance(account_1)',,
-      'Balance(account_1)',, 'to be', -1)
+      'Balance(account_1)',, '=', -1)
 
 check('Open a dormant bank account - dormant account now open' 'Balance(account_2)',,
-      'Balance(account_2)',, 'to be', 0)
+      'Balance(account_2)',, '=', 0)
 
 check('Open an already open bank account - no account status change' 'Balance(account_3)',,
-      'Balance(account_3)',, 'to be', 0)
+      'Balance(account_3)',, '=', 0)
 
 check('Close an already open bank account - account becomes dormant' 'Balance(account_4)',,
-      'Balance(account_4)',, 'to be', -1)
+      'Balance(account_4)',, '=', -1)
 
 check('Deposit money into a dormant bank account - deposit not accepted' 'Balance(account_5)',,
-      'Balance(account_5)',, 'to be', -1)
+      'Balance(account_5)',, '=', -1)
 
 check('Withdraw money from a dormant bank account - withdrawal unsuccessful' 'Balance(account_6)',,
-      'Balance(account_6)',, 'to be', -1)
+      'Balance(account_6)',, '=', -1)
 
 check('Attempt overdraw from a dormant bank account - withdrawal unsuccessful' 'Balance(account_7)',,
-      'Balance(account_7)',, 'to be', -1)
+      'Balance(account_7)',, '=', -1)
 
 check('Withdraw negative amount from a dormant bank account - withdrawal unsuccessful' 'Balance(account_8)',,
-      'Balance(account_8)',, 'to be', -1)
+      'Balance(account_8)',, '=', -1)
 
 check('Deposit negative amount into a dormant bank account - deposit unsuccessful' 'Balance(account_9)',,
-      'Balance(account_9)',, 'to be', -1)
+      'Balance(account_9)',, '=', -1)
 
 check('Open a dormant bank account - dormant account now open' 'Balance(account_10)',,
-      'Balance(account_10)',, 'to be', 0)
+      'Balance(account_10)',, '=', 0)
 
 check('Deposit money into an open bank account - deposit accepted' 'Balance(account_11)',,
-      'Balance(account_11)',, 'to be', 100)
+      'Balance(account_11)',, '=', 100)
 
 check('Deposit more money into an open bank account - deposit accepted' 'Balance(account_12)',,
-      'Balance(account_12)',, 'to be', 250)
+      'Balance(account_12)',, '=', 250)
 
 check('Withdraw money from an open bank account - withdrawal successful' 'Balance(account_13)',,
-      'Balance(account_13)',, 'to be', 200)
+      'Balance(account_13)',, '=', 200)
 
 check('Attempt overdraw from an open bank account - withdrawal unsuccessful, no account status change' 'Balance(account_14)',,
-      'Balance(account_14)',, 'to be', 200)
+      'Balance(account_14)',, '=', 200)
 
 check('Withdraw negative amount from an open bank account - withdrawal unsuccessful, no account status change' 'Balance(account_15)',,
-      'Balance(account_15)',, 'to be', 200)
+      'Balance(account_15)',, '=', 200)
 
 check('Deposit negative amount into an open bank account - deposit unsuccessful, no account status change' 'Balance(account_16)',,
-      'Balance(account_16)',, 'to be', 200)
+      'Balance(account_16)',, '=', 200)
 

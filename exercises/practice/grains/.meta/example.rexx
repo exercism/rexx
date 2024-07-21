@@ -8,5 +8,4 @@ Square : procedure
   if n < 1 | n > 64 then ; return -1
   else ; return ComputeSquare(n)
 
-Total : procedure
-return Square(64) * 2 - 1
+Total : procedure ; return Square(64) * 2 - 1

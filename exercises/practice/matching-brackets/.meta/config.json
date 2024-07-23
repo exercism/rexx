@@ -3,7 +3,7 @@
   "files": {
     "solution": ["matching-brackets.rexx", "matching-brackets-toplevel.rexx"],
     "test": ["test-matching-brackets"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Make sure the brackets and braces all match.",
   "source": "Ginna Baker"

@@ -3,7 +3,7 @@
   "files": {
     "solution": ["transpose.rexx", "transpose-toplevel.rexx"],
     "test": ["test-transpose"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Take input text and output it transposed.",
   "source": "Reddit r/dailyprogrammer challenge #270 [Easy].",

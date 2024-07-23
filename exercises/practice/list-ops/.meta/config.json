@@ -3,7 +3,7 @@
   "files": {
     "solution": ["list-ops.rexx", "list-ops-toplevel.rexx"],
     "test": ["test-list-ops"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Implement basic list operations."
 }

@@ -3,7 +3,7 @@
   "files": {
     "solution": ["sieve.rexx", "sieve-toplevel.rexx"],
     "test": ["test-sieve"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Use the Sieve of Eratosthenes to find all the primes from 2 up to a given number.",
   "source": "Sieve of Eratosthenes at Wikipedia",

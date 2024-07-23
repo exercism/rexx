@@ -3,7 +3,7 @@
   "files": {
     "solution": ["binary-search.rexx", "binary-search-toplevel.rexx"],
     "test": ["test-binary-search"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Implement a binary search algorithm.",
   "source": "Wikipedia",

@@ -3,7 +3,7 @@
   "files": {
     "solution": ["simple-cipher.rexx", "simple-cipher-toplevel.rexx"],
     "test": ["test-simple-cipher"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Implement a simple shift cipher like Caesar and a more secure substitution cipher.",
   "source": "Substitution Cipher at Wikipedia",

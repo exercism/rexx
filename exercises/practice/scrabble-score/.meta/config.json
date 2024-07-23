@@ -3,7 +3,7 @@
   "files": {
     "solution": ["scrabble-score.rexx", "scrabble-score-toplevel.rexx"],
     "test": ["test-scrabble-score"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Given a word, compute the Scrabble score for that word.",
   "source": "Inspired by the Extreme Startup game",

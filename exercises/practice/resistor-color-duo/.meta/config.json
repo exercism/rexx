@@ -3,7 +3,7 @@
   "files": {
     "solution": ["resistor-color-duo.rexx", "resistor-color-duo-toplevel.rexx"],
     "test": ["test-resistor-color-duo"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Convert color codes, as used on resistors, to a numeric value.",
   "source": "Maud de Vries, Erik Schierboom",

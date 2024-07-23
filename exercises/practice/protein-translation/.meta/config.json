@@ -3,7 +3,7 @@
   "files": {
     "solution": ["protein-translation.rexx", "protein-translation-toplevel.rexx"],
     "test": ["test-protein-translation"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Translate RNA sequences into proteins.",
   "source": "Tyler Long"

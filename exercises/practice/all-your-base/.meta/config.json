@@ -3,7 +3,7 @@
   "files": {
     "solution": ["all-your-base.rexx", "all-your-base-toplevel.rexx"],
     "test": ["test-all-your-base"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Convert a number, represented as a sequence of digits in one base, to any other base."
 }

@@ -3,7 +3,7 @@
   "files": {
     "solution": ["square-root.rexx", "square-root-toplevel.rexx"],
     "test": ["test-square-root"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Given a natural radicand, return its square root.",
   "source": "wolf99",

@@ -3,7 +3,7 @@
   "files": {
     "solution": ["error-handling.rexx", "error-handling-toplevel.rexx"],
     "test": ["test-error-handling"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Implement various kinds of error handling and resource management."
 }

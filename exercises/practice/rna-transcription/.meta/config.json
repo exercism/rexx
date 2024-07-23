@@ -3,7 +3,7 @@
   "files": {
     "solution": ["rna-transcription.rexx", "rna-transcription-toplevel.rexx"],
     "test": ["test-rna-transcription"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Given a DNA strand, return its RNA Complement Transcription.",
   "source": "Hyperphysics",

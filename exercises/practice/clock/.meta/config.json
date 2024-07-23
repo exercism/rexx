@@ -3,7 +3,7 @@
   "files": {
     "solution": ["clock.rexx", "clock-toplevel.rexx"],
     "test": ["test-clock"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Implement a clock that handles times without dates.",
   "source": "Pairing session with Erin Drummond",

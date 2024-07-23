@@ -3,7 +3,7 @@
   "files": {
     "solution": ["sublist.rexx", "sublist-toplevel.rexx"],
     "test": ["test-sublist"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Write a function to determine if a list is a sublist of another list."
 }

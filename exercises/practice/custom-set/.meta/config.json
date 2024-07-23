@@ -3,7 +3,7 @@
   "files": {
     "solution": ["custom-set.rexx", "custom-set-toplevel.rexx"],
     "test": ["test-custom-set"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Create a custom set type."
 }

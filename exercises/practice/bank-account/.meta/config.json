@@ -3,7 +3,7 @@
   "files": {
     "solution": ["bank-account.rexx", "bank-account-toplevel.rexx"],
     "test": ["test-bank-account"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Simulate a bank account supporting opening/closing, withdraws, and deposits of money. Watch out for concurrent transactions!"
 }

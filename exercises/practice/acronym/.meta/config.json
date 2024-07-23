@@ -3,7 +3,7 @@
   "files": {
     "solution": ["acronym.rexx", "acronym-toplevel.rexx"],
     "test": ["test-acronym"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Convert a long phrase to its acronym.",
   "source": "Julien Vanier",

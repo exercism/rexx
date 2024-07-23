@@ -3,7 +3,7 @@
   "files": {
     "solution": ["series.rexx", "series-toplevel.rexx"],
     "test": ["test-series"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Given a string of digits, output all the contiguous substrings of length `n` in that string.",
   "source": "A subset of the Problem 8 at Project Euler",

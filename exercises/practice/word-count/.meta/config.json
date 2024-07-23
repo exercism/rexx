@@ -3,7 +3,7 @@
   "files": {
     "solution": ["word-count.rexx", "word-count-toplevel.rexx"],
     "test": ["test-word-count"],
-    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
+    "example": [".meta/example.rexx"]
   },
   "blurb": "Given a phrase, count the occurrences of each word in that phrase.",
   "source": "This is a classic toy problem, but we were reminded of it by seeing it in the Go Tour."

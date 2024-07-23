@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["hamming.rexx"],
+    "solution": ["hamming.rexx", "hamming-toplevel.rexx"],
     "test": ["test-hamming"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Calculate the Hamming difference between two DNA strands.",
   "source": "The Calculating Point Mutations problem at Rosalind",

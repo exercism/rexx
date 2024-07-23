@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["prime-factors.rexx"],
+    "solution": ["prime-factors.rexx", "prime-factors-toplevel.rexx"],
     "test": ["test-prime-factors"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Compute the prime factors of a given natural number.",
   "source": "The Prime Factors Kata by Uncle Bob",

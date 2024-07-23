@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["grade-school.rexx"],
+    "solution": ["grade-school.rexx", "grade-school-toplevel.rexx"],
     "test": ["test-grade-school"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Given students' names along with the grade that they are in, create a roster for the school.",
   "source": "A pairing session with Phil Battos at gSchool"

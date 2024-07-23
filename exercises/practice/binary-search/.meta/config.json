@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["binary-search.rexx"],
+    "solution": ["binary-search.rexx", "binary-search-toplevel.rexx"],
     "test": ["test-binary-search"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Implement a binary search algorithm.",
   "source": "Wikipedia",

@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["etl.rexx"],
+    "solution": ["etl.rexx", "etl-toplevel.rexx"],
     "test": ["test-etl"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "We are going to do the `Transform` step of an Extract-Transform-Load.",
   "source": "Exercise by the JumpstartLab team for students at The Turing School of Software and Design.",

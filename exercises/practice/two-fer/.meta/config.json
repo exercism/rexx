@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["two-fer.rexx"],
+    "solution": ["two-fer.rexx", "two-fer-toplevel.rexx"],
     "test": ["test-two-fer"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Create a sentence of the form \"One for X, one for me.\".",
   "source_url": "https://github.com/exercism/problem-specifications/issues/757"

@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["leap.rexx"],
+    "solution": ["leap.rexx", "leap-toplevel.rexx"],
     "test": ["test-leap"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Given a year, report if it is a leap year.",
   "source": "CodeRanch Cattle Drive, Assignment 3",

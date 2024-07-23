@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["rotational-cipher.rexx"],
+    "solution": ["rotational-cipher.rexx", "rotational-cipher-toplevel.rexx"],
     "test": ["test-rotational-cipher"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Create an implementation of the rotational cipher, also sometimes called the Caesar cipher.",
   "source": "Wikipedia",

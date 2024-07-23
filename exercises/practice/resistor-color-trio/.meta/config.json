@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["resistor-color-trio.rexx"],
+    "solution": ["resistor-color-trio.rexx", "resistor-color-trio-toplevel.rexx"],
     "test": ["test-resistor-color-trio"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Convert color codes, as used on resistors, to a human-readable label.",
   "source": "Maud de Vries, Erik Schierboom",

@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-if [ $# -eq 0 ] ; then ./runt --regina hello-world-check hello-world hello-world-toplevel ; else ./runt "$@" hello-world-check hello-world hello-world-toplevel ; fi
+cd "testlib" 2>&1 >/dev/null
+if [ $# -eq 0 ] ; then ./runt --regina ../hello-world-check ../hello-world ../hello-world-toplevel ; else ./runt "$@" ../hello-world-check ../hello-world ../hello-world-toplevel ; fi
+cd - 2>&1 >/dev/null

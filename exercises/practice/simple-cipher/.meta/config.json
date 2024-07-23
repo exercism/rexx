@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["simple-cipher.rexx"],
+    "solution": ["simple-cipher.rexx", "simple-cipher-toplevel.rexx"],
     "test": ["test-simple-cipher"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Implement a simple shift cipher like Caesar and a more secure substitution cipher.",
   "source": "Substitution Cipher at Wikipedia",

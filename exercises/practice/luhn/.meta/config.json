@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["luhn.rexx"],
+    "solution": ["luhn.rexx", "luhn-toplevel.rexx"],
     "test": ["test-luhn"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Given a number determine whether or not it is valid per the Luhn formula.",
   "source": "The Luhn Algorithm on Wikipedia",

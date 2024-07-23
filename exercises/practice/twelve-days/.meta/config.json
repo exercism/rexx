@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["twelve-days.rexx"],
+    "solution": ["twelve-days.rexx", "twelve-days-toplevel.rexx"],
     "test": ["test-twelve-days"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Output the lyrics to 'The Twelve Days of Christmas'.",
   "source": "Wikipedia",

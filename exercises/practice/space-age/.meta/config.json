@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["space-age.rexx"],
+    "solution": ["space-age.rexx", "space-age-toplevel.rexx"],
     "test": ["test-space-age"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Given an age in seconds, calculate how old someone is in terms of a given planet's solar years.",
   "source": "Partially inspired by Chapter 1 in Chris Pine's online Learn to Program tutorial.",

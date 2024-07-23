@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["collatz-conjecture.rexx"],
+    "solution": ["collatz-conjecture.rexx", "collatz-conjecture-toplevel.rexx"],
     "test": ["test-collatz-conjecture"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Calculate the number of steps to reach 1 using the Collatz conjecture.",
   "source": "An unsolved problem in mathematics named after mathematician Lothar Collatz",

@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["armstrong-numbers.rexx"],
+    "solution": ["armstrong-numbers.rexx", "armstrong-numbers-toplevel.rexx"],
     "test": ["test-armstrong-numbers"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Determine if a number is an Armstrong number.",
   "source": "Wikipedia",

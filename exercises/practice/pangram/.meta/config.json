@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["pangram.rexx"],
+    "solution": ["pangram.rexx", "pangram-toplevel.rexx"],
     "test": ["test-pangram"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Determine if a sentence is a pangram.",
   "source": "Wikipedia",

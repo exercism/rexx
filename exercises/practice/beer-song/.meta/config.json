@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["beer-song.rexx"],
+    "solution": ["beer-song.rexx", "beer-song-toplevel.rexx"],
     "test": ["test-beer-song"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Produce the lyrics to that beloved classic, that field-trip favorite: 99 Bottles of Beer on the Wall.",
   "source": "Learn to Program by Chris Pine",

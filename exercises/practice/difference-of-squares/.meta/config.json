@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["difference-of-squares.rexx"],
+    "solution": ["difference-of-squares.rexx", "difference-of-squares-toplevel.rexx"],
     "test": ["test-difference-of-squares"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Find the difference between the square of the sum and the sum of the squares of the first N natural numbers.",
   "source": "Problem 6 at Project Euler",

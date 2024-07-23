@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-if [ $# -eq 0 ] ; then ./runt --regina binary-search-check binary-search binary-search-toplevel ; else ./runt "$@" binary-search-check binary-search binary-search-toplevel ; fi
+cd "testlib" 2>&1 >/dev/null
+if [ $# -eq 0 ] ; then ./runt --regina ../binary-search-check ../binary-search ../binary-search-toplevel ; else ./runt "$@" ../binary-search-check ../binary-search ../binary-search-toplevel ; fi
+cd - 2>&1 >/dev/null

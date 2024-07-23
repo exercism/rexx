@@ -1,9 +1,9 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["isbn-verifier.rexx"],
+    "solution": ["isbn-verifier.rexx", "isbn-verifier-toplevel.rexx"],
     "test": ["test-isbn-verifier"],
-    "example": [".meta/example.rexx"]
+    "example": [".meta/example.rexx", ".meta/example-toplevel.rexx"]
   },
   "blurb": "Check if a given string is a valid ISBN-10 number.",
   "source": "Converting a string into a number and some basic processing utilizing a relatable real world example.",

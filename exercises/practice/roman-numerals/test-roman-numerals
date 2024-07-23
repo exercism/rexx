@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-if [ $# -eq 0 ] ; then ./runt --regina roman-numerals-check roman-numerals roman-numerals-toplevel ; else ./runt "$@" roman-numerals-check roman-numerals roman-numerals-toplevel ; fi
+cd "testlib" 2>&1 >/dev/null
+if [ $# -eq 0 ] ; then ./runt --regina ../roman-numerals-check ../roman-numerals ../roman-numerals-toplevel ; else ./runt "$@" ../roman-numerals-check ../roman-numerals ../roman-numerals-toplevel ; fi
+cd - 2>&1 >/dev/null

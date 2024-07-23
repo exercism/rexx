@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["hello-world.rexx"],
+    "solution": ["hello-world.rexx", "hello-world-toplevel.rexx"],
     "test": ["test-hello-world"],
     "example": [".meta/example.rexx"]
   },

@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["series.rexx"],
+    "solution": ["series.rexx", "series-toplevel.rexx"],
     "test": ["test-series"],
     "example": [".meta/example.rexx"]
   },

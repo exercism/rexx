@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["isbn-verifier.rexx"],
+    "solution": ["isbn-verifier.rexx", "isbn-verifier-toplevel.rexx"],
     "test": ["test-isbn-verifier"],
     "example": [".meta/example.rexx"]
   },

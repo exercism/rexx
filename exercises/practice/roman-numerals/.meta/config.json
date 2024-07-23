@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["roman-numerals.rexx"],
+    "solution": ["roman-numerals.rexx", "roman-numerals-toplevel.rexx"],
     "test": ["test-roman-numerals"],
     "example": [".meta/example.rexx"]
   },

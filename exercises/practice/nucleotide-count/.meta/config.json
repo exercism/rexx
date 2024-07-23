@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["nucleotide-count.rexx"],
+    "solution": ["nucleotide-count.rexx", "nucleotide-count-toplevel.rexx"],
     "test": ["test-nucleotide-count"],
     "example": [".meta/example.rexx"]
   },

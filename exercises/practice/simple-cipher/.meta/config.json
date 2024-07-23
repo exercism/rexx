@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["simple-cipher.rexx"],
+    "solution": ["simple-cipher.rexx", "simple-cipher-toplevel.rexx"],
     "test": ["test-simple-cipher"],
     "example": [".meta/example.rexx"]
   },

@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["matching-brackets.rexx"],
+    "solution": ["matching-brackets.rexx", "matching-brackets-toplevel.rexx"],
     "test": ["test-matching-brackets"],
     "example": [".meta/example.rexx"]
   },

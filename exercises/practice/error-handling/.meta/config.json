@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["error-handling.rexx"],
+    "solution": ["error-handling.rexx", "error-handling-toplevel.rexx"],
     "test": ["test-error-handling"],
     "example": [".meta/example.rexx"]
   },

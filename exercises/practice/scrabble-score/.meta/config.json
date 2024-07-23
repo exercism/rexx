@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["scrabble-score.rexx"],
+    "solution": ["scrabble-score.rexx", "scrabble-score-toplevel.rexx"],
     "test": ["test-scrabble-score"],
     "example": [".meta/example.rexx"]
   },

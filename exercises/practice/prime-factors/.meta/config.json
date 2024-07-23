@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["prime-factors.rexx"],
+    "solution": ["prime-factors.rexx", "prime-factors-toplevel.rexx"],
     "test": ["test-prime-factors"],
     "example": [".meta/example.rexx"]
   },

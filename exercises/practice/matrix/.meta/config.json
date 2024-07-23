@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["matrix.rexx"],
+    "solution": ["matrix.rexx", "matrix-toplevel.rexx"],
     "test": ["test-matrix"],
     "example": [".meta/example.rexx"]
   },

@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["space-age.rexx"],
+    "solution": ["space-age.rexx", "space-age-toplevel.rexx"],
     "test": ["test-space-age"],
     "example": [".meta/example.rexx"]
   },

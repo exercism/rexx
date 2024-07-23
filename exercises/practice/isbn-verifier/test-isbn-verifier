@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-if [ $# -eq 0 ] ; then ./runt --regina isbn-verifier-check isbn-verifier isbn-verifier-toplevel ; else ./runt "$@" isbn-verifier-check isbn-verifier isbn-verifier-toplevel ; fi
+cd "testlib" 2>&1 >/dev/null
+if [ $# -eq 0 ] ; then ./runt --regina ../isbn-verifier-check ../isbn-verifier ../isbn-verifier-toplevel ; else ./runt "$@" ../isbn-verifier-check ../isbn-verifier ../isbn-verifier-toplevel ; fi
+cd - 2>&1 >/dev/null

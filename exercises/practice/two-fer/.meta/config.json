@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["two-fer.rexx"],
+    "solution": ["two-fer.rexx", "two-fer-toplevel.rexx"],
     "test": ["test-two-fer"],
     "example": [".meta/example.rexx"]
   },

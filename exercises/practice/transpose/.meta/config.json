@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["transpose.rexx"],
+    "solution": ["transpose.rexx", "transpose-toplevel.rexx"],
     "test": ["test-transpose"],
     "example": [".meta/example.rexx"]
   },

@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["triangle.rexx"],
+    "solution": ["triangle.rexx", "triangle-toplevel.rexx"],
     "test": ["test-triangle"],
     "example": [".meta/example.rexx"]
   },

@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["leap.rexx"],
+    "solution": ["leap.rexx", "leap-toplevel.rexx"],
     "test": ["test-leap"],
     "example": [".meta/example.rexx"]
   },

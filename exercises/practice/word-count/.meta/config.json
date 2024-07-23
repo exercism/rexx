@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["word-count.rexx"],
+    "solution": ["word-count.rexx", "word-count-toplevel.rexx"],
     "test": ["test-word-count"],
     "example": [".meta/example.rexx"]
   },

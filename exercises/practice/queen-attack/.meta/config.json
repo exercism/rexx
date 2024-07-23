@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["queen-attack.rexx"],
+    "solution": ["queen-attack.rexx", "queen-attack-toplevel.rexx"],
     "test": ["test-queen-attack"],
     "example": [".meta/example.rexx"]
   },

@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["beer-song.rexx"],
+    "solution": ["beer-song.rexx", "beer-song-toplevel.rexx"],
     "test": ["test-beer-song"],
     "example": [".meta/example.rexx"]
   },

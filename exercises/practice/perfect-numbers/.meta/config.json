@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["perfect-numbers.rexx"],
+    "solution": ["perfect-numbers.rexx", "perfect-numbers-toplevel.rexx"],
     "test": ["test-perfect-numbers"],
     "example": [".meta/example.rexx"]
   },

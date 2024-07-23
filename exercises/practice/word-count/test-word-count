@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-if [ $# -eq 0 ] ; then ./runt --regina word-count-check word-count word-count-toplevel ; else ./runt "$@" word-count-check word-count word-count-toplevel ; fi
+cd "testlib" 2>&1 >/dev/null
+if [ $# -eq 0 ] ; then ./runt --regina ../word-count-check ../word-count ../word-count-toplevel ; else ./runt "$@" ../word-count-check ../word-count ../word-count-toplevel ; fi
+cd - 2>&1 >/dev/null

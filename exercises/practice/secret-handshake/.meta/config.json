@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["secret-handshake.rexx"],
+    "solution": ["secret-handshake.rexx", "secret-handshake-toplevel.rexx"],
     "test": ["test-secret-handshake"],
     "example": [".meta/example.rexx"]
   },

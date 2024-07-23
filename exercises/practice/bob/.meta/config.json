@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["bob.rexx"],
+    "solution": ["bob.rexx", "bob-toplevel.rexx"],
     "test": ["test-bob"],
     "example": [".meta/example.rexx"]
   },

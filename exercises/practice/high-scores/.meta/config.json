@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["high-scores.rexx"],
+    "solution": ["high-scores.rexx", "high-scores-toplevel.rexx"],
     "test": ["test-high-scores"],
     "example": [".meta/example.rexx"]
   },

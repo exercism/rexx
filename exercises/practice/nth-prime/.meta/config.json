@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["nth-prime.rexx"],
+    "solution": ["nth-prime.rexx", "nth-prime-toplevel.rexx"],
     "test": ["test-nth-prime"],
     "example": [".meta/example.rexx"]
   },

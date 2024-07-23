@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["acronym.rexx"],
+    "solution": ["acronym.rexx", "acronym-toplevel.rexx"],
     "test": ["test-acronym"],
     "example": [".meta/example.rexx"]
   },

@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["accumulate.rexx"],
+    "solution": ["accumulate.rexx", "accumulate-toplevel.rexx"],
     "test": ["test-accumulate"],
     "example": [".meta/example.rexx"]
   },

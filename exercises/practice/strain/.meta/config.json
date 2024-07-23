@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["strain.rexx"],
+    "solution": ["strain.rexx", "strain-toplevel.rexx"],
     "test": ["test-strain"],
     "example": [".meta/example.rexx"]
   },

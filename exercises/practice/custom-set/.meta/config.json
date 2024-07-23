@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["custom-set.rexx"],
+    "solution": ["custom-set.rexx", "custom-set-toplevel.rexx"],
     "test": ["test-custom-set"],
     "example": [".meta/example.rexx"]
   },

@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["atbash-cipher.rexx"],
+    "solution": ["atbash-cipher.rexx", "atbash-cipher-toplevel.rexx"],
     "test": ["test-atbash-cipher"],
     "example": [".meta/example.rexx"]
   },

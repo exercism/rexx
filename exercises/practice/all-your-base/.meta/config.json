@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["all-your-base.rexx"],
+    "solution": ["all-your-base.rexx", "all-your-base-toplevel.rexx"],
     "test": ["test-all-your-base"],
     "example": [".meta/example.rexx"]
   },

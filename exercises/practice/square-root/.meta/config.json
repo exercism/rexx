@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["square-root.rexx"],
+    "solution": ["square-root.rexx", "square-root-toplevel.rexx"],
     "test": ["test-square-root"],
     "example": [".meta/example.rexx"]
   },

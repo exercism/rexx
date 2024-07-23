@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["clock.rexx"],
+    "solution": ["clock.rexx", "clock-toplevel.rexx"],
     "test": ["test-clock"],
     "example": [".meta/example.rexx"]
   },

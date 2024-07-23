@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["grains.rexx"],
+    "solution": ["grains.rexx", "grains-toplevel.rexx"],
     "test": ["test-grains"],
     "example": [".meta/example.rexx"]
   },

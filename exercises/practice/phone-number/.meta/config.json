@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["phone-number.rexx"],
+    "solution": ["phone-number.rexx", "phone-number-toplevel.rexx"],
     "test": ["test-phone-number"],
     "example": [".meta/example.rexx"]
   },

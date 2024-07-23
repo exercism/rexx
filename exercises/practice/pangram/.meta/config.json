@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["pangram.rexx"],
+    "solution": ["pangram.rexx", "pangram-toplevel.rexx"],
     "test": ["test-pangram"],
     "example": [".meta/example.rexx"]
   },

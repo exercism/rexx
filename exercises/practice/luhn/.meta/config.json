@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["luhn.rexx"],
+    "solution": ["luhn.rexx", "luhn-toplevel.rexx"],
     "test": ["test-luhn"],
     "example": [".meta/example.rexx"]
   },

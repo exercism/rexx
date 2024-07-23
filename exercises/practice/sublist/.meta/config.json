@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["sublist.rexx"],
+    "solution": ["sublist.rexx", "sublist-toplevel.rexx"],
     "test": ["test-sublist"],
     "example": [".meta/example.rexx"]
   },

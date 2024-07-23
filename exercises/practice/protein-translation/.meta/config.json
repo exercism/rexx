@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["protein-translation.rexx"],
+    "solution": ["protein-translation.rexx", "protein-translation-toplevel.rexx"],
     "test": ["test-protein-translation"],
     "example": [".meta/example.rexx"]
   },

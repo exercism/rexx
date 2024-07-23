@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["grade-school.rexx"],
+    "solution": ["grade-school.rexx", "grade-school-toplevel.rexx"],
     "test": ["test-grade-school"],
     "example": [".meta/example.rexx"]
   },

@@ -1,3 +1,5 @@
 @set options=%*
 @if "%1"=="" @set options=--regina
-@runt.bat %options% leap-check leap leap-toplevel
+cd "testlib"
+@call runt.bat %options% ..\leap-check ..\leap ..\leap-toplevel
+cd ..

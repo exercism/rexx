@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["proverb.rexx"],
+    "solution": ["proverb.rexx", "proverb-toplevel.rexx"],
     "test": ["test-proverb"],
     "example": [".meta/example.rexx"]
   },

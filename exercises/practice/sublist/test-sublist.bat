@@ -1,3 +1,5 @@
 @set options=%*
 @if "%1"=="" @set options=--regina
-@runt.bat %options% sublist-check sublist sublist-toplevel
+cd "testlib"
+@call runt.bat %options% ..\sublist-check ..\sublist ..\sublist-toplevel
+cd ..

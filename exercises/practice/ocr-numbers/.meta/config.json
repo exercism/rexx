@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["ocr-numbers.rexx"],
+    "solution": ["ocr-numbers.rexx", "ocr-numbers-toplevel.rexx"],
     "test": ["test-ocr-numbers"],
     "example": [".meta/example.rexx"]
   },

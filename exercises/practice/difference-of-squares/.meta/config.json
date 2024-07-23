@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["difference-of-squares.rexx"],
+    "solution": ["difference-of-squares.rexx", "difference-of-squares-toplevel.rexx"],
     "test": ["test-difference-of-squares"],
     "example": [".meta/example.rexx"]
   },

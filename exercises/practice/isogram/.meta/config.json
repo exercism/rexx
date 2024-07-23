@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["isogram.rexx"],
+    "solution": ["isogram.rexx", "isogram-toplevel.rexx"],
     "test": ["test-isogram"],
     "example": [".meta/example.rexx"]
   },

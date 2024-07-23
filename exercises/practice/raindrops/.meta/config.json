@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["raindrops.rexx"],
+    "solution": ["raindrops.rexx", "raindrops-toplevel.rexx"],
     "test": ["test-raindrops"],
     "example": [".meta/example.rexx"]
   },

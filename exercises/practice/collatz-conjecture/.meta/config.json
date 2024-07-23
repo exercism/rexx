@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["collatz-conjecture.rexx"],
+    "solution": ["collatz-conjecture.rexx", "collatz-conjecture-toplevel.rexx"],
     "test": ["test-collatz-conjecture"],
     "example": [".meta/example.rexx"]
   },

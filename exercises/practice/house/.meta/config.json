@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["house.rexx"],
+    "solution": ["house.rexx", "house-toplevel.rexx"],
     "test": ["test-house"],
     "example": [".meta/example.rexx"]
   },

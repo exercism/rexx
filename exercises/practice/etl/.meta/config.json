@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["etl.rexx"],
+    "solution": ["etl.rexx", "etl-toplevel.rexx"],
     "test": ["test-etl"],
     "example": [".meta/example.rexx"]
   },

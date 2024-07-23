@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["sieve.rexx"],
+    "solution": ["sieve.rexx", "sieve-toplevel.rexx"],
     "test": ["test-sieve"],
     "example": [".meta/example.rexx"]
   },

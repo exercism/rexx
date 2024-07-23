@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["sum-of-multiples.rexx"],
+    "solution": ["sum-of-multiples.rexx", "sum-of-multiples-toplevel.rexx"],
     "test": ["test-sum-of-multiples"],
     "example": [".meta/example.rexx"]
   },

@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["gigasecond.rexx"],
+    "solution": ["gigasecond.rexx", "gigasecond-toplevel.rexx"],
     "test": ["test-gigasecond"],
     "example": [".meta/example.rexx"]
   },

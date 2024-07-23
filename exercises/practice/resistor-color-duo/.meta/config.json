@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["resistor-color-duo.rexx"],
+    "solution": ["resistor-color-duo.rexx", "resistor-color-duo-toplevel.rexx"],
     "test": ["test-resistor-color-duo"],
     "example": [".meta/example.rexx"]
   },

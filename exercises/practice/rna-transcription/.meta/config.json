@@ -1,7 +1,7 @@
 {
   "authors": ["ajborla"],
   "files": {
-    "solution": ["rna-transcription.rexx"],
+    "solution": ["rna-transcription.rexx", "rna-transcription-toplevel.rexx"],
     "test": ["test-rna-transcription"],
     "example": [".meta/example.rexx"]
   },

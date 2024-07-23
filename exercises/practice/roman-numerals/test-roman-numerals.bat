@@ -1,3 +1,5 @@
 @set options=%*
 @if "%1"=="" @set options=--regina
-@runt.bat %options% roman-numerals-check roman-numerals roman-numerals-toplevel
+cd "testlib"
+@call runt.bat %options% ..\roman-numerals-check ..\roman-numerals ..\roman-numerals-toplevel
+cd ..

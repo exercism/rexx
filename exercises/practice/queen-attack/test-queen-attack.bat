@@ -1,5 +1,5 @@
 @set options=%*
 @if "%1"=="" @set options=--regina
-cd "testlib"
+@cd "testlib"
 @call runt.bat %options% ..\queen-attack-check ..\queen-attack ..\queen-attack-toplevel
-cd ..
+@cd ..

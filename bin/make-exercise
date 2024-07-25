@@ -3,40 +3,47 @@
 # -----------------------------------------------------------------------------
 # Exercism practice exercise generator for the Rexx language track.
 #
-# $1 -> action to perform (remove, create, or configure exercise)
+# $1 -> action to perform (create, remove, configure, or test, exercise)
 # $2 -> name of the exercise subdirectory
 #
-# The script creates, removes, and configures a subdirectory, corresponding
-#  to the nominated exercises, in the following directory:
+# The script creates, removes, configures, or tests, a subdirectory,
+#  corresponding to the nominated exercises, in the following directory:
 #
 #     TRACKNAME/exercises/practice/
 #
 # Exercise creation sees a skeleton subdirectory entry made, while removal
 #  completely removes the subdirectory (and any contents therein). Exercise
 #  configuration sees the generation of several custom files, as well as the
-#  copying of several standard files.
+#  copying of several standard files. Testing allows an exercise solution to
+#  tested as it is progressively developed.
 #
 # Exercise subdirectory structure and contents:
 #
 #     <exercise>/
 #        |   <exercise>-check.rexx             Test Harness (tests reside here)
-#        |   <exercise>-toplevel.rexx          Global Values (optional)
+#        |   <exercise>-toplevel.rexx          Global Values
+#        |                                      (always present, usually empty)
 #        |   <exercise>.rexx                   Exercise Stub
-#        |   runt                              Test Runner (bash)
-#        |   runt.bat                          Test Runner (CMD)
-#        |   t1.rexx                           Test Runner
-#        |   t2.rexx                             Support
-#        |   t3.rexx                               Files
 #        |   test-<exercise>                   Test Launcher (bash)
 #        |   test-<exercise>.bat               Test Launcher (CMD)
 #        |
+#        +---testlib
+#        |       runt                          Test Runner (bash)
+#        |       runt.bat                      Test Runner (CMD)
+#        |       t1.rexx                       Test Runner
+#        |       t2.rexx                         Support
+#        |       t3.rexx                           Files
+#        |       <exercise>-funcs.rexx         Exercise Functions
+#        |                                      (always present, usually empty)
 #        +---.docs
 #        |       instructions.md
 #        |
 #        +---.meta
 #                config.json
 #                example.rexx                  Example Solution
-#                tests.toml
+#                example-toplevel.rexx         Global Values
+#                                               (only present if required)
+#                tests.toml                    Test Specifications
 #
 # Several prerequisites must be satisfied to effectively use this script:
 #
@@ -63,9 +70,15 @@
 #
 # 2. Script must reside in TRACKNAME/bin/ (and have execute permissions)
 #
-# 3. A complete <exercise>.rexx must reside in TRACKNAME/
+# 3. Test library files (runt*, t?.rexx) must also be TRACKNAME/bin/ resident,
+#     something which may normally be assumed. A test library update will
+#     require replacement of these files.
 #
-# 4. TRACKNAME/ is the current directory
+# 4. An <exercise>.rexx file must reside in TRACKNAME/. Please note that it
+#     could be a complete solution, or merely a stub file, intended to be
+#     progressively developed.
+#
+# 5. TRACKNAME/ is the current directory
 #
 # The creation of a new exercise (hello-world), is effected:
 #
@@ -91,21 +104,70 @@
 # contains the tests in raw form, but they must be massaged so as to execute
 #  correctly.
 #
+# The script possesses a rudimentary safety feature, namely that the only
+#  destructive operation is the REMOVE operation. Issuing this command *will*
+#  remove the target exercise directory (if it exists, otherwise nothing is
+#  done), so be certain it is not mistakenly applied to a completed exercise.
+#
+# Warnings are issued for all other invalid operation applications. For
+#  example it is not possible to CREATE an existiing exercise, or to
+#  CONFIGURE an exercise that has either not been previously CREATED, or
+#  has been previously CONFIGURED.
+#
+# Several post script-based exercise creation tasks need to be performed to
+#  ensure a successful exercise implementation. These include:
+#
+# 0. Note that the TRACKNAME/<exercise>.rexx file, the solution file, is
+#     copied to two locations as follows:
+#
+#        [1] <exercise>/<exercise>.rexx
+#        [2] <exercise>/.meta/example.rexx
+#
+#    If the original solution was a stub file, then [2] will need to be
+#     developed into a solution, but in the obverse, [1] will need to be
+#     converted to a stub.
+#
+# 1. The exercise solution, <exercise>/.meta/example.rexx, may need to be
+#     altered if it contains any top-level (shared) variables. This simply
+#     requires that these items be moved into a separate file:
+#
+#        <exercise>/.meta/example-toplevel.rexx
+#
+# 2. The files:
+#
+#        <exercise>/<exercise>-toplevel.rexx
+#        <exercise>/<exercise>.rexx
+#
+#    are intended as student-facing, stub files. The first of these may be
+#     ignored as it is auto-generated. The second file needs to be edited so
+#     as to contain an executable, but 'dummy' (usually via a 'NOP') solution,
+#     and may, optionally, contain commentary.
+#
+# 3. The file:
+#
+#        <exercise>/testlib/<exercise>-funcs.rexx
+#
+#    will be present as a stub file, but may be edited to contain procedures
+#     called by the test harness. Simply put, the test harness may only contain
+#     procedure calls, not procedure definitions, so if such are required, this
+#     file is where they must be placed.
+#
+# 4. The file:
+#
+#        <exercise>/<exercise>-check.rexx
+#
+#    contains the test harness. It starts off as an auto-generated skeleton
+#     in which each test specification from the file:
+#
+#        <exercise>/.meta/<exercise>.toml
+#
+#    is transformed into a call to the 'check' procedure. At this point, this
+#     code is incomplete, and each procedure call must be transformed to be
+#     syntactically-valid via the addition of suitable arguments.
+#
 # -----------------------------------------------------------------------------
 
 # ---- FUNCTIONS
-
-remove_exercise() {
-    # Override any previous setting with function argument
-    local exercise=${1}
-
-    # Ensure exercise directories removed
-    rm -fr exercises/practice/$exercise
-
-    # Ensure exercise directories removed
-    [ -d exercises/practice/$exercise ] \
-        && { echo "ERROR: Error removing exercise directory" ; exit 1 ; }
-}
 
 create_exercise() {
     # Override any previous setting with function argument
@@ -125,6 +187,18 @@ create_exercise() {
         || { echo "ERROR: Error creating exercise directory" ; exit 1 ; }
 }
 
+remove_exercise() {
+    # Override any previous setting with function argument
+    local exercise=${1}
+
+    # Ensure exercise directories removed
+    rm -fr exercises/practice/$exercise
+
+    # Ensure exercise directories removed
+    [ -d exercises/practice/$exercise ] \
+        && { echo "ERROR: Error removing exercise directory" ; exit 1 ; }
+}
+
 configure_exercise() {
     # Override any previous setting with function argument
     local exercise=${1}
@@ -139,28 +213,40 @@ configure_exercise() {
     # Relocate into practice exercise directory
     pushd exercises/practice/${exercise} 2>&1 >/dev/null
 
+    # Create testlib directory
+    mkdir ./testlib
+
+    # Copy unit test framework files (reside in top-level `bin` directory) to testlib
+    cp -p ../../../bin/t?.rexx ../../../bin/run* ./testlib
+
+    # Create functions file inside the testlib directory
+    echo $'/*' ${exercise} $'- Additional Test Functions */\n' > ./testlib/${exercise}-funcs.rexx
+    echo $'/*\n\n  Include any test-callable, non-user-visible functions in this file. \n\n*/ \n' >> ./testlib/${exercise}-funcs.rexx
+
     # Copy source file here from top-level
     cp -p ../../../"${exercise}.rexx" .
 
-    # Copy unit test framework files (reside in top-level `bin` directory)
-    cp -p ../../../bin/t?.rexx ../../../bin/run* ./
-
     # Create empty `toplevel` file (user defines any shared variables here)
-    echo $'/*' ${exercise} '- Top Level Definitions */\n' > ${exercise}-toplevel.rexx
-    echo $'/*\n\n  Include any shared variable definitions in this file.\n\n*/\n' >> ${exercise}-toplevel.rexx
+    echo $'/*' ${exercise} $'- Top Level Definitions */\n' > ${exercise}-toplevel.rexx
+    echo $'/*\n\n  Include any shared variable definitions in this file.\n\n*/ \n' >> ${exercise}-toplevel.rexx
 
     # Create test launcher scripts
     ## Bash launcher
     echo $'#!/usr/bin/env bash' > test-${exercise}
-    echo $'if [ $# -eq 0 ] ; then ./runt --regina' "${exercise}-check ${exercise} ${exercise}-toplevel" $'; else ./runt "$@"' "${exercise}-check ${exercise} ${exercise}-toplevel" $'; fi' >> test-${exercise}
+    echo $'cd "testlib" 2>&1 >/dev/null' >> test-${exercise}
+    echo $'if [ $# -eq 0 ] ; then ./runt --regina ../'${exercise}-check' ../'${exercise}' ../'${exercise}-toplevel' ; else ./runt "$@" ../'${exercise}-check' ../'${exercise}' ../'${exercise}-toplevel' ; fi' >> test-${exercise}
+    echo $'cd - 2>&1 >/dev/null' >> test-${exercise}
     #### NOTE: If files reside on a non-EXT4 filesystem (e.g. NTFS) then the git index needs updating.
     #### =>    git update-index --chmod=+x test-${exercise}
     #### =>    git commit -m "fix(test-${exercise}): update file permissions"
     chmod +x test-${exercise}
+
     ## Windows batch launcher
     echo $'@set options=%*' > test-${exercise}.bat
     echo $'@if "%1"=="" @set options=--regina' >> test-${exercise}.bat
-    echo $'@runt.bat %options%' "${exercise}-check ${exercise} ${exercise}-toplevel" >> test-${exercise}.bat
+    echo $'@cd "testlib"' >> test-${exercise}.bat
+    echo $'@call runt.bat %options%' "..\\${exercise}-check ..\\${exercise} ..\\${exercise}-toplevel" >> test-${exercise}.bat
+    echo $'@cd ..' >> test-${exercise}.bat
 
     # Transform exercise metafiles
     pushd .meta 2>&1 >/dev/null
@@ -168,7 +254,7 @@ configure_exercise() {
     ## Transform local config.json
     sed -r -f - config.json > config.json.NEW <<-SED_SCRIPT
         s/("authors": )(\[)(\]),/\1\2"${author}"\3,/
-        s/("solution": )(\[)(\]),/\1\2"${exercise}.rexx"\3,/
+        s/("solution": )(\[)(\]),/\1\2"${exercise}.rexx, ${exercise}-toplevel.rexx"\3,/
         s/("test": )(\[)(\]),/\1\2"test-${exercise}"\3,/
         s/("example": )(\[)(\])/\1\2"\.meta\/example\.rexx"\3/
 SED_SCRIPT
@@ -185,8 +271,9 @@ context('Checking the FUNCNAME function')
 /* Unit tests */
 REXX_SCRIPT
 
-    ## Generate check case stubs
-    grep '^description' tests.toml | sed 's/description = /check(/' >> ${exercise}-check.rexx
+    ## Only generate check case stubs if 'tests.toml' exists
+    [ -f tests.toml ] \
+        && { grep '^description' tests.toml | sed 's/description = /check(/' >> ${exercise}-check.rexx ; }
 
     ## Move generated file to parent exercise directory
     mv ${exercise}-check.rexx ../
@@ -198,6 +285,8 @@ REXX_SCRIPT
     echo 'To complete configuration:'
     echo '1. Edit' ${exercise}-check.rexx 'correcting test assertions.'
     echo '2. Edit' ${exercise}.rexx 'converting it to an exercise stub file.'
+    echo '3. Edit example.rexx if required.'
+    echo '4. Create example-toplevel.rexx if required.'
 
     # Return to parent
     popd 2>&1 >/dev/null
@@ -206,11 +295,104 @@ REXX_SCRIPT
     popd 2>&1 >/dev/null
 }
 
+test_exercise() {
+    # Override any previous setting with function argument
+    local exercise=${1}
+    local exerdir=exercises/practice/${exercise}
+
+    # Create temporary directory, and copy exercise directory contents to it
+    local testdir="$(mktemp -d)"
+    cp -r "${exerdir}"/* "${testdir}"/
+    cp "${exerdir}"/.meta/example*.rexx "${testdir}"/
+    # Prepare and perform exercise tests
+    echo "Testing ${exercise} ..."
+    pushd "${testdir}"/ 2>&1 >/dev/null
+        # Create implementation file from example
+        rm -f "${exercise}".rexx && mv example.rexx "${exercise}".rexx
+        # Conditionally use example toplevel file
+        [ -f example-toplevel.rexx ] \
+          && { \
+               rm -f "${exercise}"-toplevel.rexx \
+                  && mv example-toplevel.rexx "${exercise}"-toplevel.rexx ; \
+             }
+        # Run tests, and collect result code
+        ./test-"${exercise}"
+        local result=$?
+    popd 2>&1 >/dev/null
+    # Cleanup and return result code
+    rm -rf "${testdir}"
+    return ${result}
+}
+
+handle_create_exercise() {
+    # Override any previous setting with function argument
+    local exercise=${1}
+    local exerdir=exercises/practice/${exercise}
+
+    # Ensure exercise source file exists
+    [ -f "${exercise}.rexx" ] \
+        || { echo "ERROR: Ensure source file resides in current directory" ; exit 1 ; }
+
+    # Ensure exercise directory does not already exist
+    [ -d "${exerdir}" ] \
+        && { echo "ERROR: Exercise already exists. You must first REMOVE it" ; exit 1 ; }
+
+    # Perform CREATE tasks via delegation
+    create_exercise "${exercise}"
+}
+
+handle_remove_exercise() {
+    # Override any previous setting with function argument
+    local exercise=${1}
+    local exerdir=exercises/practice/${exercise}
+
+    # Ensure exercise directory exists
+    [ -d "${exerdir}" ] \
+        || { echo "INFORMATION: Exercise does not exist. Nothing removed." ; exit 0 ; }
+
+    # Directory exists, so remove it
+    remove_exercise "${exercise}"
+}
+
+handle_configure_exercise() {
+    # Override any previous setting with function argument
+    local exercise=${1}
+    local exerdir=exercises/practice/${exercise}
+
+    # Ensure exercise source file exists
+    [ -f "${exercise}.rexx" ] \
+        || { echo "ERROR: Ensure source file resides in current directory" ; exit 1 ; }
+
+    # Ensure exercise directory already exists
+    [ -d "${exerdir}" ] \
+        || { echo "ERROR: Exercise does not exists. You must first CREATE it" ; exit 1 ; }
+
+    # Ensure exercise directory has not already been configured
+    [ -d "${exerdir}/testlib" ] \
+        && { echo "ERROR: Exercise already configured. Inspect exercise directory" ; exit 1 ; }
+
+    # Perform CONFIGURE tasks via delegation
+    configure_exercise "${exercise}"
+}
+
+handle_test_exercise() {
+    # Override any previous setting with function argument
+    local exercise=${1}
+    local exerdir=exercises/practice/${exercise}
+
+    # Ensure a configured exercise directory exists
+    [ -d "${exerdir}/testlib" ] \
+        || { echo "ERROR: Cannot test a non-existent or incomplete exercise" ; exit 1 ; }
+
+    # Perform TEST tasks via delegation
+    test_exercise "${exercise}"
+}
+
 # ---- ENTRY POINT
 
 # Two arguments expected
 [ $# -ne 2 -o -z "${1}" -o -z "${2}" ] \
-    && { echo "Usage: ${0} remove|create|configure exercise" ; exit 1 ; }
+    && { echo "Usage: ${0} create|remove|configure|test exercise" ; exit 1 ; }
 
 # Uppercase `mode` for easier comparison
 mode="${1^^}" ; exercise="${2}"
@@ -223,19 +405,16 @@ mode="${1^^}" ; exercise="${2}"
 [ -d "./bin" -a -d "./exercises/practice" ] \
     || { echo "ERROR: Current directory is not top-level directory" ; exit 1 ; }
 
-# Ensure exercise source file exists
-[ -f "${exercise}.rexx" ] \
-    || { echo "ERROR: Ensure source file resides in current directory" ; exit 1 ; }
-
 # Ensure top-level `config.json` contains a valid exercise entry
 grep -q '"slug": "'${exercise}'",$' config.json \
     || { echo "ERROR: Include entry for ${exercise} in top-level config.json file." ; exit 1 ; }
 
 # Check `mode` validity
 case "${mode}" in
-    REMOVE)    remove_exercise "${exercise}" ;;
-    CREATE)    create_exercise "${exercise}" ;;
-    CONFIGURE) configure_exercise "${exercise}" ;;
-    *) echo "Usage: ${0} remove|create|configure exercise" ; exit 1 ;;
+    CREATE)    handle_create_exercise "${exercise}" ;;
+    REMOVE)    handle_remove_exercise "${exercise}" ;;
+    CONFIGURE) handle_configure_exercise "${exercise}" ;;
+    TEST)      handle_test_exercise "${exercise}" ;;
+    *) echo "Usage: ${0} create|remove|configure|test exercise" ; exit 1 ;;
 esac
 

@@ -217,7 +217,9 @@ configure_exercise() {
     mkdir ./testlib
 
     # Copy unit test framework files (reside in top-level `bin` directory) to testlib
+    #  and ensure script is executable
     cp -p ../../../bin/t?.rexx ../../../bin/run* ./testlib
+    chmod +x ./testlib/runt
 
     # Create functions file inside the testlib directory
     echo $'/*' ${exercise} $'- Additional Test Functions */\n' > ./testlib/${exercise}-funcs.rexx
@@ -231,10 +233,10 @@ configure_exercise() {
     echo $'/*\n\n  Include any shared variable definitions in this file.\n\n*/ \n' >> ${exercise}-toplevel.rexx
 
     # Create test launcher scripts
-    ## Bash launcher
+    ## Bash launcher (and ensure it is executable)
     echo $'#!/usr/bin/env bash' > test-${exercise}
     echo $'cd "testlib" 2>&1 >/dev/null' >> test-${exercise}
-    echo $'if [ $# -eq 0 ] ; then ./runt --regina ../'${exercise}-check' ../'${exercise}' ../'${exercise}-toplevel' ; else ./runt "$@" ../'${exercise}-check' ../'${exercise}' ../'${exercise}-toplevel' ; fi' >> test-${exercise}
+    echo $'if [ $# -eq 0 ] ; then ./runt --regina ../'${exercise}-check' ../'${exercise}' ../'${exercise}-toplevel ${exercise}-funcs' ; else ./runt "$@" ../'${exercise}-check' ../'${exercise}' ../'${exercise}-toplevel ${exercise}-funcs' ; fi' >> test-${exercise}
     echo $'cd - 2>&1 >/dev/null' >> test-${exercise}
     #### NOTE: If files reside on a non-EXT4 filesystem (e.g. NTFS) then the git index needs updating.
     #### =>    git update-index --chmod=+x test-${exercise}
@@ -245,7 +247,7 @@ configure_exercise() {
     echo $'@set options=%*' > test-${exercise}.bat
     echo $'@if "%1"=="" @set options=--regina' >> test-${exercise}.bat
     echo $'@cd "testlib"' >> test-${exercise}.bat
-    echo $'@call runt.bat %options%' "..\\${exercise}-check ..\\${exercise} ..\\${exercise}-toplevel" >> test-${exercise}.bat
+    echo $'@call runt.bat %options%' "..\\${exercise}-check ..\\${exercise} ..\\${exercise}-toplevel ${exercise}-funcs" >> test-${exercise}.bat
     echo $'@cd ..' >> test-${exercise}.bat
 
     # Transform exercise metafiles

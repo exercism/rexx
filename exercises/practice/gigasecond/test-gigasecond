@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd "testlib" 2>&1 >/dev/null
-if [ $# -eq 0 ] ; then ./runt --regina ../gigasecond-check ../gigasecond ../gigasecond-toplevel ; else ./runt "$@" ../gigasecond-check ../gigasecond ../gigasecond-toplevel ; fi
+if [ $# -eq 0 ] ; then ./runt --regina ../gigasecond-check ../gigasecond ../gigasecond-toplevel gigasecond-funcs ; else ./runt "$@" ../gigasecond-check ../gigasecond ../gigasecond-toplevel gigasecond-funcs ; fi
 cd - 2>&1 >/dev/null

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd "testlib" 2>&1 >/dev/null
-if [ $# -eq 0 ] ; then ./runt --regina ../grade-school-check ../grade-school ../grade-school-toplevel ; else ./runt "$@" ../grade-school-check ../grade-school ../grade-school-toplevel ; fi
+if [ $# -eq 0 ] ; then ./runt --regina ../grade-school-check ../grade-school ../grade-school-toplevel grade-school-funcs ; else ./runt "$@" ../grade-school-check ../grade-school ../grade-school-toplevel grade-school-funcs ; fi
 cd - 2>&1 >/dev/null

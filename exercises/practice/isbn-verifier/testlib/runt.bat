@@ -6,6 +6,7 @@
 :: %1 -> the test script (rexx)
 :: %2 -> the application to test (rexx)
 :: %3 -> optional shared variable definitions file (rexx)
+:: %4 -> optional custom testing functions definitions file (rexx)
 ::
 :: This script concatenates the files:
 ::
@@ -14,6 +15,10 @@
 :: or, if optional file specified:
 ::
 ::   %3.rexx + t1.rexx + %1.rexx + t2.rexx + %2.rexx + t3.rexx
+::
+:: or, if both optional files specified:
+::
+::   %3.rexx + t1.rexx + %1.rexx + t2.rexx + %2.rexx + %4.rexx + t3.rexx
 ::
 :: and executes the resulting test runner file. The return code from the
 :: test runner is passed back to the command-line. Valid return code values:
@@ -44,6 +49,7 @@
 :: 2023-04-15      0.7.0     Anthony J. Borla    Added toplevel support.
 :: 2023-04-15      0.7.1     Anthony J. Borla    Revise header commentary.
 :: 2023-04-19      0.7.2     Anthony J. Borla    Fix JSON option.
+:: 2024-07-27      0.7.3     Anthony J. Borla    Support test functions.
 :: ----------------------------------------------------------------------------
 
 :init
@@ -80,16 +86,31 @@
   if "%1"=="" goto :argErr
 
 :chkfile
-  :: Do source and test script files exist ?
+  :: Do optional files exist ?
+  if not "%4"=="" if not exist "%4.rexx" goto :noCheckFuncsFileErr
   if not "%3"=="" if not exist "%3.rexx" goto :noToplevelFileErr
+
+  :: Do source and test script files exist ?
   if not exist "%2.rexx" goto :noSourceFileErr
   if not exist "%1.rexx" goto :noTestFileErr
 
 :main
   :: Assemble test runner from components and supplied files
-  if not "%3"=="" copy/v "%3.rexx"+t1.rexx+"%1.rexx"+t2.rexx+"%2.rexx"+t3.rexx %RUNNER% > NUL:
-  if "%3"=="" copy/v t1.rexx+"%1.rexx"+t2.rexx+"%2.rexx"+t3.rexx %RUNNER% > NUL:
+  if not "%4"=="" goto :copyFuncs
+  if not "%3"=="" goto :copyVarsOnly
 
+:copyNoOptionals
+  copy/v t1.rexx+"%1.rexx"+t2.rexx+"%2.rexx"+t3.rexx %RUNNER% > NUL:
+  goto :setOptions
+
+:copyFuncs
+  copy/v "%3.rexx"+t1.rexx+"%1.rexx"+t2.rexx+"%2.rexx"+"%4.rexx"+t3.rexx %RUNNER% > NUL:
+  goto :setOptions
+
+:copyVarsOnly
+  copy/v "%3.rexx"+t1.rexx+"%1.rexx"+t2.rexx+"%2.rexx"+t3.rexx %RUNNER% > NUL:
+
+:setOptions
   :: Set output option
   if "%TAP%"=="TAP" set OUT=%TAP%
   if "%JSON%"=="JSON" set OUT=%JSON%
@@ -113,6 +134,7 @@
   echo Executes t-rexx unit test runner using supplied Rexx test script on specified Rexx source file.
   echo * %%1 is the test script name, %%2 is the source file (code under test), both sans .rexx extension
   echo * %%3 is an optional Rexx file containing variables shared by the code under test (sans .rexx extension)
+  echo * %%4 is another optional Rexx file containing custom functions used in testing
   echo * --tap option generates TAP-compliant output; default is verbose report style
   echo * --json option packages report style output as a JSON array (incompatible with --tap option)
   echo * --keep option ensures the generated test runner is not deleted
@@ -130,6 +152,10 @@
   echo Error: Incorrect option combination - either --tap or --json, not both
   goto :usage
 
+:noCheckFuncsFileErr
+  echo Error: Missing checkfuncs file - "%4.rexx"
+  goto :usage
+
 :noToplevelFileErr
   echo Error: Missing toplevel file - "%3.rexx"
   goto :usage
@@ -143,7 +169,7 @@
 
 :usage
   echo.
-  echo Usage: %0 [-h ^| -? ^| --help ^| /h ^| /? ^| /help] ^| [--keep] [--tap^|--json] [--regina] test source [toplevel]
+  echo Usage: %0 [-h ^| -? ^| --help ^| /h ^| /? ^| /help] ^| [--keep] [--tap^|--json] [--regina] test source [toplevel] [checkfuncs]
 
 :exit
   exit/b %RC%

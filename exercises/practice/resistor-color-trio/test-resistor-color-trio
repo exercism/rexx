@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd "testlib" 2>&1 >/dev/null
-if [ $# -eq 0 ] ; then ./runt --regina ../resistor-color-trio-check ../resistor-color-trio ../resistor-color-trio-toplevel ; else ./runt "$@" ../resistor-color-trio-check ../resistor-color-trio ../resistor-color-trio-toplevel ; fi
+if [ $# -eq 0 ] ; then ./runt --regina ../resistor-color-trio-check ../resistor-color-trio ../resistor-color-trio-toplevel resistor-color-trio-funcs ; else ./runt "$@" ../resistor-color-trio-check ../resistor-color-trio ../resistor-color-trio-toplevel resistor-color-trio-funcs ; fi
 cd - 2>&1 >/dev/null

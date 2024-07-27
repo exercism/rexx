@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd "testlib" 2>&1 >/dev/null
-if [ $# -eq 0 ] ; then ./runt --regina ../high-scores-check ../high-scores ../high-scores-toplevel ; else ./runt "$@" ../high-scores-check ../high-scores ../high-scores-toplevel ; fi
+if [ $# -eq 0 ] ; then ./runt --regina ../high-scores-check ../high-scores ../high-scores-toplevel high-scores-funcs ; else ./runt "$@" ../high-scores-check ../high-scores ../high-scores-toplevel high-scores-funcs ; fi
 cd - 2>&1 >/dev/null

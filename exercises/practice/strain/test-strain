@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd "testlib" 2>&1 >/dev/null
-if [ $# -eq 0 ] ; then ./runt --regina ../strain-check ../strain ../strain-toplevel ; else ./runt "$@" ../strain-check ../strain ../strain-toplevel ; fi
+if [ $# -eq 0 ] ; then ./runt --regina ../strain-check ../strain ../strain-toplevel strain-funcs ; else ./runt "$@" ../strain-check ../strain ../strain-toplevel strain-funcs ; fi
 cd - 2>&1 >/dev/null

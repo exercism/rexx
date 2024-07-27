@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd "testlib" 2>&1 >/dev/null
-if [ $# -eq 0 ] ; then ./runt --regina ../sum-of-multiples-check ../sum-of-multiples ../sum-of-multiples-toplevel ; else ./runt "$@" ../sum-of-multiples-check ../sum-of-multiples ../sum-of-multiples-toplevel ; fi
+if [ $# -eq 0 ] ; then ./runt --regina ../sum-of-multiples-check ../sum-of-multiples ../sum-of-multiples-toplevel sum-of-multiples-funcs ; else ./runt "$@" ../sum-of-multiples-check ../sum-of-multiples ../sum-of-multiples-toplevel sum-of-multiples-funcs ; fi
 cd - 2>&1 >/dev/null

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd "testlib" 2>&1 >/dev/null
-if [ $# -eq 0 ] ; then ./runt --regina ../ocr-numbers-check ../ocr-numbers ../ocr-numbers-toplevel ; else ./runt "$@" ../ocr-numbers-check ../ocr-numbers ../ocr-numbers-toplevel ; fi
+if [ $# -eq 0 ] ; then ./runt --regina ../ocr-numbers-check ../ocr-numbers ../ocr-numbers-toplevel ocr-numbers-funcs ; else ./runt "$@" ../ocr-numbers-check ../ocr-numbers ../ocr-numbers-toplevel ocr-numbers-funcs ; fi
 cd - 2>&1 >/dev/null

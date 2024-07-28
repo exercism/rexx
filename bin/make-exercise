@@ -169,6 +169,38 @@
 
 # ---- FUNCTIONS
 
+is_test_library_installed() {
+  local count=0
+  cd ./bin ; for i in t?.rexx runt* ; do (( count+=1 )) ; done ; cd - 2>&1 >/dev/null
+  [ ${count} -eq 5 ]
+}
+
+update_testlib() {
+    # Ensure 'curl' utility is installed
+    which curl >/dev/null \
+        || { echo "ERROR: curl utility not in PATH." ; exit 1 ; }
+
+    # Create temporary directory, and download the test library package there
+    local updatedir="$(mktemp -d)"
+
+    #
+    # TODO: Ensure latest release obtained
+    #
+    curl -sLk \
+        https://github.com/ajborla/t-rexx/releases/download/v3.0.0/t-rexx-v3.0.0.tar.gz \
+        > "${updatedir}"/t-rexx.tar.gz
+
+    # Unzip the library package
+    cd "${updatedir}" ; tar -zvxf t-rexx.tar.gz ; cd - 2>&1 >/dev/null
+
+    # Install test library, then cleanup
+    cp -p "${updatedir}"/t-rexx/t?.rexx "${updatedir}"/t-rexx/runt* ./bin
+    rm -fr "${updatedir}" 2> /dev/null
+
+    # Exit status depends on whether ./bin contains test library files
+    is_test_library_installed
+}
+
 create_exercise() {
     # Override any previous setting with function argument
     local exercise=${1}
@@ -184,7 +216,7 @@ create_exercise() {
 
     # Ensure exercise directories created
     [ -d exercises/practice/$exercise ] \
-        || { echo "ERROR: Error creating exercise directory" ; exit 1 ; }
+        || { echo "ERROR: Error creating exercise directory." ; exit 1 ; }
 }
 
 remove_exercise() {
@@ -196,7 +228,7 @@ remove_exercise() {
 
     # Ensure exercise directories removed
     [ -d exercises/practice/$exercise ] \
-        && { echo "ERROR: Error removing exercise directory" ; exit 1 ; }
+        && { echo "ERROR: Error removing exercise directory." ; exit 1 ; }
 }
 
 configure_exercise() {
@@ -208,7 +240,7 @@ configure_exercise() {
 
     # Ensure exercise directories exist
     [ -d exercises/practice/$exercise ] \
-        || { echo "ERROR: Exercise directory does not exist" ; exit 1 ; }
+        || { echo "ERROR: Exercise directory does not exist." ; exit 1 ; }
 
     # Relocate into practice exercise directory
     pushd exercises/practice/${exercise} 2>&1 >/dev/null
@@ -218,7 +250,7 @@ configure_exercise() {
 
     # Copy unit test framework files (reside in top-level `bin` directory) to testlib
     #  and ensure script is executable
-    cp -p ../../../bin/t?.rexx ../../../bin/run* ./testlib
+    cp -p ../../../bin/t?.rexx ../../../bin/runt* ./testlib
     chmod +x ./testlib/runt
 
     # Create functions file inside the testlib directory
@@ -333,11 +365,11 @@ handle_create_exercise() {
 
     # Ensure exercise source file exists
     [ -f "${exercise}.rexx" ] \
-        || { echo "ERROR: Ensure source file resides in current directory" ; exit 1 ; }
+        || { echo "ERROR: Ensure source file resides in current directory." ; exit 1 ; }
 
     # Ensure exercise directory does not already exist
     [ -d "${exerdir}" ] \
-        && { echo "ERROR: Exercise already exists. You must first REMOVE it" ; exit 1 ; }
+        && { echo "ERROR: Exercise already exists. You must first REMOVE it." ; exit 1 ; }
 
     # Perform CREATE tasks via delegation
     create_exercise "${exercise}"
@@ -361,17 +393,21 @@ handle_configure_exercise() {
     local exercise=${1}
     local exerdir=exercises/practice/${exercise}
 
+    # Check for test library file existence, exit if none installed
+    is_test_library_installed \
+        || { echo "ERROR: Test library not installed. Use 'update-testlib' option to do so." ; exit 1 ; }
+
     # Ensure exercise source file exists
     [ -f "${exercise}.rexx" ] \
-        || { echo "ERROR: Ensure source file resides in current directory" ; exit 1 ; }
+        || { echo "ERROR: Ensure source file resides in current directory." ; exit 1 ; }
 
     # Ensure exercise directory already exists
     [ -d "${exerdir}" ] \
-        || { echo "ERROR: Exercise does not exists. You must first CREATE it" ; exit 1 ; }
+        || { echo "ERROR: Exercise does not exists. You must first CREATE it." ; exit 1 ; }
 
     # Ensure exercise directory has not already been configured
     [ -d "${exerdir}/testlib" ] \
-        && { echo "ERROR: Exercise already configured. Inspect exercise directory" ; exit 1 ; }
+        && { echo "ERROR: Exercise already configured. Inspect exercise directory." ; exit 1 ; }
 
     # Perform CONFIGURE tasks via delegation
     configure_exercise "${exercise}"
@@ -384,7 +420,7 @@ handle_test_exercise() {
 
     # Ensure a configured exercise directory exists
     [ -d "${exerdir}/testlib" ] \
-        || { echo "ERROR: Cannot test a non-existent or incomplete exercise" ; exit 1 ; }
+        || { echo "ERROR: Cannot test a non-existent or incomplete exercise." ; exit 1 ; }
 
     # Perform TEST tasks via delegation
     test_exercise "${exercise}"
@@ -392,20 +428,24 @@ handle_test_exercise() {
 
 # ---- ENTRY POINT
 
-# Two arguments expected
-[ $# -ne 2 -o -z "${1}" -o -z "${2}" ] \
-    && { echo "Usage: ${0} create|remove|configure|test exercise" ; exit 1 ; }
-
-# Uppercase `mode` for easier comparison
-mode="${1^^}" ; exercise="${2}"
-
 # Ascertain script location is `bin`
 [ "$(basename $(dirname ${0}))" == "bin" ] \
-    || { echo "ERROR: Current script must reside in bin directory" ; exit 1 ; }
+    || { echo "ERROR: Current script must reside in bin directory." ; exit 1 ; }
 
 # Ascertain current directory is top-level by checking for directories
 [ -d "./bin" -a -d "./exercises/practice" ] \
-    || { echo "ERROR: Current directory is not top-level directory" ; exit 1 ; }
+    || { echo "ERROR: Current directory is not top-level directory." ; exit 1 ; }
+
+# Check for test library update request; perform it and exit, or proceed
+[ $# -eq 1 -a "${1^^}" = "UPDATE-TESTLIB" ] \
+    && { update_testlib ; exit 0 ; }
+
+# Two arguments expected
+[ $# -ne 2 -o -z "${1}" -o -z "${2}" ] \
+    && { echo "Usage: ${0} update-testlib|[create|remove|configure|test exercise]" ; exit 1 ; }
+
+# Uppercase `mode` for easier comparison
+mode="${1^^}" ; exercise="${2}"
 
 # Ensure top-level `config.json` contains a valid exercise entry
 grep -q '"slug": "'${exercise}'",$' config.json \
@@ -417,6 +457,6 @@ case "${mode}" in
     REMOVE)    handle_remove_exercise "${exercise}" ;;
     CONFIGURE) handle_configure_exercise "${exercise}" ;;
     TEST)      handle_test_exercise "${exercise}" ;;
-    *) echo "Usage: ${0} create|remove|configure|test exercise" ; exit 1 ;;
+    *) echo "Usage: ${0} update-testlib|[create|remove|configure|test exercise]" ; exit 1 ;;
 esac
 

@@ -3,6 +3,14 @@
 # -----------------------------------------------------------------------------
 # Exercism practice exercise generator for the Rexx language track.
 #
+# Two action groups are implemented. The first group is invoked as follows:
+#
+# $1 -> action to perform (update-testlib, help, version)
+#
+# These are generic actions, including the 'update-testlib' action, which
+#  installs or updates the test library. The second group is the more
+#  commonly used, and may be invoked via:
+#
 # $1 -> action to perform (create, remove, configure, or test, exercise)
 # $2 -> name of the exercise subdirectory
 #
@@ -71,8 +79,9 @@
 # 2. Script must reside in TRACKNAME/bin/ (and have execute permissions)
 #
 # 3. Test library files (runt*, t?.rexx) must also be TRACKNAME/bin/ resident,
-#     something which may normally be assumed. A test library update will
-#     require replacement of these files.
+#     something which may normally be assumed. The test library files will
+#     have been installed via a previous script invocation using the option
+#     'update-testlib', or have been manually copied to this directory.
 #
 # 4. An <exercise>.rexx file must reside in TRACKNAME/. Please note that it
 #     could be a complete solution, or merely a stub file, intended to be
@@ -169,11 +178,27 @@
 
 # ---- FUNCTIONS
 
-is_test_library_installed() {
-  local count=0
-  cd ./bin ; for i in t?.rexx runt* ; do (( count+=1 )) ; done ; cd - 2>&1 >/dev/null
-  [ ${count} -eq 5 ]
+# -- Helpers
+
+print_and_exit() {
+    printf "${2}\n" ; exit ${1}
 }
+
+print_usage_and_exit() {
+    print_and_exit 1 "Usage: ${0} help|update-testlib|version|[create|remove|configure|test exercise]"
+}
+
+is_test_library_installed() {
+    local count=0
+    cd ./bin ; for i in t?.rexx runt* ; do (( count+=1 )) ; done ; cd - 2>&1 >/dev/null
+    [ ${count} -eq 5 ]
+}
+
+has_toplevel_config_entry() {
+    grep -q '"slug": "'${1}'",$' config.json
+}
+
+# -- Workers
 
 update_testlib() {
     # Ensure 'curl' utility is installed
@@ -358,10 +383,48 @@ test_exercise() {
     return ${result}
 }
 
+# -- Interface Handlers
+
+handle_update_testlib() {
+    #
+    # TODO
+    #
+    print_and_exit 0 "update_testlib - not yet implemented"
+}
+
+handle_help() {
+    local helpdir="$(mktemp -d)"
+    local helptxt="${helpdir}/help.txt"
+
+    # Create temporary file from extracted script header text, and allow
+    #  user to scroll through it, before cleaning up on user exit, so
+    #  acting as a makeshift 'help' facility.
+    sed -n '/^\# --------.*$/,/^\# --------.*$/ p' $(realpath ${0}) \
+        > "${helptxt}"
+
+    less "${helptxt}"
+
+    rm -fr "${helpdir}"
+}
+
+handle_version() {
+    print_and_exit \
+        0 \
+        $'Exercise Generator / Manager for Exercism Rexx Language Track, Version 0.9.0'
+}
+
 handle_create_exercise() {
     # Override any previous setting with function argument
     local exercise=${1}
     local exerdir=exercises/practice/${exercise}
+
+    # Ensure a non-empty exercise name is passed
+    [ -z "${exercise}" ] \
+        && { echo "ERROR: A non-empty exercise name is required." ; exit 1 ; }
+
+    # Ensure top-level `config.json` contains a valid exercise entry
+    has_toplevel_config_entry "${exercise}" \
+        || { echo "ERROR: Include entry for ${exercise} in top-level config.json file." ; exit 1 ; }
 
     # Ensure exercise source file exists
     [ -f "${exercise}.rexx" ] \
@@ -380,6 +443,14 @@ handle_remove_exercise() {
     local exercise=${1}
     local exerdir=exercises/practice/${exercise}
 
+    # Ensure a non-empty exercise name is passed
+    [ -z "${exercise}" ] \
+        && { echo "ERROR: A non-empty exercise name is required." ; exit 1 ; }
+
+    # Ensure top-level `config.json` contains a valid exercise entry
+    has_toplevel_config_entry "${exercise}" \
+        || { echo "ERROR: Include entry for ${exercise} in top-level config.json file." ; exit 1 ; }
+
     # Ensure exercise directory exists
     [ -d "${exerdir}" ] \
         || { echo "INFORMATION: Exercise does not exist. Nothing removed." ; exit 0 ; }
@@ -393,9 +464,17 @@ handle_configure_exercise() {
     local exercise=${1}
     local exerdir=exercises/practice/${exercise}
 
+    # Ensure a non-empty exercise name is passed
+    [ -z "${exercise}" ] \
+        && { echo "ERROR: A non-empty exercise name is required." ; exit 1 ; }
+
     # Check for test library file existence, exit if none installed
     is_test_library_installed \
         || { echo "ERROR: Test library not installed. Use 'update-testlib' option to do so." ; exit 1 ; }
+
+    # Ensure top-level `config.json` contains a valid exercise entry
+    has_toplevel_config_entry "${exercise}" \
+        || { echo "ERROR: Include entry for ${exercise} in top-level config.json file." ; exit 1 ; }
 
     # Ensure exercise source file exists
     [ -f "${exercise}.rexx" ] \
@@ -418,9 +497,17 @@ handle_test_exercise() {
     local exercise=${1}
     local exerdir=exercises/practice/${exercise}
 
+    # Ensure a non-empty exercise name is passed
+    [ -z "${exercise}" ] \
+        && { echo "ERROR: A non-empty exercise name is required." ; exit 1 ; }
+
     # Ensure a configured exercise directory exists
     [ -d "${exerdir}/testlib" ] \
         || { echo "ERROR: Cannot test a non-existent or incomplete exercise." ; exit 1 ; }
+
+    # Ensure top-level `config.json` contains a valid exercise entry
+    has_toplevel_config_entry "${exercise}" \
+        || { echo "ERROR: Include entry for ${exercise} in top-level config.json file." ; exit 1 ; }
 
     # Perform TEST tasks via delegation
     test_exercise "${exercise}"
@@ -436,27 +523,14 @@ handle_test_exercise() {
 [ -d "./bin" -a -d "./exercises/practice" ] \
     || { echo "ERROR: Current directory is not top-level directory." ; exit 1 ; }
 
-# Check for test library update request; perform it and exit, or proceed
-[ $# -eq 1 -a "${1^^}" = "UPDATE-TESTLIB" ] \
-    && { update_testlib ; exit 0 ; }
-
-# Two arguments expected
-[ $# -ne 2 -o -z "${1}" -o -z "${2}" ] \
-    && { echo "Usage: ${0} update-testlib|[create|remove|configure|test exercise]" ; exit 1 ; }
-
-# Uppercase `mode` for easier comparison
-mode="${1^^}" ; exercise="${2}"
-
-# Ensure top-level `config.json` contains a valid exercise entry
-grep -q '"slug": "'${exercise}'",$' config.json \
-    || { echo "ERROR: Include entry for ${exercise} in top-level config.json file." ; exit 1 ; }
-
-# Check `mode` validity
-case "${mode}" in
-    CREATE)    handle_create_exercise "${exercise}" ;;
-    REMOVE)    handle_remove_exercise "${exercise}" ;;
-    CONFIGURE) handle_configure_exercise "${exercise}" ;;
-    TEST)      handle_test_exercise "${exercise}" ;;
-    *) echo "Usage: ${0} update-testlib|[create|remove|configure|test exercise]" ; exit 1 ;;
+# Dispatch on `action` name
+case "${1^^}" in
+    UPDATE-TESTLIB) [ $# -eq 1 ] && handle_update_testlib || print_usage_and_exit ;;
+    HELP)           [ $# -eq 1 ] && handle_help || print_usage_and_exit ;;
+    VERSION)        [ $# -eq 1 ] && handle_version || print_usage_and_exit ;;
+    CREATE)    handle_create_exercise "${2}" ;;
+    REMOVE)    handle_remove_exercise "${2}" ;;
+    CONFIGURE) handle_configure_exercise "${2}" ;;
+    TEST)      handle_test_exercise "${2}" ;;
+    *) print_usage_and_exit ;;
 esac
-

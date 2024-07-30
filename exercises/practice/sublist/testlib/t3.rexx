@@ -6,6 +6,7 @@
          test-script
          t2.rexx
          rexx-file-to-test
+         checkfuncs (Optional Rexx file containing custom testing routines)
          t3.rexx
 
       to create file:
@@ -14,7 +15,7 @@
 
    2. Execute t.rexx
 
-   This file is t1.rexx
+   This file is t3.rexx
 */
 
 /* functions for the test framework */
@@ -41,7 +42,6 @@ return ''
 
 check:
   parse arg description, procedureCall, variableName, operation, expectedValue
-
   checkNumber = checkNumber + 1
 
   /* Ensure procedureCall *is* supplied */
@@ -54,8 +54,7 @@ check:
   if variableName == '' then do
     if RIGHT(procedureCall, 1) = ')' then
       interpret 'returnedValue = 'procedureCall
-    else
-      interpret 'call 'procedureCall
+    else do ; interpret 'call 'procedureCall  ; returnedValue = RESULT ; end
   end
 
   assertion = expect(returnedValue, variableName, operation, expectedValue)
@@ -72,11 +71,16 @@ check:
       /* Ensure conforming field values */
       testStatus = 'pass' ; if testResult \= 'PASSED' then ; testStatus = 'fail'
       conjunction = 'and' ; if testStatus \= 'pass' then ; conjunction = 'but'
-      if expectedValue == '' then ; expectedValue = "''"
-      if returnedValue == '' then ; returnedValue = "''"
+      if STRIP(expectedValue) = '' then ; expectedValue = "''"
+      if STRIP(returnedValue) = '' then ; returnedValue = "''"
       /* Remove procedure name from description if it exists there */
       delidx = POS(procedureCall, description)
       if delidx > 0 then ; description = STRIP(DELSTR(description, delidx))
+      /* Quote code parameters if non-numeric */
+      if DATATYPE(expectedValue, 'N') then
+        testCode = procedureCall op expectedValue
+      else
+        testCode = procedureCall op "'"expectedValue"'"
       /* Package test results as JSON */
       checkresult.count = ,
         MakeJSONTestResult( ,
@@ -84,7 +88,7 @@ check:
           testStatus,,
           'Expected' expectedValue conjunction 'got' returnedValue,,
           '',,
-          procedureCall op expectedValue,,
+          testCode,,
           TASK_ID,,
           EOL)
     end
@@ -162,7 +166,8 @@ return text
 
 MakeJSONTestResult : procedure
   parse arg name, status, message, output, test_code, task_id, eol
-  test_code = CHANGESTR('"', test_code, '\"')
+  message = CHANGESTR('"', CHANGESTR("0A"X, message, '\n'), '\"')
+  test_code = CHANGESTR('"', CHANGESTR("0A"X, test_code, '\n'), '\"')
   json = ,
     '    {' || eol || ,
     '      "name": "' || name || '",' || eol || ,

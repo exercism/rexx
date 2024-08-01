@@ -3,7 +3,7 @@
 # -----------------------------------------------------------------------------
 # Exercism practice exercise generator for the Rexx language track.
 #
-# Two action groups are implemented. The first group is invoked as follows:
+# Three action groups are implemented. The first group is invoked as follows:
 #
 # $1 -> action to perform (update-testlib, help, version)
 #
@@ -11,8 +11,14 @@
 #  installs or updates the test library. The second group is the more
 #  commonly used, and may be invoked via:
 #
-# $1 -> action to perform (create, remove, configure, or test, exercise)
+# $1 -> action to perform (create, remove, or configure, exercise)
 # $2 -> name of the exercise subdirectory
+#
+# The third group is invoked as follows:
+#
+# $1 -> action to perform (test exercise)
+# $2 -> name of the exercise subdirectory
+# $3 -> optional test options
 #
 # The script creates, removes, configures, or tests, a subdirectory,
 #  corresponding to the nominated exercises, in the following directory:
@@ -185,7 +191,7 @@ print_and_exit() {
 }
 
 print_usage_and_exit() {
-    print_and_exit 1 "Usage: ${0} help|update-testlib|version|[create|remove|configure|test exercise]"
+    print_and_exit 1 "Usage: ${0} help|update-testlib|version|[create|remove|configure exercise]|[test exercise [testoptions]]"
 }
 
 is_test_library_installed() {
@@ -293,7 +299,7 @@ configure_exercise() {
     ## Bash launcher (and ensure it is executable)
     echo $'#!/usr/bin/env bash' > test-${exercise}
     echo $'cd "testlib" 2>&1 >/dev/null' >> test-${exercise}
-    echo $'if [ $# -eq 0 ] ; then ./runt --regina ../'${exercise}-check' ../'${exercise}' ../'${exercise}-toplevel ${exercise}-funcs' ; else ./runt "$@" ../'${exercise}-check' ../'${exercise}' ../'${exercise}-toplevel ${exercise}-funcs' ; fi' >> test-${exercise}
+    echo $'if [ $# -eq 0 ] ; then ./runt --regina ../'${exercise}-check' ../'${exercise}' ../'${exercise}-toplevel ${exercise}-funcs' ; else ./runt $@ ../'${exercise}-check' ../'${exercise}' ../'${exercise}-toplevel ${exercise}-funcs' ; fi' >> test-${exercise}
     echo $'cd - 2>&1 >/dev/null' >> test-${exercise}
     #### NOTE: If files reside on a non-EXT4 filesystem (e.g. NTFS) then the git index needs updating.
     #### =>    git update-index --chmod=+x test-${exercise}
@@ -356,7 +362,8 @@ REXX_SCRIPT
 
 test_exercise() {
     # Override any previous setting with function argument
-    local exercise=${1}
+    local exercise=${1} ; shift
+    local testopts="$@"
     local exerdir=exercises/practice/${exercise}
 
     # Create temporary directory, and copy exercise directory contents to it
@@ -375,7 +382,9 @@ test_exercise() {
                   && mv example-toplevel.rexx "${exercise}"-toplevel.rexx ; \
              }
         # Run tests, and collect result code
-        ./test-"${exercise}"
+        [ -z "${testopts}" ] \
+            && ./test-"${exercise}" \
+            || ./test-"${exercise}" "${testopts}"
         local result=$?
     popd 2>&1 >/dev/null
     # Cleanup and return result code
@@ -494,7 +503,8 @@ handle_configure_exercise() {
 
 handle_test_exercise() {
     # Override any previous setting with function argument
-    local exercise=${1}
+    local exercise=${1} ; shift
+    local testopts="$@"
     local exerdir=exercises/practice/${exercise}
 
     # Ensure a non-empty exercise name is passed
@@ -510,7 +520,7 @@ handle_test_exercise() {
         || { echo "ERROR: Include entry for ${exercise} in top-level config.json file." ; exit 1 ; }
 
     # Perform TEST tasks via delegation
-    test_exercise "${exercise}"
+    test_exercise "${exercise}" "${testopts}"
 }
 
 # ---- ENTRY POINT
@@ -531,6 +541,6 @@ case "${1^^}" in
     CREATE)    handle_create_exercise "${2}" ;;
     REMOVE)    handle_remove_exercise "${2}" ;;
     CONFIGURE) handle_configure_exercise "${2}" ;;
-    TEST)      handle_test_exercise "${2}" ;;
+    TEST)      exercise="${2}" ; shift ;  shift ; handle_test_exercise "${exercise}" "$@" ;;
     *) print_usage_and_exit ;;
 esac

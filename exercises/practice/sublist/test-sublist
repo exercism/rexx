@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd "testlib" 2>&1 >/dev/null
-if [ $# -eq 0 ] ; then ./runt --regina ../sublist-check ../sublist ../sublist-toplevel sublist-funcs ; else ./runt "$@" ../sublist-check ../sublist ../sublist-toplevel sublist-funcs ; fi
+if [ $# -eq 0 ] ; then ./runt --regina ../sublist-check ../sublist ../sublist-toplevel sublist-funcs ; else ./runt $@ ../sublist-check ../sublist ../sublist-toplevel sublist-funcs ; fi
 cd - 2>&1 >/dev/null

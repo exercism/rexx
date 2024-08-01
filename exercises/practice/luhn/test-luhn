@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd "testlib" 2>&1 >/dev/null
-if [ $# -eq 0 ] ; then ./runt --regina ../luhn-check ../luhn ../luhn-toplevel luhn-funcs ; else ./runt "$@" ../luhn-check ../luhn ../luhn-toplevel luhn-funcs ; fi
+if [ $# -eq 0 ] ; then ./runt --regina ../luhn-check ../luhn ../luhn-toplevel luhn-funcs ; else ./runt $@ ../luhn-check ../luhn ../luhn-toplevel luhn-funcs ; fi
 cd - 2>&1 >/dev/null

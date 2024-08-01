@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd "testlib" 2>&1 >/dev/null
-if [ $# -eq 0 ] ; then ./runt --regina ../simple-cipher-check ../simple-cipher ../simple-cipher-toplevel simple-cipher-funcs ; else ./runt "$@" ../simple-cipher-check ../simple-cipher ../simple-cipher-toplevel simple-cipher-funcs ; fi
+if [ $# -eq 0 ] ; then ./runt --regina ../simple-cipher-check ../simple-cipher ../simple-cipher-toplevel simple-cipher-funcs ; else ./runt $@ ../simple-cipher-check ../simple-cipher ../simple-cipher-toplevel simple-cipher-funcs ; fi
 cd - 2>&1 >/dev/null

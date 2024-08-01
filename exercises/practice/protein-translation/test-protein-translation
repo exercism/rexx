@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd "testlib" 2>&1 >/dev/null
-if [ $# -eq 0 ] ; then ./runt --regina ../protein-translation-check ../protein-translation ../protein-translation-toplevel protein-translation-funcs ; else ./runt "$@" ../protein-translation-check ../protein-translation ../protein-translation-toplevel protein-translation-funcs ; fi
+if [ $# -eq 0 ] ; then ./runt --regina ../protein-translation-check ../protein-translation ../protein-translation-toplevel protein-translation-funcs ; else ./runt $@ ../protein-translation-check ../protein-translation ../protein-translation-toplevel protein-translation-funcs ; fi
 cd - 2>&1 >/dev/null

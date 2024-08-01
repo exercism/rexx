@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd "testlib" 2>&1 >/dev/null
-if [ $# -eq 0 ] ; then ./runt --regina ../square-root-check ../square-root ../square-root-toplevel square-root-funcs ; else ./runt "$@" ../square-root-check ../square-root ../square-root-toplevel square-root-funcs ; fi
+if [ $# -eq 0 ] ; then ./runt --regina ../square-root-check ../square-root ../square-root-toplevel square-root-funcs ; else ./runt $@ ../square-root-check ../square-root ../square-root-toplevel square-root-funcs ; fi
 cd - 2>&1 >/dev/null

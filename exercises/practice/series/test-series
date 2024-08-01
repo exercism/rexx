@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd "testlib" 2>&1 >/dev/null
-if [ $# -eq 0 ] ; then ./runt --regina ../series-check ../series ../series-toplevel series-funcs ; else ./runt "$@" ../series-check ../series ../series-toplevel series-funcs ; fi
+if [ $# -eq 0 ] ; then ./runt --regina ../series-check ../series ../series-toplevel series-funcs ; else ./runt $@ ../series-check ../series ../series-toplevel series-funcs ; fi
 cd - 2>&1 >/dev/null

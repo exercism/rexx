@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd "testlib" 2>&1 >/dev/null
-if [ $# -eq 0 ] ; then ./runt --regina ../bank-account-check ../bank-account ../bank-account-toplevel bank-account-funcs ; else ./runt "$@" ../bank-account-check ../bank-account ../bank-account-toplevel bank-account-funcs ; fi
+if [ $# -eq 0 ] ; then ./runt --regina ../bank-account-check ../bank-account ../bank-account-toplevel bank-account-funcs ; else ./runt $@ ../bank-account-check ../bank-account ../bank-account-toplevel bank-account-funcs ; fi
 cd - 2>&1 >/dev/null

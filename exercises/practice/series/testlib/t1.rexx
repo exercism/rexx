@@ -6,6 +6,7 @@
          test-script
          t2.rexx
          rexx-file-to-test
+         checkfuncs (Optional Rexx file containing custom testing routines)
          t3.rexx
 
       to create file:

@@ -20,7 +20,7 @@
 
 /* functions for the test framework */
 
-init:
+init :
   parse upper arg outputType
   checkNumber = 0
   count = 0
@@ -32,7 +32,14 @@ init:
   divider = '----------------------------------------'
   spacer = ' '
   EOL = "0A"X
+  output. = '' ; output.0 = 0
 return
+
+output : procedure expose output.
+  parse arg line
+  output.0 = output.0 + 1
+  n = output.0 ; output.n = line
+return ''
 
 context : procedure expose contextdesc TASK_ID
   parse arg desc, task_identifier
@@ -40,7 +47,7 @@ context : procedure expose contextdesc TASK_ID
   if task_identifier \= '' then ; TASK_ID = task_identifier
 return ''
 
-check:
+check :
   parse arg description, procedureCall, variableName, operation, expectedValue
   checkNumber = checkNumber + 1
 
@@ -81,13 +88,18 @@ check:
         testCode = procedureCall op expectedValue
       else
         testCode = procedureCall op "'"expectedValue"'"
+      /* Assemble collected output */
+      output = ''
+      do i = 1 to output.0
+        output = output || output.i || EOL
+      end
       /* Package test results as JSON */
       checkresult.count = ,
         MakeJSONTestResult( ,
           description,,
           testStatus,,
           'Expected' expectedValue conjunction 'got' returnedValue,,
-          '',,
+          output,,
           testCode,,
           TASK_ID,,
           EOL)
@@ -98,7 +110,7 @@ check:
 
 return ''
 
-expect:
+expect :
   parse arg actual, variableName, op, expected
 
   if variableName <> '' then
@@ -166,8 +178,9 @@ return text
 
 MakeJSONTestResult : procedure
   parse arg name, status, message, output, test_code, task_id, eol
-  message = CHANGESTR('"', CHANGESTR("0A"X, message, '\n'), '\"')
-  test_code = CHANGESTR('"', CHANGESTR("0A"X, test_code, '\n'), '\"')
+  message = CHANGESTR('"', CHANGESTR(eol, message, '\n'), '\"')
+  output = CHANGESTR('"', CHANGESTR(eol, output, '\n'), '\"')
+  test_code = CHANGESTR('"', CHANGESTR(eol, test_code, '\n'), '\"')
   json = ,
     '    {' || eol || ,
     '      "name": "' || name || '",' || eol || ,

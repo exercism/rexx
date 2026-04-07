@@ -15,7 +15,8 @@ However it can be confusing because it covers several non-applicable features, a
 
 In the author's opinion, the most useful, and entertaining, Rexx tutorial is Jeff Glatt's, [Learn REXX Programming in 56,479 Easy Steps](https://web.archive.org/web/20210312182112/https://nokix.sourceforge.net/help/learn_rexx/language.htm).
 It not only provides an overview of the language, but explores various features intuitively, and in some depth.
-Useful, too, as a reference tool. Highly recommended to learners of all skill levels.
+Useful, too, as a reference tool.
+Highly recommended to learners of all skill levels.
 
 ## Recommended Reference
 

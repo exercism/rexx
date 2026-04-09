@@ -178,9 +178,10 @@ return text
 
 MakeJSONTestResult : procedure
   parse arg name, status, message, output, test_code, task_id, eol
-  message = CHANGESTR('"', CHANGESTR(eol, message, '\n'), '\"')
-  output = CHANGESTR('"', CHANGESTR(eol, output, '\n'), '\"')
-  test_code = CHANGESTR('"', CHANGESTR(eol, test_code, '\n'), '\"')
+  name = CHANGESTR('"', CHANGESTR(eol, CHANGESTR('\', name, '\\'), '\n'), '\"')
+  message = CHANGESTR('"', CHANGESTR(eol, CHANGESTR('\', message, '\\'), '\n'), '\"')
+  output = CHANGESTR('"', CHANGESTR(eol, CHANGESTR('\', output, '\\'), '\n'), '\"')
+  test_code = CHANGESTR('"', CHANGESTR(eol, CHANGESTR('\', test_code, '\\'), '\n'), '\"')
   json = ,
     '    {' || eol || ,
     '      "name": "' || name || '",' || eol || ,

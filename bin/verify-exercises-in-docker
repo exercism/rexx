@@ -23,9 +23,9 @@ required_tool() {
 required_tool docker
 
 copy_example_or_examplar_to_solution() {
-    jq -c '[.files.solution, .files.exemplar // .files.example] | transpose | map({src: .[1], dst: .[0]}) | .[]' .meta/config.json \
-    | while read -r src_and_dst; do
-        cp "$(jq -r '.src' <<< "${src_and_dst}")" "$(jq -r '.dst' <<< "${src_and_dst}")"
+    jq -r '[.files.solution, .files.exemplar // .files.example] | transpose | map(select(.[0] and .[1]))[][]' .meta/config.json \
+    | while read -r dst; read -r src; do
+        cp "${src}" "${dst}"
     done
 }
 

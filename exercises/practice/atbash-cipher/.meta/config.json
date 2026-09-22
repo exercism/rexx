@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["atbash-cipher.rexx", "atbash-cipher-toplevel.rexx"],
-    "test": ["test-atbash-cipher"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "atbash-cipher.rexx"
+    ],
+    "test": [
+      "atbash-cipher-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Create an implementation of the atbash cipher, an ancient encryption system created in the Middle East.",
   "source": "Wikipedia",

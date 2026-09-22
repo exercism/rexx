@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["reverse-string.rexx", "reverse-string-toplevel.rexx"],
-    "test": ["test-reverse-string"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "reverse-string.rexx"
+    ],
+    "test": [
+      "reverse-string-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Reverse a string.",
   "source": "Introductory challenge to reverse an input string",

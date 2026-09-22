@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["house.rexx", "house-toplevel.rexx"],
-    "test": ["test-house"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "house.rexx"
+    ],
+    "test": [
+      "house-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Output the nursery rhyme 'This is the House that Jack Built'.",
   "source": "British nursery rhyme",

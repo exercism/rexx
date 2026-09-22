@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["hello-world.rexx", "hello-world-toplevel.rexx"],
-    "test": ["test-hello-world"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "hello-world.rexx"
+    ],
+    "test": [
+      "hello-world-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "The classical introductory exercise. Just say \"Hello, World!\".",
   "source": "This is an exercise to introduce users to using Exercism",

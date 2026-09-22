@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["isogram.rexx", "isogram-toplevel.rexx"],
-    "test": ["test-isogram"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "isogram.rexx"
+    ],
+    "test": [
+      "isogram-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Determine if a word or phrase is an isogram.",
   "source": "Wikipedia",

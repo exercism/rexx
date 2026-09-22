@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["sublist.rexx", "sublist-toplevel.rexx"],
-    "test": ["test-sublist"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "sublist.rexx"
+    ],
+    "test": [
+      "sublist-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Write a function to determine if a list is a sublist of another list."
 }

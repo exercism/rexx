@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["proverb.rexx", "proverb-toplevel.rexx"],
-    "test": ["test-proverb"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "proverb.rexx"
+    ],
+    "test": [
+      "proverb-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "For want of a horseshoe nail, a kingdom was lost, or so the saying goes. Output the full text of this proverbial rhyme.",
   "source": "Wikipedia",

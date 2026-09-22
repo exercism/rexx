@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["custom-set.rexx", "custom-set-toplevel.rexx"],
-    "test": ["test-custom-set"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "custom-set.rexx"
+    ],
+    "test": [
+      "custom-set-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Create a custom set type."
 }

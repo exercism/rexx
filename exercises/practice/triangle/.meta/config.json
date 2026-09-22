@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["triangle.rexx", "triangle-toplevel.rexx"],
-    "test": ["test-triangle"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "triangle.rexx"
+    ],
+    "test": [
+      "triangle-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Determine if a triangle is equilateral, isosceles, or scalene.",
   "source": "The Ruby Koans triangle project, parts 1 & 2",

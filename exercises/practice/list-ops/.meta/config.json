@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["list-ops.rexx", "list-ops-toplevel.rexx"],
-    "test": ["test-list-ops"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "list-ops.rexx"
+    ],
+    "test": [
+      "list-ops-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Implement basic list operations."
 }

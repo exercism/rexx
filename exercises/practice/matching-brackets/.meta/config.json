@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["matching-brackets.rexx", "matching-brackets-toplevel.rexx"],
-    "test": ["test-matching-brackets"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "matching-brackets.rexx"
+    ],
+    "test": [
+      "matching-brackets-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Make sure the brackets and braces all match.",
   "source": "Ginna Baker"

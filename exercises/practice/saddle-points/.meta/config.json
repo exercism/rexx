@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["saddle-points.rexx", "saddle-points-toplevel.rexx"],
-    "test": ["test-saddle-points"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "saddle-points.rexx"
+    ],
+    "test": [
+      "saddle-points-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Detect saddle points in a matrix.",
   "source": "J Dalbey's Programming Practice problems",

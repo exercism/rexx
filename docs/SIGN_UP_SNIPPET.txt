@@ -1,0 +1,10 @@
+MostCommonWord : procedure
+  parse lower arg text
+  counts. = 0
+  best = ''
+  do i = 1 to WORDS(text)
+    word = WORD(text, i)
+    counts.word = counts.word + 1
+    if counts.word > counts.best then best = word
+  end
+return '"'best'" appears' counts.best 'times'

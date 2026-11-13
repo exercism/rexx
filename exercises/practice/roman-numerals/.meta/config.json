@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["roman-numerals.rexx", "roman-numerals-toplevel.rexx"],
-    "test": ["test-roman-numerals"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "roman-numerals.rexx"
+    ],
+    "test": [
+      "roman-numerals-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Write a function to convert from normal numbers to Roman Numerals.",
   "source": "The Roman Numeral Kata",

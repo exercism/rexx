@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["sieve.rexx", "sieve-toplevel.rexx"],
-    "test": ["test-sieve"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "sieve.rexx"
+    ],
+    "test": [
+      "sieve-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Use the Sieve of Eratosthenes to find all the primes from 2 up to a given number.",
   "source": "Sieve of Eratosthenes at Wikipedia",

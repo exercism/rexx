@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["secret-handshake.rexx", "secret-handshake-toplevel.rexx"],
-    "test": ["test-secret-handshake"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "secret-handshake.rexx"
+    ],
+    "test": [
+      "secret-handshake-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Given a decimal number, convert it to the appropriate sequence of events for a secret handshake.",
   "source": "Bert, in Mary Poppins",

@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["perfect-numbers.rexx", "perfect-numbers-toplevel.rexx"],
-    "test": ["test-perfect-numbers"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "perfect-numbers.rexx"
+    ],
+    "test": [
+      "perfect-numbers-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Determine if a number is perfect, abundant, or deficient based on Nicomachus' (60 - 120 CE) classification scheme for positive integers.",
   "source": "Taken from Chapter 2 of Functional Thinking by Neal Ford.",

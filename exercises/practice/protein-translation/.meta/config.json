@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["protein-translation.rexx", "protein-translation-toplevel.rexx"],
-    "test": ["test-protein-translation"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "protein-translation.rexx"
+    ],
+    "test": [
+      "protein-translation-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Translate RNA sequences into proteins.",
   "source": "Tyler Long"

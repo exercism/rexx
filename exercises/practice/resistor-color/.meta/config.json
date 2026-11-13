@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["resistor-color.rexx", "resistor-color-toplevel.rexx"],
-    "test": ["test-resistor-color"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "resistor-color.rexx"
+    ],
+    "test": [
+      "resistor-color-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Convert a resistor band's color to its numeric representation.",
   "source": "Maud de Vries, Erik Schierboom",

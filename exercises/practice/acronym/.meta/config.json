@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["acronym.rexx", "acronym-toplevel.rexx"],
-    "test": ["test-acronym"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "acronym.rexx"
+    ],
+    "test": [
+      "acronym-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Convert a long phrase to its acronym.",
   "source": "Julien Vanier",

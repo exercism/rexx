@@ -35,7 +35,6 @@
     ]
   },
   "exercises": {
-    "concept": [],
     "practice": [
       {
         "slug": "hello-world",
@@ -559,7 +558,6 @@
       }
     ]
   },
-  "concepts": [],
   "key_features": [
     {
       "title": "General Purpose",
@@ -593,15 +591,15 @@
     }
   ],
   "tags": [
+    "execution_mode/interpreted",
     "paradigm/imperative",
     "paradigm/procedural",
-    "typing/dynamic",
-    "typing/weak",
-    "execution_mode/interpreted",
-    "runtime/language_specific",
-    "platform/windows",
     "platform/linux",
     "platform/mac",
+    "platform/windows",
+    "runtime/language_specific",
+    "typing/dynamic",
+    "typing/weak",
     "used_for/backends",
     "used_for/cross_platform_development",
     "used_for/scripts"

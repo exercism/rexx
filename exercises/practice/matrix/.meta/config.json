@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["matrix.rexx", "matrix-toplevel.rexx"],
-    "test": ["test-matrix"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "matrix.rexx"
+    ],
+    "test": [
+      "matrix-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Given a string representing a matrix of numbers, return the rows and columns of that matrix.",
   "source": "Exercise by the JumpstartLab team for students at The Turing School of Software and Design.",

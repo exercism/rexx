@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["error-handling.rexx", "error-handling-toplevel.rexx"],
-    "test": ["test-error-handling"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "error-handling.rexx"
+    ],
+    "test": [
+      "error-handling-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Implement various kinds of error handling and resource management."
 }

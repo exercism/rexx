@@ -1,9 +1,17 @@
 {
-  "authors": ["ajborla"],
+  "authors": [
+    "ajborla"
+  ],
   "files": {
-    "solution": ["high-scores.rexx", "high-scores-toplevel.rexx"],
-    "test": ["test-high-scores"],
-    "example": [".meta/example.rexx"]
+    "solution": [
+      "high-scores.rexx"
+    ],
+    "test": [
+      "high-scores-check.rexx"
+    ],
+    "example": [
+      ".meta/example.rexx"
+    ]
   },
   "blurb": "Manage a player's High Score list.",
   "source": "Tribute to the eighties' arcade game Frogger"

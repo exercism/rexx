@@ -36,7 +36,7 @@ For the chosen distribution, you will need to download two packages, a library p
 sudo apt update && sudo apt -y install curl
 curl -sLk https://sourceforge.net/projects/regina-rexx/files/regina-rexx/3.9.5/regina-rexx_3.9.5-2_amd64-Debian-11.deb > regina-rexx_3.9.5-2_amd64-Debian-11.deb
 curl -sLk https://sourceforge.net/projects/regina-rexx/files/regina-rexx/3.9.5/libregina3_3.9.5-2_amd64-Debian-11.deb > libregina3_3.9.5-2_amd64-Debian-11.deb
-sudo apt -y install libregina3_3.9.5-2_amd64-Debian-11.deb regina-rexx_3.9.5-2_amd64-Debian-11.deb
+sudo apt -y install ./libregina3_3.9.5-2_amd64-Debian-11.deb ./regina-rexx_3.9.5-2_amd64-Debian-11.deb
 ```
 
 And on CentOS, and RHEL 7, try:

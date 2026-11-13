@@ -11,7 +11,7 @@ check('root of 4' 'SquareRoot(4)',,
 check('root of 25' 'SquareRoot(25)',,
       'SquareRoot(25)',, '=', 5)
 
-check('root of 81''SquareRoot(81)',,
+check('root of 81' 'SquareRoot(81)',,
       'SquareRoot(81)',, '=', 9)
 
 check('root of 196' 'SquareRoot(196)',,
